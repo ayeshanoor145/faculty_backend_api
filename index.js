@@ -1,9 +1,8 @@
+import mongoose from 'mongoose';
 import express from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
-import users from './sample/users.js';
 import education from './sample/education.js';
-
 
 
 dotenv.config();
@@ -11,322 +10,199 @@ const app = express();
 app.use(express.json());
 app.use(morgan('common'));
 
+//MongoDB connection (promise-based)
+const dbConnect = () => {
+  mongoose.connect(process.env.MONGODB_URI)
+    .then(() => {
+      console.log("MongoDB connected Successfully.");
+    })
+    .catch(() => {
+      console.log("MongoDB connection failed", error.message);
+    })
+}
+dbConnect();    //call the function to connect to MongoDB
 
-// Helper function to find users by ID
-const findusersById = (id) => {
-  return users.find(users => users._id.toString() === id);
-};
 
+
+//users schema
+const usersSchema = mongoose.Schema({
+  id: String,
+  name: String,
+  academicTitle: String,
+  designation: String,
+  subject: String,
+  majorSpecialization: String,
+  researchArea: Array,
+  nationality: Object,
+  researcherId: String,
+  researcherUrl: String,
+  orcidId: String,
+  orcidUrl: String,
+  googleScholarLink: String,
+  email: String,
+  contactNumber: String,
+  biosketch: String,
+
+})
+// users Model
+const Users = new mongoose.model("Users", usersSchema)
 // Routes
-
 // GET all users
-app.get("/users", (req, res) => {
-  res.status(200).json({
-    message: "users fetched successfully",
-    count: users.length,
-    data: users,
-    status: "success"
-  });
-});
-
-// GET single users by ID
-app.get("/users/:id", (req, res) => {
-  const id = req.params.id;
-  const users = findusersById(id);
-  
-  if (!users) {
-    return res.status(404).json({
-      message: "users not found",
-      status: "error"
-    });
+app.get("/users", async (req, res) => {
+  try {
+    //Fetch users from the database
+    const users = await Users.find()
+    res.status(200).json({
+      message: "Users fetched successfully",
+      data: users,
+      error: null,
+    })
   }
-  
-  res.status(200).json({
-    message: "users fetched successfully",
-    data: users,
-    status: "success"
-  });
-});
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message,
 
+    })
+  }
+})
+//Get user by ID
+app.get("/users/:id", async (req, res) => {
+  try {
+    let id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({
+        message: "Invalid user ID",
+        data: null,
+        error: null,
+      })
+    }
+    //Fetch users from the database by id
+    const user = await Users.findById(id)
+    if (!user) {
+      return res.status(404).json({
+        message: "Users not found",
+        data: null,
+        error: null,
+      })
+    }
+    res.status(200).json({
+      message: "Users fetched successfully by ID",
+      data: user,
+      error: null,
+    })
+  }
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message,
+    })
+  }
+});
 // POST create new users
-app.post("/users", (req, res) => {
-  const newusers = {
-    _id: new ObjectId(),
-    ...req.body
-  };
-  
-  users.push(newusers);
-  
-  res.status(201).json({
-    message: "users created successfully",
-    data: newusers,
-    status: "success"
-  });
-});
+app.post("/users", async (req, res) => {
 
-// PUT update users
-app.put("/users/:id", (req, res) => {
-  const id = req.params.id;
-  const updates = req.body;
-  const usersIndex = users.findIndex(r => r._id.toString() === id);
-  
-  if (usersIndex === -1) {
-    return res.status(404).json({
-      message: "users not found",
-      status: "error"
-    });
+  try {
+    let userInfo = req.body;
+    const user = Users(userInfo);     //create a new user instance
+    await user.save();    //save the user to database
+    res.status(201).json({
+      message: "User created successfully",
+      data: user,
+      error: null,
+    })
+
   }
-  
-  // Preserve the ID and update other fields
-  const updatedusers = {
-    ...users[usersIndex],
-    ...updates,
-    _id: users[usersIndex]._id
-  };
-  
-  users[usersIndex] = updatedusers;
-  
-  res.status(200).json({
-    message: "users updated successfully",
-    data: updatedusers,
-    status: "success"
-  });
-});
-
-// DELETE users
-app.delete("/users/:id", (req, res) => {
-  const id = req.params.id;
-  const usersIndex = users.findIndex(r => r._id.toString() === id);
-  
-  if (usersIndex === -1) {
-    return res.status(404).json({
-      message: "users not found",
-      status: "error"
-    });
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message,
+    })
   }
-  
-  const deletedusers = users.splice(usersIndex, 1)[0];
-  
-  res.status(200).json({
-    message: "users deleted successfully",
-    data: deletedusers,
-    status: "success"
-  });
-});
 
-// Filter users by nationality
-app.get("/users/nationality/:country", (req, res) => {
-  const country = req.params.country;
-  const filteredusers = users.filter(users => 
-    users.nationality.countries.includes(country)
-  );
-  
-  res.status(200).json({
-    message: `users from ${country} fetched successfully`,
-    count: filteredusers.length,
-    data: filteredusers,
-    status: "success"
-  });
 });
-
-// Filter users by research area
-app.get("/users/research-area/:area", (req, res) => {
-  const area = req.params.area.toLowerCase();
-  const filteredusers = users.filter(users => 
-    users.researchArea.some(ra => ra.toLowerCase().includes(area))
-  );
-  
-  res.status(200).json({
-    message: `users in ${area} fetched successfully`,
-    count: filteredusers.length,
-    data: filteredusers,
-    status: "success"
-  });
+//delete user
+app.delete("/users/:id", async (req, res) => {
+  try {
+    let id = req.params.id;
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        message: "Invalid user ID",
+        data: null,
+        error: null,
+      })
+    }
+    //Fetch users from the database by id
+    const user = await Users.findByIdAndDelete(id)
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+        data: null,
+        error: null,
+      })
+    }
+    res.status(200).json({
+      message: "Users deleted successfully",
+      data: user,
+      error: null,
+    })
+  }
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message,
+    })
+  }
 });
+//PUT request
+app.put("/users/:id", async (req, res) => {
+  try {
+    let id = req.params.id;
+    let userInfo = req.body;
 
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(404).json({
+        message: "Invalid user ID",
+        data: null,
+        error: null,
+      })
+    }
+    //Fetch users from the database by id
+    const user = await Users.findByIdAndUpdate(id, userInfo,
+      { new: true } //Return the updated document
+    );
+    if (!user) {
+      return res.status(404).json({
+        message: "Users not found",
+        data: null,
+        error: null,
+      })
+    }
+    res.status(200).json({
+      message: "Users updated successfully by ID",
+      data: user,
+      error: null,
+    })
+  }
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message,
+    })
+  }
+});
 // Root endpoint
 app.get("/", (req, res) => {
   res.send("users API");
 });
 
 
-
-
-
-
-
-
-
-
-
-
-// GET all education records
-
-// Helper function to find education record by ID
-const findEducationRecordById = (id) => {
-  return education.find(record => record._id.toString() === id);
-};
-
-// Helper function to find education record by usersId
-const findEducationRecordByusersId = (usersId) => {
-  return education.find(record => record.usersId === usersId);
-};
-
-// Routes
-
-// GET all education records
-app.get("/education", (req, res) => {
-  res.status(200).json({
-    message: "Education records fetched successfully",
-    count: education.length,
-    data: education,
-    status: "success"
-  });
-});
-
-// GET education record by ID
-app.get("/education/:id", (req, res) => {
-  const id = req.params.id;
-  const record = findEducationRecordById(id);
-  
-  if (!record) {
-    return res.status(404).json({
-      message: "Education record not found",
-      status: "error"
-    });
-  }
-  
-  res.status(200).json({
-    message: "Education record fetched successfully",
-    data: record,
-    status: "success"
-  });
-});
-
-// GET education record by usersId
-app.get("/education/users/:usersId", (req, res) => {
-  const usersId = req.params.usersId;
-  const record = findEducationRecordByusersId(usersId);
-  
-  if (!record) {
-    return res.status(404).json({
-      message: "Education record not found for this users",
-      status: "error"
-    });
-  }
-  
-  res.status(200).json({
-    message: "Education record fetched successfully",
-    data: record,
-    status: "success"
-  });
-});
-
-// POST create new education record
-app.post("/education", (req, res) => {
-  const newRecord = {
-    _id: new ObjectId(),
-    ...req.body
-  };
-  
-  education.push(newRecord);
-  
-  res.status(201).json({
-    message: "Education record created successfully",
-    data: newRecord,
-    status: "success"
-  });
-});
-
-// PUT update education record
-app.put("/education/:id", (req, res) => {
-  const id = req.params.id;
-  const updates = req.body;
-  const recordIndex = education.findIndex(r => r._id.toString() === id);
-  
-  if (recordIndex === -1) {
-    return res.status(404).json({
-      message: "Education record not found",
-      status: "error"
-    });
-  }
-  
-  // Preserve the ID and update other fields
-  const updatedRecord = {
-    ...education[recordIndex],
-    ...updates,
-    _id: education[recordIndex]._id
-  };
-  
-  education[recordIndex] = updatedRecord;
-  
-  res.status(200).json({
-    message: "Education record updated successfully",
-    data: updatedRecord,
-    status: "success"
-  });
-});
-
-// DELETE education record
-app.delete("/education/:id", (req, res) => {
-  const id = req.params.id;
-  const recordIndex = education.findIndex(r => r._id.toString() === id);
-  
-  if (recordIndex === -1) {
-    return res.status(404).json({
-      message: "Education record not found",
-      status: "error"
-    });
-  }
-  
-  const deletedRecord = education.splice(recordIndex, 1)[0];
-  
-  res.status(200).json({
-    message: "Education record deleted successfully",
-    data: deletedRecord,
-    status: "success"
-  });
-});
-
-// Filter education records by degree type
-app.get("/education/degree/:degreeType", (req, res) => {
-  const degreeType = req.params.degreeType;
-  const filteredRecords = education.filter(record => 
-    record.education.some(edu => edu.degreeType.toLowerCase() === degreeType.toLowerCase())
-  );
-  
-  res.status(200).json({
-    message: `Education records with ${degreeType} degree fetched successfully`,
-    count: filteredRecords.length,
-    data: filteredRecords,
-    status: "success"
-  });
-});
-
-// Filter education records by university
-app.get("/education/university/:university", (req, res) => {
-  const university = req.params.university.toLowerCase();
-  const filteredRecords = education.filter(record => 
-    record.education.some(edu => edu.university.toLowerCase().includes(university))
-  );
-  
-  res.status(200).json({
-    message: `Education records from ${university} fetched successfully`,
-    count: filteredRecords.length,
-    data: filteredRecords,
-    status: "success"
-  });
-});
-
-// Root endpoint
-app.get("/", (req, res) => {
-  res.send("Education API ");
-});
-
-
-
-
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000; 
 const host = process.env.HOST || 'localhost';
 
 app.listen(port, host, () => {

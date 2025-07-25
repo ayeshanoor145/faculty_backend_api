@@ -1,9 +1,6 @@
-import { ObjectId } from "mongodb";
-
-
 let users = [
   {
-    _id: new ObjectId(),
+   id:1 ,
     name: "Dr. Smith",
     academicTitle: "Professor",
     designation: "Senior Research Fellow",
@@ -28,7 +25,7 @@ let users = [
     biosketch: "Dr. Smith is a leading expert in Artificial Intelligence with over 15 years of experience in machine learning applications. As a Professor of Computer Science, he has published over 100 peer-reviewed papers in top-tier conferences and journals."
   },
   {
-    _id: new ObjectId(),
+   id:2 ,
     name: "Dr. Sarah",
     academicTitle: "Professor",
     designation: "Department Head",
@@ -46,7 +43,7 @@ let users = [
     biosketch: "Data science expert with 15 years experience in industry and academia."
   },
   {
-    _id: new ObjectId(),
+   id:3 ,
     name: "Prof. Chen Wei",
     academicTitle: "Associate Professor",
     designation: "AI Lab Director",
@@ -64,7 +61,7 @@ let users = [
     biosketch: "Pioneer in deep learning with multiple award-winning publications."
   },
   {
-    _id: new ObjectId(),
+   id:4 ,
     name: "Dr. Fatima Khan",
     academicTitle: "Assistant Professor",
     designation: "Research Scientist",
@@ -82,7 +79,7 @@ let users = [
     biosketch: "Developing affordable medical devices for neurological disorders."
   },
   {
-    _id: new ObjectId(),
+   id:5 ,
     name: "Dr. Ahmed Mahmood",
     academicTitle: "Professor",
     designation: "Dean of Engineering",
@@ -100,7 +97,7 @@ let users = [
     biosketch: "Leading researcher in sustainable energy solutions for developing countries."
   },
   {
-    _id: new ObjectId(),
+   id:6 ,
     name: "Dr. Maria Garcia",
     academicTitle: "Research Professor",
     designation: "Principal Investigator",
@@ -118,7 +115,7 @@ let users = [
     biosketch: "Climate scientist specializing in Latin American ecosystems and policy."
   },
   {
-    _id: new ObjectId(),
+   id:7 ,
     name: "Dr. James Wilson",
     academicTitle: "Professor",
     designation: "Department Chair",
@@ -136,7 +133,7 @@ let users = [
     biosketch: "Theoretical physicist working on quantum information theory applications."
   },
   {
-    _id: new ObjectId(),
+   id:8 ,
     name: "Dr. Aisha Abdullah",
     academicTitle: "Associate Professor",
     designation: "Research Lead",
@@ -154,7 +151,7 @@ let users = [
     biosketch: "Developing nano-scale solutions for targeted cancer therapies."
   },
   {
-    _id: new ObjectId(),
+   id:9 ,
     name: "Dr. Robert Kim",
     academicTitle: "Assistant Professor",
     designation: "Lab Director",
@@ -172,7 +169,7 @@ let users = [
     biosketch: "Genetic engineering specialist focusing on agricultural applications."
   },
   {
-    _id: new ObjectId(),
+   id:10 ,
     name: "Dr. Elena Petrova",
     academicTitle: "Professor",
     designation: "Research Coordinator",
@@ -190,7 +187,7 @@ let users = [
     biosketch: "Developing sustainable polymer materials for industrial applications."
   },
   {
-    _id: new ObjectId(),
+   id:11 ,
     name: "Dr. Ali Hassan",
     academicTitle: "Professor",
     designation: "Department Head",
@@ -208,7 +205,7 @@ let users = [
     biosketch: "Leading robotics researcher with focus on manufacturing applications."
   },
   {
-    _id: new ObjectId(),
+   id:12 ,
     name: "Dr. Sophia Rodriguez",
     academicTitle: "Associate Professor",
     designation: "AI Research Lead",
@@ -226,7 +223,7 @@ let users = [
     biosketch: "Multilingual NLP expert focusing on low-resource languages."
   },
   {
-    _id: new ObjectId(),
+   id:13 ,
     name: "Dr. Thomas Müller",
     academicTitle: "Professor",
     designation: "Institute Director",
@@ -244,7 +241,7 @@ let users = [
     biosketch: "Experimental physicist working on novel quantum materials."
   },
   {
-    _id: new ObjectId(),
+   id:14 ,
     name: "Dr. Amina Ndiaye",
     academicTitle: "Research Professor",
     designation: "Public Health Lead",
@@ -262,7 +259,7 @@ let users = [
     biosketch: "Leading expert on infectious disease control in West Africa."
   },
   {
-    _id: new ObjectId(),
+   id:15 ,
     name: "Dr. Raj Patel",
     academicTitle: "Assistant Professor",
     designation: "Lab Head",
@@ -280,7 +277,7 @@ let users = [
     biosketch: "Enzyme engineering specialist developing industrial biocatalysts."
   },
   {
-    _id: new ObjectId(),
+   id:16 ,
     name: "Dr. Yuki Tanaka",
     academicTitle: "Professor",
     designation: "Department Chair",
@@ -298,7 +295,7 @@ let users = [
     biosketch: "Computer architect working on next-generation computing paradigms."
   },
   {
-    _id: new ObjectId(),
+   id:17 ,
     name: "Dr. Carlos Mendez",
     academicTitle: "Associate Professor",
     designation: "Research Coordinator",
@@ -316,7 +313,7 @@ let users = [
     biosketch: "Developing affordable water treatment solutions for arid regions."
   },
   {
-    _id: new ObjectId(),
+   id:18 ,
     name: "Dr. Emma Wilson",
     academicTitle: "Professor",
     designation: "Research Director",
@@ -334,7 +331,7 @@ let users = [
     biosketch: "Cognitive neuroscientist studying memory formation and retention."
   },
   {
-    _id: new ObjectId(),
+   id:19 ,
     name: "Dr. Muhammad Ali",
     academicTitle: "Professor",
     designation: "Dean of Science",
@@ -352,7 +349,7 @@ let users = [
     biosketch: "Applied mathematician working on industrial and biological systems."
   },
   {
-    _id: new ObjectId(),
+   id:20 ,
     name: "Dr. Li Wei",
     academicTitle: "Research Professor",
     designation: "Lab Director",
@@ -370,7 +367,7 @@ let users = [
     biosketch: "Pioneer in graphene applications for electronics and energy storage."
   },
   {
-    _id: new ObjectId(),
+   id:21 ,
     name: "Dr. Anna Kowalski",
     academicTitle: "Assistant Professor",
     designation: "Research Scientist",

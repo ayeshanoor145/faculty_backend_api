@@ -1,9 +1,6 @@
-
-import { ObjectId } from 'mongodb';
-
 let education = [
   {
-    _id: new ObjectId(),
+    id:1,
     usersId: "A-1234-5678",
     education: [
       {
@@ -39,7 +36,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:2 ,
     usersId: "B-2345-6789",
     education: [
       {
@@ -76,7 +73,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:3 ,
     usersId: "C-3456-7890",
     education: [
       {
@@ -113,7 +110,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:4 ,
     usersId: "D-4567-8901",
     education: [
       {
@@ -149,7 +146,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:5 ,
     usersId: "E-5678-9012",
     education: [
       {
@@ -186,7 +183,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:6 ,
     usersId: "F-6789-0123",
     education: [
       {
@@ -223,7 +220,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:7 ,
     usersId: "G-7890-1234",
     education: [
       {
@@ -260,7 +257,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:8 ,
     usersId: "H-8901-2345",
     education: [
       {
@@ -297,7 +294,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:9 ,
     usersId: "I-9012-3456",
     education: [
       {
@@ -334,7 +331,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:10 ,
     usersId: "J-0123-4567",
     education: [
       {
@@ -371,7 +368,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:11 ,
     usersId: "K-1234-5678",
     education: [
       {
@@ -408,7 +405,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:12 ,
     usersId: "L-2345-6789",
     education: [
       {
@@ -445,7 +442,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:13 ,
     usersId: "M-3456-7890",
     education: [
       {
@@ -482,7 +479,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:14 ,
     usersId: "N-4567-8901",
     education: [
       {
@@ -519,7 +516,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:15 ,
     usersId: "O-5678-9012",
     education: [
       {
@@ -556,7 +553,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:16 ,
     usersId: "P-6789-0123",
     education: [
       {
@@ -593,7 +590,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:17 ,
     usersId: "Q-7890-1234",
     education: [
       {
@@ -630,7 +627,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:18 ,
     usersId: "R-8901-2345",
     education: [
       {
@@ -667,7 +664,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:19 ,
     usersId: "S-9012-3456",
     education: [
       {
@@ -704,7 +701,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:20 ,
     usersId: "T-0123-4567",
     education: [
       {
@@ -741,7 +738,7 @@ let education = [
     }
   },
   {
-    _id: new ObjectId(),
+    id:21 ,
     usersId: "U-1234-5678",
     education: [
       {
