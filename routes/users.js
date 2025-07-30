@@ -3,18 +3,18 @@ import express from "express";
 const router = express.Router();
 
 //Get users
-router.get("/users", getUsers);
+router.get("/", getUsers);
 
 //Get user by ID
-router.get("/users/:id", getUser);
+router.get("/:id", getUser);
 
 //delete user
-router.delete("/users/:id", deleteUsers);
+router.delete("/:id", deleteUsers);
 
 // POST create new users
-router.post("/users", createUsers);
+router.post("/", createUsers);
 
 //PUT request
-router.put("/users/:id", updateUsers);
+router.put("/:id", updateUsers);
 
 export default router;

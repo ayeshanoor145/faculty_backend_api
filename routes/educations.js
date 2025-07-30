@@ -3,17 +3,17 @@ import express from "express";
 const router = express.Router();
 
 // GET all educations
-router.get("/educations", getEducations);
+router.get("/", getEducations);
 
 //Get education by ID
-router.get("/educations/:id", getEducation);
+router.get("/:id", getEducation);
 
 // POST create new educations
-router.post("/educations", createEducation);
+router.post("/", createEducation);
 
 //delete education by ID
-router.delete("/educations/:id", deleteEducation);
+router.delete("/:id", deleteEducation);
 
 //PUT request
-router.put("/educations/:id", updateEducation);
+router.put("/:id", updateEducation);
 export default router;

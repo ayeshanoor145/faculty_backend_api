@@ -4,19 +4,19 @@ import express from "express";
 const router = express.Router();
 
 // GET all publications
-router.get("/publications", getPublications);
+router.get("/", getPublications);
 
 // GET publication by ID
-router.get("/publications/:id", getPublication);
+router.get("/:id", getPublication);
 
 // POST create new publication
-router.post("/publications", createPublications);
+router.post("/", createPublications);
 
 // PUT update publication by ID
-router.put("/publications/:id", updatePublications);
+router.put("/:id", updatePublications);
 
 // DELETE publication by ID
-router.delete("/publications/:id", deletePublications);
+router.delete("/:id", deletePublications);
 
 export default router;
 

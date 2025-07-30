@@ -3,19 +3,19 @@ import express from "express";
 const router = express.Router();
 
 // GET all distinctions
-router.get("/distinctions", getDistinctions);
+router.get("/", getDistinctions);
 
 // GET distinction by ID
-router.get("/distinctions/:id", getDistinction);
+router.get("/:id", getDistinction);
 
 // POST create new distinction
-router.post("/distinctions", createDistinctions);
+router.post("/", createDistinctions);
 
 // PUT update distinction by ID
-router.put("/distinctions/:id", updateDistinctions);
+router.put("/:id", updateDistinctions);
 
 // DELETE distinction by ID
-router.delete("/distinctions/:id", deleteDistinctions);
+router.delete("/:id", deleteDistinctions);
 
 export default router;
 

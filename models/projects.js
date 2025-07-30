@@ -4,11 +4,11 @@ import mongoose from "mongoose";
 const projectsSchema = mongoose.Schema({
   userId: String,
   awardedBy: {
-    name: String, // e.g., "University of XYZ", "National Science Foundation"
-    type: String, // e.g., "National", "International"
-    country: String, // e.g., "USA", "Germany"
-    website: String, // e.g., "https://www.universityxyz.edu", "https://www.nsf.gov"
-  },
+  name: String,    // e.g., "University of XYZ", "National Science Foundation"
+  type: String,     // e.g., "National", "International"
+  country: String,      // e.g., "USA", "Germany"
+  website: String        // e.g., "https://www.universityxyz.edu", "https://www.nsf.gov"
+},
   pi: String,
   coPi: Array,
   worth: {
@@ -16,9 +16,9 @@ const projectsSchema = mongoose.Schema({
     currency: String, // e.g., "USD", "EUR"
   },
   title: String,
-  startDate: Date,
-  completionDate: Date,
-  status: String,
+  startDate: String,
+  completionDate: String,
+  status: String,  // e.g., "Active", "Completed", "On Hold"
   description: String,
 })
 
@@ -26,3 +26,11 @@ const projectsSchema = mongoose.Schema({
 const Projects = new mongoose.model("Projects", projectsSchema)
 
 export default Projects;
+
+
+
+
+
+
+
+

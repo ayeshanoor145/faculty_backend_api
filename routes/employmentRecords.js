@@ -7,18 +7,18 @@ import express from "express";
 const router = express.Router();
 
 // GET all employment records
-router.get("/employmentRecords", getEmploymentRecords);
+router.get("/", getEmploymentRecords);
 
 // GET employment record by ID
-router.get("/employmentRecords/:id", getEmploymentRecord);
+router.get("/:id", getEmploymentRecord);
 
 // POST create new employment record
-router.post("/employmentRecords", createEmploymentRecord);
+router.post("/", createEmploymentRecord);
 
 // PUT update employment record by ID
-router.put("/employmentRecords/:id", updateEmploymentRecords);
+router.put("/:id", updateEmploymentRecords);
 
 // DELETE employment record by ID
-router.delete("/employmentRecords/:id", deleteEmploymentRecords);
+router.delete("/:id", deleteEmploymentRecords);
 
 export default router;

@@ -1,5 +1,5 @@
 import EmploymentRecords from "../models/employmentRecords.js";
-
+import mongoose from "mongoose";
 
 let getEmploymentRecords = async (req, res) => {
     try {

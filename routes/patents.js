@@ -5,18 +5,18 @@ const router = express.Router();
 
 
 // GET all patents
-router.get("/patents", getPatents);
+router.get("/", getPatents);
 
 // GET patent by ID
-router.get("/patents/:id", getPatent);
+router.get("/:id", getPatent);
 
 // POST create new patent
-router.post("/patents", createPatents);
+router.post("/", createPatents);
 
 // PUT update patent by ID
-router.put("/patents/:id", updatePatents);
+router.put("/:id", updatePatents);
 
 // DELETE patent by ID
-router.delete("/patents/:id", deletePatents);
+router.delete("/:id", deletePatents);
 
 export default router;

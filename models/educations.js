@@ -18,7 +18,7 @@ const educationsSchema = mongoose.Schema({
   highestDegree: {
     degreeName: String,
     university: String,
-    yearCompleted: Date,
+    yearCompleted: Number,
   }
 });
 

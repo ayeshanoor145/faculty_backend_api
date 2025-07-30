@@ -1,6 +1,5 @@
-
-import Distinictions from "../models/distinctions.js";
-
+import Distinctions from "../models/distinctions.js";
+import mongoose from "mongoose";
 
 let getDistinctions = async (req, res) => {
   try {

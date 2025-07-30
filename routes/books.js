@@ -3,18 +3,18 @@ import express from "express";
 const router = express.Router();
 
 // GET all books
-router.get("/books", getBooks);
+router.get("/", getBooks);
 
 // GET book by ID
-router.get("/books/:id", getBook);
+router.get("/:id", getBook);
 
 // POST create new book
-router.post("/books", createBooks);
+router.post("/", createBooks);
 
 // PUT update book by ID
-router.put("/books/:id", updateBooks);
+router.put("/:id", updateBooks);
 
 // DELETE book by ID
-router.delete("/books/:id", deleteBooks);
+router.delete("/:id", deleteBooks);
 
 export default router;

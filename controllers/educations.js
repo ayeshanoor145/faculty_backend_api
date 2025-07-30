@@ -1,4 +1,5 @@
 import Educations from "../models/educations.js";
+import mongoose from "mongoose";
 
 let getEducations = async (req, res) => {
   try {

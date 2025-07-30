@@ -8,51 +8,39 @@ import publicationRoutes from './routes/publications.js';
 import trainingRoutes from './routes/trainings.js';
 import workshopRoutes from './routes/workshops.js';
 import employmentRecordRouter from './routes/employmentRecords.js';
-import mongoose from 'mongoose';
+import dbConnect from './config/database.js';
 import express from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
 
-
+var corsOptions = {
+  origin: process.env.WEBAPP_URL,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
 
 dotenv.config();
 const app = express();
-
 // Middleware
 app.use(express.json());
 app.use(morgan('common'));
-app.use(cors());
+app.use(cors(corsOptions)); // Use the corsOptions defined above
 
 
-//MongoDB connection (promise-based)
-const dbConnect = async () => {
-  await mongoose.connect(process.env.MONGODB_URI)
-    .then(() => {
-      console.log("MongoDB connected Successfully.");
-    })
-    .catch((error) => {  
-  console.log("MongoDB connection failed", error.message);
-})
-}
 dbConnect();    //call the function to connect to MongoDB
 
 
-app.use ('/', userRoutes);
-app.use('/', educationRoutes);
-app.use('/', projectRoutes);
-app.use('/', bookRoutes);
-app.use('/', distinctionRoutes);
-app.use('/', patentRoutes);
-app.use('/', publicationRoutes);
-app.use('/', trainingRoutes);
-app.use('/', workshopRoutes);
-app.use('/', employmentRecordRouter);
-
-
-
-
+app.use('/api/users', userRoutes);
+app.use('/api/educations', educationRoutes);
+app.use('/api/projects', projectRoutes);
+app.use('/api/books', bookRoutes);
+app.use('/api/distinctions', distinctionRoutes);
+app.use('/api/patents', patentRoutes);
+app.use('/api/publications', publicationRoutes);
+app.use('/api/trainings', trainingRoutes);
+app.use('/api/workshops', workshopRoutes);
+app.use('/api/employmentRecords', employmentRecordRouter);
 
 
 const port = process.env.PORT || 5000;

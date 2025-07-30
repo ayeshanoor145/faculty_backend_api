@@ -1,5 +1,5 @@
 import Patents from "../models/patents.js";
-
+import mongoose from "mongoose";
 
 
 let getPatents = async (req, res) => {

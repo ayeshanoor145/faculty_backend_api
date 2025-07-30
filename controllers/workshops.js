@@ -1,5 +1,5 @@
 import Workshops from "../models/workshops.js";
-
+import mongoose from "mongoose";
 
 let getWorkshops =  async (req, res) => {
   try {

@@ -4,22 +4,22 @@ import express from "express";
 const router = express.Router();
 // Routes
 // GET all projects
-router.get("/projects", getProjects);
+router.get("/", getProjects);
 
 
 //Get projects by ID
-router.get("/projects/:id", getProject);
+router.get("/:id", getProject);
 
 
 // POST create new projects
-router.post("/projects", createProjects);
+router.post("/", createProjects);
 
 
 //delete projects
-router.delete("/projects/:id", deleteProjects);
+router.delete("/:id", deleteProjects);
 
 
 //PUT request
-router.put("/projects/:id", updateProjects);
+router.put("/:id", updateProjects);
 
 export default router;

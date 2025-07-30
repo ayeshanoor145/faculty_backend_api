@@ -4,12 +4,14 @@ import mongoose from "mongoose";
 
 // Patents schema
 const patentsSchema = mongoose.Schema({
-  title: { type: String, required: true },
-  inventor: String,
-  patentNumber: String,
-  year: Number,
-  country: String,
-  description: String,
+  patent_submitted:
+  {
+    title: String,
+    submission_date: String,
+    country: String,
+    affiliation: String, // Institution or organization associated with the patent
+    description: String,
+  },
 });
 
 const Patents = mongoose.model("Patents", patentsSchema);

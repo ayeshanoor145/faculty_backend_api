@@ -3,10 +3,15 @@ import mongoose from "mongoose";
 
 // Distinctions schema
 const distinctionsSchema = mongoose.Schema({
-  title: { type: String, required: true },
-  awardedBy: String,
-  year: Number,
-  description: String,
+  userId: mongoose.Schema.Types.ObjectId,
+  distinictions: [
+    {
+    awardName: String,
+    year: Number,
+    scope: String, //e.g., local, national, international
+    awardingBody: String, //Agency that awarded the distinction
+  }
+  ],
 });
 
 const Distinctions = mongoose.model("Distinctions", distinctionsSchema);
