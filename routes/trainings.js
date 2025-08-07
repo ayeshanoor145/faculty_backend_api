@@ -1,20 +1,11 @@
-import { getTrainings, getTraining, deleteTrainings, updateTrainings, createTrainings } from "../controllers/trainings.js";
 import express from "express";
+import { getTrainings, getTraining, createTraining, updateTraining, deleteTraining } from "../controllers/trainings.js";
 const router = express.Router();
 
-// GET all trainings
 router.get("/", getTrainings);
-
-// GET training by ID
 router.get("/:id", getTraining);
-
-// POST create new training
-router.post("/", createTrainings);
-
-// PUT update training by ID
-router.put("/:id", updateTrainings);
-
-// DELETE training by ID
-router.delete("/:id", deleteTrainings);
+router.post("/", createTraining);
+router.put("/:id", updateTraining);
+router.delete("/:id", deleteTraining);
 
 export default router;

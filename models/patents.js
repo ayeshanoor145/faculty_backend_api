@@ -1,20 +1,28 @@
 import mongoose from "mongoose";
 
+const patentGrantedSchema = new mongoose.Schema({
+  ref_number: String,
+  title: String,
+  country: String,
+  date: String,
+  affiliation: String,
+  description: String
+}, { _id: false });
 
+const patentSubmittedSchema = new mongoose.Schema({
+  title: String,
+  submission_date: String,
+  country: String,
+  affiliation: String,
+  description: String
+}, { _id: false });
 
-// Patents schema
-const patentsSchema = mongoose.Schema({
-  patent_submitted:
-  {
-    title: String,
-    submission_date: String,
-    country: String,
-    affiliation: String, // Institution or organization associated with the patent
-    description: String,
-  },
-});
+const patentSchema = new mongoose.Schema({
+  patent_granted: patentGrantedSchema,
+  patent_submitted: patentSubmittedSchema
+}, { _id: false });
 
-const Patents = mongoose.model("Patents", patentsSchema);
+const patentsSchema = new mongoose.Schema(patentSchema, { strict: false });
 
-
-export default Patents;
+const PatentModel = mongoose.model("Patents", patentsSchema);
+export default PatentModel;

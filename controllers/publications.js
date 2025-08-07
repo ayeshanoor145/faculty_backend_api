@@ -1,142 +1,52 @@
-import Publications from '../models/publications.js'; 
-import mongoose from 'mongoose';
+import PublicationModel from "../models/publications.js";
 
-
-let getPublications = async (req, res) => {
+const getPublications = async (req, res) => {
   try {
-    const publications = await Publications.find();
-    res.status(200).json({
-      message: "Publications fetched successfully",
-      data: publications,
-      error: null,
-    });
+    const publications = await PublicationModel.find();
+    res.status(200).json({ message: "Publications fetched successfully", data: publications, error: null });
   } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    });
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-}
+};
 
-
-let getPublication =  async (req, res) => {
+const getPublication = async (req, res) => {
   try {
-    let id = req.params.id;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({
-        message: "Invalid publication ID",
-        data: null,
-        error: null,
-      });
-    }
-    const publication = await Publications.findById(id);
-    if (!publication) {
-      return res.status(404).json({
-        message: "Publication not found",
-        data: null,
-        error: null,
-      });
-    }
-    res.status(200).json({
-      message: "Publication fetched successfully by ID",
-      data: publication,
-      error: null,
-    });
+    const publication = await PublicationModel.findById(req.params.id);
+    if (!publication) return res.status(404).json({ message: "Publication not found", data: null, error: null });
+    res.status(200).json({ message: "Publication fetched successfully", data: publication, error: null });
   } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    });
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-}
+};
 
-
-let deletePublications =  async (req, res) => {
+const createPublication = async (req, res) => {
   try {
-    let id = req.params.id;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({
-        message: "Invalid publication ID",
-        data: null,
-        error: null,
-      });
-    }
-    const publication = await Publications.findByIdAndDelete(id);
-    if (!publication) {
-      return res.status(404).json({
-        message: "Publication not found",
-        data: null,
-        error: null,
-      });
-    }
-    res.status(200).json({
-      message: "Publication deleted successfully",
-      data: publication,
-      error: null,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    });
-  }
-}
-
-
-let updatePublications =  async (req, res) => {
-  try {
-    let id = req.params.id;
-    let publicationInfo = req.body;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({
-        message: "Invalid publication ID",
-        data: null,
-        error: null,
-      });
-    }
-    const publication = await Publications.findByIdAndUpdate(id, publicationInfo, { new: true });
-    if (!publication) {
-      return res.status(404).json({
-        message: "Publication not found",
-        data: null,
-        error: null,
-      });
-    }
-    res.status(200).json({
-      message: "Publication updated successfully by ID",
-      data: publication,
-      error: null,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    });
-  }
-}
-
-
-let createPublications = async (req, res) => {
-  try {
-    const publicationInfo = req.body;
-    const publication = new Publications(publicationInfo);
+    const publication = new PublicationModel(req.body);
     await publication.save();
-    res.status(201).json({
-      message: "Publication created successfully",
-      data: publication,
-      error: null,
-    });
+    res.status(201).json({ message: "Publication created successfully", data: publication, error: null });
   } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    });
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-}
+};
 
-export { getPublications, getPublication, deletePublications, updatePublications, createPublications };
+const updatePublication = async (req, res) => {
+  try {
+    const publication = await PublicationModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!publication) return res.status(404).json({ message: "Publication not found", data: null, error: null });
+    res.status(200).json({ message: "Publication updated successfully", data: publication, error: null });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+  }
+};
+
+const deletePublication = async (req, res) => {
+  try {
+    const publication = await PublicationModel.findByIdAndDelete(req.params.id);
+    if (!publication) return res.status(404).json({ message: "Publication not found", data: null, error: null });
+    res.status(200).json({ message: "Publication deleted successfully", data: publication, error: null });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+  }
+};
+
+export { getPublications, getPublication, createPublication, updatePublication, deletePublication };

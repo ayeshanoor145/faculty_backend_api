@@ -1,19 +1,15 @@
 import mongoose from "mongoose";
 
+const distinctionSchema = new mongoose.Schema({
+  awardName: String,
+  year: Number,
+  scope: String,
+  awardingBody: String
+}, { _id: false });
 
-// Distinctions schema
-const distinctionsSchema = mongoose.Schema({
-  userId: mongoose.Schema.Types.ObjectId,
-  distinictions: [
-    {
-    awardName: String,
-    year: Number,
-    scope: String, //e.g., local, national, international
-    awardingBody: String, //Agency that awarded the distinction
-  }
-  ],
+const distinctionsSchema = new mongoose.Schema({
+  distinctions: [distinctionSchema]
 });
 
-const Distinctions = mongoose.model("Distinctions", distinctionsSchema);
-
-export default Distinctions;
+const DistinctionModel = mongoose.model("Distinctions", distinctionsSchema);
+export default DistinctionModel;

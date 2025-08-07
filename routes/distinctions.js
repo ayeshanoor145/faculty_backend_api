@@ -1,21 +1,11 @@
-import { getDistinctions, getDistinction, deleteDistinctions, updateDistinctions, createDistinctions } from "../controllers/distinctions.js";
 import express from "express";
+import { getDistinctions, getDistinction, createDistinction, updateDistinction, deleteDistinction } from "../controllers/distinctions.js";
 const router = express.Router();
 
-// GET all distinctions
 router.get("/", getDistinctions);
-
-// GET distinction by ID
 router.get("/:id", getDistinction);
-
-// POST create new distinction
-router.post("/", createDistinctions);
-
-// PUT update distinction by ID
-router.put("/:id", updateDistinctions);
-
-// DELETE distinction by ID
-router.delete("/:id", deleteDistinctions);
+router.post("/", createDistinction);
+router.put("/:id", updateDistinction);
+router.delete("/:id", deleteDistinction);
 
 export default router;
-

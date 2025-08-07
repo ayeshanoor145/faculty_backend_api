@@ -1,156 +1,54 @@
-import Projects from '../models/projects.js';
-import mongoose from "mongoose";
+import ProjectModel from "../models/projects.js";
 
-let getProjects = async (req, res) => {
+// Controller to handle project-related operations
+
+const getProjects = async (req, res) => {
   try {
-    //Fetch projects from the database
-    const projects = await Projects.find()
-    res.status(200).json({
-      message: "Projects fetched successfully",
-      data: projects,
-      error: null,
-    })
+    const projects = await ProjectModel.find();
+    res.status(200).json({ message: "Projects fetched successfully", data: projects, error: null });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
+};
 
-    })
-  }
-}
-
-
-let getProject = async (req, res) => {
+const getProject = async (req, res) => {
   try {
-    let id = req.params.id;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({
-        message: "Invalid project ID",
-        data: null,
-        error: null,
-      })
-    }
-    //Fetch projects from the database by id
-    const project = await Projects.findById(id)
-    if (!project) {
-      return res.status(404).json({
-        message: "Projects not found",
-        data: null,
-        error: null,
-      })
-    }
-    res.status(200).json({
-      message: "Projects fetched successfully by ID",
-      data: project,
-      error: null,
-    })
+    const project = await ProjectModel.findById(req.params.id);
+    if (!project) return res.status(404).json({ message: "Project not found", data: null, error: null });
+    res.status(200).json({ message: "Project fetched successfully", data: project, error: null });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    })
-  }
-}
+};
 
-
-let deleteProjects = async (req, res) => {
+const createProject = async (req, res) => {
   try {
-    let id = req.params.id;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({
-        message: "Invalid project ID",
-        data: null,
-        error: null,
-      })
-    }
-    //Fetch projects from the database by id
-    const project = await Projects.findByIdAndDelete(id)
-    if (!project) {
-      return res.status(404).json({
-        message: "Project not found",
-        data: null,
-        error: null,
-      })
-    }
-    res.status(200).json({
-      message: "Projects deleted successfully",
-      data: project,
-      error: null,
-    })
+    const project = new ProjectModel(req.body);
+    await project.save();
+    res.status(201).json({ message: "Project created successfully", data: project, error: null });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    })
-  }
-}
+};
 
-
-let createProjects = async (req, res) => {
-
+const updateProject = async (req, res) => {
   try {
-    let projectInfo = req.body;
-    const project = Projects(projectInfo);     //create a new project instance
-    await project.save();    //save the project to database
-    res.status(201).json({
-      message: "Project created successfully",
-      data: project,
-      error: null,
-    })
-
+    const project = await ProjectModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!project) return res.status(404).json({ message: "Project not found", data: null, error: null });
+    res.status(200).json({ message: "Project updated successfully", data: project, error: null });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    })
-  }
+};
 
-}
-
-let updateProjects = async (req, res) => {
+const deleteProject = async (req, res) => {
   try {
-    let id = req.params.id;
-    let projectInfo = req.body;
-
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({
-        message: "Invalid project ID",
-        data: null,
-        error: null,
-      })
-    }
-    //Fetch projects from the database by id
-    const project = await Projects.findByIdAndUpdate(id, projectInfo,
-      { new: true } //Return the updated document
-    );
-    if (!project) {
-      return res.status(404).json({
-        message: "Projects not found",
-        data: null,
-        error: null,
-      })
-    }
-    res.status(200).json({
-      message: "Projects updated successfully by ID",
-      data: project,
-      error: null,
-    })
+    const project = await ProjectModel.findByIdAndDelete(req.params.id);
+    if (!project) return res.status(404).json({ message: "Project not found", data: null, error: null });
+    res.status(200).json({ message: "Project deleted successfully", data: project, error: null });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    })
-  }
-}
+};
 
-export { getProjects, getProject, deleteProjects, createProjects, updateProjects };
+export { getProjects, getProject, createProject, updateProject, deleteProject };

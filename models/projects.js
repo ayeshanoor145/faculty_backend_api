@@ -1,36 +1,28 @@
 import mongoose from "mongoose";
 
-//projects schema
-const projectsSchema = mongoose.Schema({
-  userId: String,
-  awardedBy: {
-  name: String,    // e.g., "University of XYZ", "National Science Foundation"
-  type: String,     // e.g., "National", "International"
-  country: String,      // e.g., "USA", "Germany"
-  website: String        // e.g., "https://www.universityxyz.edu", "https://www.nsf.gov"
-},
+const awardedBySchema = new mongoose.Schema({
+  name: String,
+  type: String,
+  country: String,
+  website: String
+}, { _id: false });
+
+const worthSchema = new mongoose.Schema({
+  value: Number,
+  currency: String
+}, { _id: false });
+
+const projectSchema = new mongoose.Schema({
+  awardedBy: awardedBySchema,
   pi: String,
-  coPi: Array,
-  worth: {
-    value: Number, // e.g., 50000
-    currency: String, // e.g., "USD", "EUR"
-  },
+  coPi: [String],
+  worth: worthSchema,
   title: String,
   startDate: String,
   completionDate: String,
-  status: String,  // e.g., "Active", "Completed", "On Hold"
-  description: String,
-})
+  status: String,
+  description: String
+});
 
-// projects Model
-const Projects = new mongoose.model("Projects", projectsSchema)
-
-export default Projects;
-
-
-
-
-
-
-
-
+const ProjectModel = mongoose.model("Projects", projectSchema);
+export default ProjectModel;

@@ -1,142 +1,54 @@
-import Trainings from "../models/trainings.js";
-import mongoose from "mongoose";
+import TrainingModel from "../models/trainings.js";
 
+// Controller to handle training-related operations
 
-let getTrainings =  async (req, res) => {
+const getTrainings = async (req, res) => {
   try {
-    const trainings = await Trainings.find();
-    res.status(200).json({
-      message: "Trainings fetched successfully",
-      data: trainings,
-      error: null,
-    });
+    const trainings = await TrainingModel.find();
+    res.status(200).json({ message: "Trainings fetched successfully", data: trainings, error: null });
   } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    });
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-}
+};
 
-
-let getTraining =  async (req, res) => {
+const getTraining = async (req, res) => {
   try {
-    let id = req.params.id;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({
-        message: "Invalid training ID",
-        data: null,
-        error: null,
-      });
-    }
-    const training = await Trainings.findById(id);
-    if (!training) {
-      return res.status(404).json({
-        message: "Training not found",
-        data: null,
-        error: null,
-      });
-    }
-    res.status(200).json({
-      message: "Training fetched successfully by ID",
-      data: training,
-      error: null,
-    });
+    const training = await TrainingModel.findById(req.params.id);
+    if (!training) return res.status(404).json({ message: "Training not found", data: null, error: null });
+    res.status(200).json({ message: "Training fetched successfully", data: training, error: null });
   } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    });
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-}
+};
 
-
-let deleteTrainings = async (req, res) => {
+const createTraining = async (req, res) => {
   try {
-    let id = req.params.id;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(400).json({
-        message: "Invalid training ID",
-        data: null,
-        error: null,
-      });
-    }
-    const training = await Trainings.findByIdAndDelete(id);
-    if (!training) {
-      return res.status(404).json({
-        message: "Training not found",
-        data: null,
-        error: null,
-      });
-    }
-    res.status(200).json({
-      message: "Training deleted successfully",
-      data: training,
-      error: null,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    });
-  }
-}
-
-
-let updateTrainings = async (req, res) => {
-  try {
-    let id = req.params.id;
-    let trainingInfo = req.body;
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({
-        message: "Invalid training ID",
-        data: null,
-        error: null,
-      });
-    }
-    const training = await Trainings.findByIdAndUpdate(id, trainingInfo, { new: true });
-    if (!training) {
-      return res.status(404).json({
-        message: "Training not found",
-        data: null,
-        error: null,
-      });
-    }
-    res.status(200).json({
-      message: "Training updated successfully by ID",
-      data: training,
-      error: null,
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    });
-  }
-}
-
-
-let createTrainings = async (req, res) => {
-  try {
-    const trainingInfo = req.body;
-    const training = new Trainings(trainingInfo);
+    const training = new TrainingModel(req.body);
     await training.save();
-    res.status(201).json({
-      message: "Training created successfully",
-      data: training,
-      error: null,
-    });
+    res.status(201).json({ message: "Training created successfully", data: training, error: null });
   } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message,
-    });
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
   }
-}
+};
 
-export { getTrainings, getTraining, deleteTrainings, updateTrainings, createTrainings };
+const updateTraining = async (req, res) => {
+  try {
+    const training = await TrainingModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!training) return res.status(404).json({ message: "Training not found", data: null, error: null });
+    res.status(200).json({ message: "Training updated successfully", data: training, error: null });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+  }
+};
+
+const deleteTraining = async (req, res) => {
+  try {
+    const training = await TrainingModel.findByIdAndDelete(req.params.id);
+    if (!training) return res.status(404).json({ message: "Training not found", data: null, error: null });
+    res.status(200).json({ message: "Training deleted successfully", data: training, error: null });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+  }
+};
+
+export { getTrainings, getTraining, createTraining, updateTraining, deleteTraining };

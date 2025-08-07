@@ -1,13 +1,4 @@
 import userRoutes from './routes/users.js';
-import educationRoutes from './routes/educations.js';
-import projectRoutes from './routes/projects.js';
-import bookRoutes from './routes/books.js';
-import distinctionRoutes from './routes/distinctions.js';
-import patentRoutes from './routes/patents.js';
-import publicationRoutes from './routes/publications.js';
-import trainingRoutes from './routes/trainings.js';
-import workshopRoutes from './routes/workshops.js';
-import employmentRecordRouter from './routes/employmentRecords.js';
 import dbConnect from './config/database.js';
 import express from 'express';
 import morgan from 'morgan';
@@ -32,15 +23,7 @@ dbConnect();    //call the function to connect to MongoDB
 
 
 app.use('/api/users', userRoutes);
-app.use('/api/educations', educationRoutes);
-app.use('/api/projects', projectRoutes);
-app.use('/api/books', bookRoutes);
-app.use('/api/distinctions', distinctionRoutes);
-app.use('/api/patents', patentRoutes);
-app.use('/api/publications', publicationRoutes);
-app.use('/api/trainings', trainingRoutes);
-app.use('/api/workshops', workshopRoutes);
-app.use('/api/employmentRecords', employmentRecordRouter);
+
 
 
 const port = process.env.PORT || 5000;

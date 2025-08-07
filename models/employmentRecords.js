@@ -1,21 +1,18 @@
 import mongoose from "mongoose";
 
+const employmentEntrySchema = new mongoose.Schema({
+  organization: String,
+  sector: String,
+  post: String,
+  scale: String,
+  dateFrom: String,
+  dateTo: String,
+  isCurrent: Boolean
+}, { _id: false });
 
-// EmploymentRecords schema
-const employmentRecordsSchema = mongoose.Schema({
-  employmentRecord: [
-    {
-      organization: String,
-      sector: String, //Government, Private, NGO, etc.
-      post: String, // Job title or position
-      scale : String, // Pay scale or grade
-      dateFrom: Date, // Start date of employment
-      dateTo: Date, // End date of employment
-      isCurrent: Boolean, // Whether the employment is current or not
-    }
-  ]
+const employmentRecordSchema = new mongoose.Schema({
+  employmentRecord: [employmentEntrySchema]
 });
 
-const EmploymentRecords = mongoose.model("EmploymentRecords", employmentRecordsSchema);
-
-export default EmploymentRecords;
+const EmploymentRecordModel = mongoose.model("EmploymentRecords", employmentRecordSchema);
+export default EmploymentRecordModel;
