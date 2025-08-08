@@ -1,26 +1,28 @@
 import mongoose from "mongoose";
 
-const educationEntrySchema = new mongoose.Schema({
-  degreeType: String,
-  degreeName: String,
-  university: String,
-  yearCompleted: Number,
-  discipline: String,
-  isTerminalDegree: Boolean,
-  thesisTitle: String
-}, { _id: false });
 
-const highestDegreeSchema = new mongoose.Schema({
-  degreeName: String,
-  university: String,
-  yearCompleted: Number
-}, { _id: false });
-
-const educationSchema = new mongoose.Schema({
+//education schema
+const educationsSchema = mongoose.Schema({
+  userId: String,
   researcherId: String,
-  education: [educationEntrySchema],
-  highestDegree: highestDegreeSchema
+  education: [
+    {
+      degreeType: String,   // e.g., "PhD", "Masters", "Bachelors"
+      degreeName: String,   // e.g.,  "Bachelors of Science", "Masters of Arts"
+      university: String,    // e.g., "University of XYZ"
+      yearCompleted: Date,  // e.g., "2020-01-01"
+      discipline: String,     // e.g., "Computer Science", "Physics"
+      isTerminalDegree: Boolean,   // e.g., true or false
+    }
+  ],
+  highestDegree: {
+    degreeName: String,
+    university: String,
+    yearCompleted: Number,
+  }
 });
 
-const EducationModel = mongoose.model("Educations", educationSchema);
-export default EducationModel;
+// Education Model
+const Educations = new mongoose.model("Educations", educationsSchema)
+
+export default Educations;

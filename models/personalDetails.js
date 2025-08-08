@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
-//users schema
-const usersSchema = mongoose.Schema({
+//PersonalDetails schema
+const personalDetailsSchema = mongoose.Schema({
   name: String,
   academicTitle: String,
   designation: String,
@@ -20,7 +20,7 @@ const usersSchema = mongoose.Schema({
 
 })
 
-// users Model
-const Users = new mongoose.model("Users", usersSchema)
+// personalDetails Model
+const PersonalDetails = new mongoose.model("PersonalDetails", personalDetailsSchema)
 
-export default Users;
+export default PersonalDetails;

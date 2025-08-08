@@ -1,7 +1,7 @@
 const seedBooks = async () => {
     const module = await import('../models/books.js');
-    const UserModel = module.default;
-    const count = await UserModel.countDocuments();
+    const BookModel = module.default;
+    const count = await BookModel.countDocuments();
     if (count > 0) {
         console.log('Books already seeded');
         return;
@@ -522,7 +522,7 @@ const seedBooks = async () => {
 
     ];
 
-    await BooksModel.insertMany(books);
+    await BookModel.insertMany(books);
     console.log('Books seeded Successfully');
 };
 export default seedBooks;

@@ -1,13 +1,13 @@
-const seedUsers = async () => {
-    const module = await import('../models/users.js');
-    const UserModel = module.default;
-    const count = await UserModel.countDocuments();
+const seedPersonalDetails = async () => {
+    const module = await import('../models/personalDetails.js');
+    const PersonalDetailModel = module.default;
+    const count = await PersonalDetailModel.countDocuments();
     if (count > 0) {
-        console.log('Users already seeded');
+        console.log('PersonalDetails already seeded');
         return;
     }
 
-    const users = [
+    const personalDetails = [
 
         {
             name: "Dr. Smith",
@@ -401,7 +401,7 @@ const seedUsers = async () => {
     ];
 
 
-    await UserModel.insertMany(users);
-    console.log('Users seeded successfully');
+    await PersonalDetailModel.insertMany(personalDetails);
+    console.log('PersonalDetails seeded successfully');
 };
-export default seedUsers;
+export default seedPersonalDetails;
