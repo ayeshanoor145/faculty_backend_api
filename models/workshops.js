@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
 const workshopSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"},
   workshopType: String,
   scope: String,
   title: String,

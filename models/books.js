@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
 const chapterSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"},
   chapterTitle: String,
   author: String,
   bookTitle: String,
@@ -11,6 +14,9 @@ const chapterSchema = new mongoose.Schema({
 }, { _id: false });
 
 const bookSchema = new mongoose.Schema({
+   user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"},
   title: String,
   authors: [String],
   publicationDate: String,

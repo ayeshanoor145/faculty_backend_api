@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 
 //education schema
 const educationsSchema = mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"},
   userId: String,
   researcherId: String,
   education: [

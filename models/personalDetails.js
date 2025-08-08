@@ -2,6 +2,9 @@ import mongoose from "mongoose";
 
 //PersonalDetails schema
 const personalDetailsSchema = mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"},
   name: String,
   academicTitle: String,
   designation: String,

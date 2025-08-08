@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
 const trainingEntrySchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"},
   type: String,
   scope: String,
   subject: String,

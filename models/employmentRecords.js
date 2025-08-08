@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
 const employmentEntrySchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"},
   organization: String,
   sector: String,
   post: String,

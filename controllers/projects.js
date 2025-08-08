@@ -5,19 +5,41 @@ import ProjectModel from "../models/projects.js";
 const getProjects = async (req, res) => {
   try {
     const projects = await ProjectModel.find();
-    res.status(200).json({ message: "Projects fetched successfully", data: projects, error: null });
+    res.status(200).json({
+       message: "Data fetched successfully",
+        data: projects,
+         error: null });
   } catch (error) {
-    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+    res.status(500).json({ 
+      message: "Internal server error", 
+      data: null, 
+      error: error.message 
+    });
   }
 };
 
 const getProject = async (req, res) => {
   try {
     const project = await ProjectModel.findById(req.params.id);
-    if (!project) return res.status(404).json({ message: "Project not found", data: null, error: null });
-    res.status(200).json({ message: "Project fetched successfully", data: project, error: null });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+    if (!project) 
+      return res.status(404).json({
+     message: "Project not found",
+      data: null, 
+      error: null
+     });
+
+    res.status(200).json({
+       message: "Project by ID fetched successfully",
+        data: project,
+         error: null
+         });
+  }
+   catch (error) {
+    res.status(500).json({
+       message: "Internal server error",
+        data: null, 
+        error: error.message 
+      });
   }
 };
 
@@ -25,30 +47,94 @@ const createProject = async (req, res) => {
   try {
     const project = new ProjectModel(req.body);
     await project.save();
-    res.status(201).json({ message: "Project created successfully", data: project, error: null });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+    res.status(201).json({ 
+      message: "Data created successfully",
+       data: project, 
+       error: null 
+      });
+  } 
+  catch (error) {
+    res.status(500).json({
+       message: "Internal server error",
+        data: null,
+         error: error.message
+         });
   }
 };
 
 const updateProject = async (req, res) => {
   try {
-    const project = await ProjectModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!project) return res.status(404).json({ message: "Project not found", data: null, error: null });
-    res.status(200).json({ message: "Project updated successfully", data: project, error: null });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+    const project = await ProjectModel
+    .findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!project)
+       return res.status(404).json({
+       message: "Data not found", 
+       data: null,
+        error: null
+       });
+    res.status(200).json({
+       message: "Data updated successfully",
+        data: project, 
+        error: null
+       });
+  } 
+  catch (error) {
+    res.status(500).json({
+       message: "Internal server error", 
+       data: null, 
+       error: error.message 
+      });
   }
 };
 
 const deleteProject = async (req, res) => {
   try {
-    const project = await ProjectModel.findByIdAndDelete(req.params.id);
-    if (!project) return res.status(404).json({ message: "Project not found", data: null, error: null });
-    res.status(200).json({ message: "Project deleted successfully", data: project, error: null });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+    const project = await ProjectModel
+    .findByIdAndDelete(req.params.id);
+    if (!project) return res.status(404).json({
+       message: "Data not found", 
+       data: null, error: null
+       });
+    res.status(200).json({
+       message: "Data deleted successfully",
+        data: project,
+        
+        error: null
+       });
+  }
+   catch (error) {
+    res.status(500).json({ 
+      message: "Internal server error",
+       data: null, 
+       error: error.message
+       });
   }
 };
 
-export { getProjects, getProject, createProject, updateProject, deleteProject };
+
+const deleteProjects = async (req, res) => {
+  try {
+    const projects = await ProjectModel.find().deleteMany({});
+    if (projects.deletedCount === 0)
+       return res.status(404).json({ 
+      message: "No Data found to delete",
+       data: null, 
+       error: null 
+      });
+   
+    res.status(200).json({ 
+      message: "All Data deleted successfully",
+       data: projects,
+        error: null 
+      });
+  } 
+  catch (error) {
+    res.status(500).json({
+       message: "Internal server error", 
+       data: null, 
+       error: error.message 
+      });
+  }
+};
+
+export { getProjects, getProject, createProject, updateProject, deleteProject , deleteProjects };

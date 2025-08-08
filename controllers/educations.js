@@ -6,7 +6,7 @@ const getEducations = async (req, res) => {
   try {
     const educations = await EducationModel.find();
     res.status(200).json({
-      message: "Educations fetched successfully",
+      message: "Data fetched successfully",
       data: educations,
       error: null
     });
@@ -28,7 +28,7 @@ const getEducation = async (req, res) => {
       data: null, error: null
     });
     res.status(200).json({
-      message: "Education fetched successfully",
+      message: "Education by ID fetched successfully",
       data: education,
       error: null
     });
@@ -44,10 +44,10 @@ const getEducation = async (req, res) => {
 
 const createEducations = async (req, res) => {
   try {
-    const education = new EducationsModel(req.body);
+    const education = new EducationModel(req.body);
     await education.save();
     res.status(201).json({
-      message: "Education created successfully",
+      message: "Data created successfully",
       data: education,
       error: null
     });
@@ -66,12 +66,12 @@ const updateEducation = async (req, res) => {
     const education = await EducationModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!education)
       return res.status(404).json({
-        message: "Education not found",
+        message: "Data not found",
         data: null,
         error: null
       });
     res.status(200).json({
-      message: "Education updated successfully",
+      message: "Data updated successfully",
       data: education,
       error: null
     });
@@ -90,12 +90,12 @@ const deleteEducation = async (req, res) => {
     const education = await EducationModel.findByIdAndDelete(req.params.id);
     if (!education)
       return res.status(404).json({
-        message: "Education not found",
+        message: "Data not found",
         data: null,
         error: null
       });
     res.status(200).json({
-      message: "Education deleted successfully",
+      message: "Data deleted successfully",
       data: education,
       error: null
     });
@@ -109,4 +109,31 @@ const deleteEducation = async (req, res) => {
   }
 };
 
-export { getEducations, getEducation, createEducations, updateEducation, deleteEducation };
+
+const deleteEducations = async (req, res) => {
+  try {
+    const educations = await EducationModel.find().deleteMany({});
+    if (educations.deletedCount === 0) {
+      return res.status(404).json({
+        message: "No data found to delete",
+        data: null,
+        error: null
+      });
+    }
+    res.status(200).json({
+      message: "All data deleted successfully",
+      data: educations,
+      error: null
+    });
+  }
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message
+    });
+  }
+}
+
+
+export { getEducations, getEducation, createEducations, updateEducation, deleteEducation, deleteEducations };

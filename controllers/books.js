@@ -4,9 +4,18 @@ import BooksModel from "../models/books.js";
 const getBooks = async (req, res) => {
   try {
     const books = await BooksModel.find();
-    res.status(200).json({ message: "Books fetched successfully", data: books, error: null });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+    res.status(200).json({
+      message: "Data fetched successfully",
+      data: books,
+      error: null
+    });
+  }
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error"
+      , data: null,
+      error: error.message
+    });
   }
 };
 
@@ -14,10 +23,24 @@ const getBooks = async (req, res) => {
 const getBook = async (req, res) => {
   try {
     const book = await BooksModel.findById(req.params.id);
-    if (!book) return res.status(404).json({ message: "Book not found", data: null, error: null });
-    res.status(200).json({ message: "Book fetched successfully", data: book, error: null });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+    if (!book)
+      return res.status(404).json({
+        message: "Book not found",
+        data: null,
+        error: null
+      });
+    res.status(200).json({
+      message: "Book by ID fetched successfully",
+      data: book,
+      error: null
+    });
+  }
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message
+    });
   }
 };
 
@@ -26,20 +49,47 @@ const createBook = async (req, res) => {
   try {
     const book = new BooksModel(req.body);
     await book.save();
-    res.status(201).json({ message: "Book created successfully", data: book, error: null });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+    res.status(201).json({
+      message: "Data created successfully",
+      data: book,
+      error: null
+    });
+  }
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message
+    });
   }
 };
 
 // Update book
 const updateBook = async (req, res) => {
   try {
-    const book = await BooksModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
-    if (!book) return res.status(404).json({ message: "Book not found", data: null, error: null });
-    res.status(200).json({ message: "Book updated successfully", data: book, error: null });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+    const book = await BooksModel
+      .findByIdAndUpdate(req.params.id, req.body,
+        {
+          new: true
+        });
+    if (!book)
+      return res.status(404).json({
+        message: "Data not found",
+        data: null,
+        error: null
+      });
+    res.status(200).json({
+      message: "Data updated successfully",
+      data: book,
+      error: null
+    });
+  }
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message
+    });
   }
 };
 
@@ -47,11 +97,52 @@ const updateBook = async (req, res) => {
 const deleteBook = async (req, res) => {
   try {
     const book = await BooksModel.findByIdAndDelete(req.params.id);
-    if (!book) return res.status(404).json({ message: "Book not found", data: null, error: null });
-    res.status(200).json({ message: "Book deleted successfully", data: book, error: null });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error", data: null, error: error.message });
+    if (!book)
+      return res.status(404).json({
+        message: "Data not found",
+        data: null,
+        error: null
+      });
+    res.status(200).json({
+      message: "Data deleted successfully",
+      data: book,
+      error: null
+    });
+  }
+  catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message
+    });
   }
 };
 
-export { getBooks, getBook, createBook, updateBook, deleteBook };
+
+const deleteBooks = async (req, res) => {
+  try {
+    const books = await BooksModel.find().deleteMany({});
+    if (books.deletedCount === 0) {
+      return res.status(404).json({
+        message: "No data found to delete",
+        data: null,
+        error: null
+      });
+    }
+
+    res.status(200).json({
+      message: "All data deleted successfully",
+      data: books,
+      error: null
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message
+    });
+  }
+}
+
+
+export { getBooks, getBook, createBook, updateBook, deleteBook, deleteBooks };

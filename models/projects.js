@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 
 const awardedBySchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"},
   name: String,
   type: String,
   country: String,
