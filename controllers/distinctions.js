@@ -114,35 +114,11 @@ const deleteDistinction = async (req, res) => {
   }
 };
 
-const deleteDistinctions = async (req, res) => {
-  try {
-    const distinctions = await DistinctionModel.find().deleteMany({});
-    if (distinctions.deletedCount === 0)
-      return res.status(404).json({
-        message: "No data found to delete",
-        data: null,
-        error: null
-      });
-    res.status(200).json({
-      message: "All data deleted successfully",
-      data: distinctions,
-      error: null
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message
-    });
-  }
-}
-
 
 export { 
   getDistinctions, 
   getDistinction, 
   createDistinction, 
   updateDistinction, 
-  deleteDistinction, 
-  deleteDistinctions 
+  deleteDistinction
 };

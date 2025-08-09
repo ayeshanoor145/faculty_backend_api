@@ -110,30 +110,4 @@ const deleteEducation = async (req, res) => {
 };
 
 
-const deleteEducations = async (req, res) => {
-  try {
-    const educations = await EducationModel.find().deleteMany({});
-    if (educations.deletedCount === 0) {
-      return res.status(404).json({
-        message: "No data found to delete",
-        data: null,
-        error: null
-      });
-    }
-    res.status(200).json({
-      message: "All data deleted successfully",
-      data: educations,
-      error: null
-    });
-  }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message
-    });
-  }
-}
-
-
-export { getEducations, getEducation, createEducations, updateEducation, deleteEducation, deleteEducations };
+export { getEducations, getEducation, createEducations, updateEducation, deleteEducation };

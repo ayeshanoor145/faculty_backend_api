@@ -115,31 +115,4 @@ const deletePersonalDetail = async (req, res) => {
   }
 };
 
-// Delete all personal details
-const deletePersonalDetails = async (req, res) => {
-  try {
-    const personalDetails = await PersonalDetailsModel
-      .find().deleteMany({});
-    if (personalDetails.deletedCount === 0)
-      return res.status(404).json({
-        message: "No data details found to delete",
-        data: null,
-        error: null
-      });
-
-    res.status(200).json({
-      message: "All data details deleted successfully",
-      data: personalDetails,
-      error: null
-    });
-  }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message
-    });
-  }
-}
-
-export { getPersonalDetails, getPersonalDetail, createPersonalDetails, updatePersonalDetails, deletePersonalDetail, deletePersonalDetails };
+export { getPersonalDetails, getPersonalDetail, createPersonalDetails, updatePersonalDetails, deletePersonalDetail };

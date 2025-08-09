@@ -1,4 +1,4 @@
-import { getPersonalDetails, getPersonalDetail, deletePersonalDetails, createPersonalDetails, deletePersonalDetail, updatePersonalDetails } from "../controllers/personalDetails.js";
+import { getPersonalDetails, getPersonalDetail, createPersonalDetails, deletePersonalDetail, updatePersonalDetails } from "../controllers/personalDetails.js";
 import express from "express";
 const router = express.Router();
 
@@ -16,8 +16,5 @@ router.post("/", createPersonalDetails);
 
 //PUT request
 router.put("/:id", updatePersonalDetails);
-
-// DELETE all PersonalDetails
-router.delete("/", deletePersonalDetails);
 
 export default router;

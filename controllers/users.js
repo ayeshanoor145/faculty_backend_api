@@ -145,42 +145,4 @@ let createUsers = async (req, res) => {
 }
 
 
-let updateUsers = async (req, res) => {
-    try {
-        let id = req.params.id;
-        let userInfo = req.body;
-
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(404).json({
-                message: "Invalid user ID",
-                data: null,
-                error: null,
-            })
-        }
-        //Fetch users from the database by id
-        const user = await Users.findByIdAndUpdate(id, userInfo,
-            { new: true } //Return the updated document
-        );
-        if (!user) {
-            return res.status(404).json({
-                message: "Users not found",
-                data: null,
-                error: null,
-            })
-        }
-        res.status(200).json({
-            message: "Users updated successfully by ID",
-            data: user,
-            error: null,
-        })
-    }
-    catch (error) {
-        res.status(500).json({
-            message: "Internal server error",
-            data: null,
-            error: error.message,
-        })
-    }
-}
-
-export { getUsers, getUser, deleteUser, deleteUsers , createUsers, updateUsers };
+export { getUsers, getUser, deleteUser, deleteUsers , createUsers };

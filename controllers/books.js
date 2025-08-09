@@ -119,30 +119,6 @@ const deleteBook = async (req, res) => {
 };
 
 
-const deleteBooks = async (req, res) => {
-  try {
-    const books = await BooksModel.find().deleteMany({});
-    if (books.deletedCount === 0) {
-      return res.status(404).json({
-        message: "No data found to delete",
-        data: null,
-        error: null
-      });
-    }
-
-    res.status(200).json({
-      message: "All data deleted successfully",
-      data: books,
-      error: null
-    });
-  } catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message
-    });
-  }
-}
 
 
-export { getBooks, getBook, createBook, updateBook, deleteBook, deleteBooks };
+export { getBooks, getBook, createBook, updateBook, deleteBook };

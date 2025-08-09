@@ -113,32 +113,4 @@ const deleteEmploymentRecord = async (req, res) => {
   }
 };
 
-
-const deleteEmploymentRecords = async (req, res) => {
-  try {
-    const employmentRecords = await EmploymentRecordModel.find().deleteMany({});
-    if (employmentRecords.deletedCount === 0)
-      return res.status(404).json({
-        message: "No data found to delete",
-        data: null,
-        error: null
-      });
-
-
-    res.status(200).json({
-      message: "All data deleted successfully",
-      data: employmentRecords,
-      error: null
-    });
-  }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message
-    });
-  }
-}
-
-
-export { getEmploymentRecords, getEmploymentRecord, createEmploymentRecord, updateEmploymentRecord, deleteEmploymentRecord, deleteEmploymentRecords };
+export { getEmploymentRecords, getEmploymentRecord, createEmploymentRecord, updateEmploymentRecord, deleteEmploymentRecord };

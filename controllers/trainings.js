@@ -114,30 +114,4 @@ const deleteTraining = async (req, res) => {
   }
 };
 
-const deleteTrainings = async (req, res) => {
-  try {
-    const trainings = await TrainingModel
-      .find().deleteMany({});
-    if (trainings.deletedCount === 0)
-      return res.status(404).json({
-        message: "No trainings found to delete",
-        data: null,
-        error: null
-      });
-    res.status(200).json({
-      message: "All trainings deleted successfully",
-      data: trainings,
-      error: null
-    });
-  }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message
-    });
-  }
-};
-
-
-export { getTrainings, getTraining, createTraining, updateTraining, deleteTraining, deleteTrainings };
+export { getTrainings, getTraining, createTraining, updateTraining, deleteTraining };

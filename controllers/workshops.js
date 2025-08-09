@@ -114,30 +114,4 @@ const deleteWorkshop = async (req, res) => {
   }
 };
 
-
-const deleteWorkshops = async (req, res) => {
-  try {
-    const workshops = await WorkshopModel
-      .find().deleteMany({});
-    if (workshops.deletedCount === 0)
-      return res.status(404).json({
-        message: "No Data found to delete",
-        data: null,
-        error: null
-      });
-    res.status(200).json({
-      message: "All Data deleted successfully",
-      data: workshops,
-      error: null
-    });
-  }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message
-    });
-  }
-}
-
-export { getWorkshops, getWorkshop, createWorkshop, updateWorkshop, deleteWorkshop, deleteWorkshops };
+export { getWorkshops, getWorkshop, createWorkshop, updateWorkshop, deleteWorkshop };

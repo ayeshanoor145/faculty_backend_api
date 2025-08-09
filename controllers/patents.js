@@ -114,31 +114,5 @@ const deletePatent = async (req, res) => {
   }
 };
 
-const deletePatents = async (req, res) => {
-  try {
-    const patents = await PatentModel.find().deleteMany({});
-    if (patents.deletedCount === 0)
-      return res.status(404).json({
-        message: "No data found to delete",
-        data: null,
-        error: null
-      });
-    // Optionally, you can delete all patents
 
-    res.status(200).json({
-      message: "All data deleted successfully",
-      data: patents,
-      error: null
-    });
-  }
-  catch (error) {
-    res.status(500).json({
-      message: "Internal server error",
-      data: null,
-      error: error.message
-    });
-  }
-}
-
-
-export { getPatents, getPatent, createPatent, updatePatent, deletePatent, deletePatents };
+export { getPatents, getPatent, createPatent, updatePatent, deletePatent };
