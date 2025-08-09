@@ -11,6 +11,7 @@ const seedDistinctions = async () => {
 
         // 1. Dr. Smith (Computer Science - AI/ML)
         {
+            user: "64d4f8b2c9e77b1a2c8b4567",
             distinctions: [
                 {
                     awardName: "HEC Outstanding Researcher Award in Artificial Intelligence",
@@ -35,7 +36,8 @@ const seedDistinctions = async () => {
 
         // 2. Dr. Sarah (Data Science)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4568",
+            distinctions: [
                 {
                     awardName: "Data Science Innovation Award",
                     year: 2021,
@@ -53,7 +55,8 @@ const seedDistinctions = async () => {
 
         // 3. Prof. Chen Wei (Deep Learning)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4569",
+            distinctions: [
                 {
                     awardName: "IEEE Neural Networks Pioneer Award",
                     year: 2022,
@@ -71,7 +74,8 @@ const seedDistinctions = async () => {
 
         // 4. Dr. Fatima Khan (Biomedical Engineering)
         {
-          distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4570",
+            distinctions: [
                 {
                     awardName: "Young Scientist Award in Medical Engineering",
                     year: 2021,
@@ -89,7 +93,9 @@ const seedDistinctions = async () => {
 
         // 5. Dr. Ahmed Mahmood (Electrical Engineering)
         {
-          distinctions: [
+
+            user: "64d4f8b2c9e77b1a2c8b4571",
+            distinctions: [
                 {
                     awardName: "IEEE Power & Energy Society Outstanding Engineer",
                     year: 2022,
@@ -107,7 +113,8 @@ const seedDistinctions = async () => {
 
         // 6. Dr. Maria Garcia (Environmental Science)
         {
-          distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4572",
+            distinctions: [
                 {
                     awardName: "Champion of Earth Award",
                     year: 2022,
@@ -125,7 +132,8 @@ const seedDistinctions = async () => {
 
         // 7. Dr. James Wilson (Physics - Quantum)
         {
-          distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4573",
+            distinctions: [
                 {
                     awardName: "Maxwell Medal and Prize",
                     year: 2021,
@@ -143,7 +151,8 @@ const seedDistinctions = async () => {
 
         // 8. Dr. Aisha Abdullah (Chemistry - Nanotech)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4574",
+            distinctions: [
                 {
                     awardName: "L'Oréal-UNESCO For Women in Science Award",
                     year: 2022,
@@ -161,7 +170,8 @@ const seedDistinctions = async () => {
 
         // 9. Dr. Robert Kim (Biotechnology)
         {
-          distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4575",
+            distinctions: [
                 {
                     awardName: "CRISPR Innovator Award",
                     year: 2023,
@@ -179,7 +189,8 @@ const seedDistinctions = async () => {
 
         // 10. Dr. Elena Petrova (Materials Science)
         {
-          distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4576",
+            distinctions: [
                 {
                     awardName: "Materials Research Society Medal",
                     year: 2022,
@@ -197,7 +208,8 @@ const seedDistinctions = async () => {
 
         // 11. Dr. Ali Hassan (Mechanical Engineering - Robotics)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4577",
+            distinctions: [
                 {
                     awardName: "IEEE Robotics Pioneer Award",
                     year: 2021,
@@ -215,6 +227,7 @@ const seedDistinctions = async () => {
 
         // 12. Dr. Sophia Rodriguez (NLP)
         {
+            user: "64d4f8b2c9e77b1a2c8b4578",
             distinctions: [
                 {
                     awardName: "ACL Outstanding Paper Award",
@@ -233,7 +246,8 @@ const seedDistinctions = async () => {
 
         // 13. Dr. Thomas Müller (Physics)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4579",
+            distinctions: [
                 {
                     awardName: "Oliver E. Buckley Condensed Matter Prize",
                     year: 2022,
@@ -251,7 +265,8 @@ const seedDistinctions = async () => {
 
         // 14. Dr. Amina Ndiaye (Epidemiology)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4580",
+            distinctions: [
                 {
                     awardName: "Royal Society Africa Prize",
                     year: 2021,
@@ -269,6 +284,7 @@ const seedDistinctions = async () => {
 
         // 15. Dr. Raj Patel (Biochemistry)
         {
+            user: "64d4f8b2c9e77b1a2c8b4581",
             distinctions: [
                 {
                     awardName: "Biotechnology Innovation Award",
@@ -287,7 +303,8 @@ const seedDistinctions = async () => {
 
         // 16. Dr. Yuki Tanaka (Computer Engineering)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4582",
+            distinctions: [
                 {
                     awardName: "IEEE Computer Society Technical Achievement Award",
                     year: 2023,
@@ -305,7 +322,9 @@ const seedDistinctions = async () => {
 
         // 17. Dr. Carlos Mendez (Environmental Engineering)
         {
-           distinctions: [
+
+            user: "64d4f8b2c9e77b1a2c8b4583",
+            distinctions: [
                 {
                     awardName: "Stockholm Water Prize",
                     year: 2022,
@@ -323,7 +342,8 @@ const seedDistinctions = async () => {
 
         // 18. Dr. Emma Wilson (Neuroscience)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4584",
+            distinctions: [
                 {
                     awardName: "Brain Prize",
                     year: 2021,
@@ -341,8 +361,10 @@ const seedDistinctions = async () => {
 
         // 19. Dr. Muhammad Ali (Mathematics)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4585",
+            distinctions: [
                 {
+
                     awardName: "Hilbert Prize for Applied Mathematics",
                     year: 2022,
                     scope: "International",
@@ -359,7 +381,8 @@ const seedDistinctions = async () => {
 
         // 20. Dr. Li Wei (Materials Science)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4586",
+            distinctions: [
                 {
                     awardName: "MRS Outstanding Young Investigator Award",
                     year: 2023,
@@ -377,7 +400,8 @@ const seedDistinctions = async () => {
 
         // 21. Dr. Anna Kowalski (Chemistry)
         {
-           distinctions: [
+            user: "64d4f8b2c9e77b1a2c8b4587",
+            distinctions: [
                 {
                     awardName: "ACS Award for Green Chemistry",
                     year: 2022,

@@ -1,5 +1,6 @@
 import express from "express";
-export { getDistinctions, getDistinction, createDistinction, updateDistinction, deleteDistinction , deleteDistinctions };
+import {  getDistinctions,   getDistinction,   createDistinction,   updateDistinction,   deleteDistinction,   deleteDistinctions } from "../controllers/distinctions.js";
+
 const router = express.Router();
 
 router.get("/", getDistinctions);
@@ -8,4 +9,5 @@ router.post("/", createDistinction);
 router.put("/:id", updateDistinction);
 router.delete("/:id", deleteDistinction);
 router.delete("/", deleteDistinctions);
+
 export default router;

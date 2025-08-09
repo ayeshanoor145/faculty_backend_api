@@ -9,6 +9,7 @@ const seedUsers = async () => {
 
     const users = [
     {
+        _id : "64d4f8b2c9e77b1a2c8b4567",
         profilePicture: "https://example.com/profilepicture/smith.jpg",
         fullName: "Dr. Smith",
         userName: "smith_123",
@@ -19,6 +20,7 @@ const seedUsers = async () => {
         password: "smith1234"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4568",
         profilePicture: "https://example.com/profilepicture/sarah.jpg",
         fullName: "Dr. Sarah",
         userName: "sarah_234",
@@ -29,6 +31,7 @@ const seedUsers = async () => {
         password: "sarah2345"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4569",
         profilePicture: "https://example.com/profilepicture/chenwei.jpg",
         fullName: "Prof. Chen Wei",
         userName: "chenwei_345",
@@ -39,6 +42,7 @@ const seedUsers = async () => {
         password: "chenwei3456"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4570",
         profilePicture: "https://example.com/profilepicture/fatima.jpg",
         fullName: "Dr. Fatima Khan",
         userName: "fatima_456",
@@ -49,6 +53,7 @@ const seedUsers = async () => {
         password: "fatima4567"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4571",
         profilePicture: "https://example.com/profilepicture/ahmed.jpg",
         fullName: "Dr. Ahmed Mahmood",
         userName: "ahmed_567",
@@ -59,6 +64,7 @@ const seedUsers = async () => {
         password: "ahmed5678"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4572",
         profilePicture: "https://example.com/profilepicture/maria.jpg",
         fullName: "Dr. Maria Garcia",
         userName: "maria_678",
@@ -69,6 +75,7 @@ const seedUsers = async () => {
         password: "maria6789"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4573",
         profilePicture: "https://example.com/profilepicture/james.jpg",
         fullName: "Dr. James Wilson",
         userName: "james_789",
@@ -79,6 +86,7 @@ const seedUsers = async () => {
         password: "james7890"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4574",
         profilePicture: "https://example.com/profilepicture/aisha.jpg",
         fullName: "Dr. Aisha Abdullah",
         userName: "aisha_890",
@@ -89,6 +97,7 @@ const seedUsers = async () => {
         password: "aisha8901"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4575",
         profilePicture: "https://example.com/profilepicture/robert.jpg",
         fullName: "Dr. Robert Kim",
         userName: "robert_901",
@@ -99,6 +108,7 @@ const seedUsers = async () => {
         password: "robert9012"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4576",
         profilePicture: "https://example.com/profilepicture/elena.jpg",
         fullName: "Dr. Elena Petrova",
         userName: "elena_012",
@@ -109,6 +119,7 @@ const seedUsers = async () => {
         password: "elena0123"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4577",
         profilePicture: "https://example.com/profilepicture/ali.jpg",
         fullName: "Dr. Ali Hassan",
         userName: "ali_123",
@@ -119,6 +130,7 @@ const seedUsers = async () => {
         password: "ali1235"
     },
     {
+            _id : "64d4f8b2c9e77b1a2c8b4578",
         profilePicture: "https://example.com/profilepicture/sophia.jpg",
         fullName: "Dr. Sophia Rodriguez",
         userName: "sophia_234",
@@ -129,6 +141,7 @@ const seedUsers = async () => {
         password: "sophia2346"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4579",
         profilePicture: "https://example.com/profilepicture/thomas.jpg",
         fullName: "Dr. Thomas Müller",
         userName: "thomas_345",
@@ -139,6 +152,7 @@ const seedUsers = async () => {
         password: "thomas3457"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4580",
         profilePicture: "https://example.com/profilepicture/amina.jpg",
         fullName: "Dr. Amina Ndiaye",
         userName: "amina_456",
@@ -149,6 +163,7 @@ const seedUsers = async () => {
         password: "amina4568"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4581",
         profilePicture: "https://example.com/profilepicture/raj.jpg",
         fullName: "Dr. Raj Patel",
         userName: "raj_567",
@@ -159,6 +174,7 @@ const seedUsers = async () => {
         password: "raj5679"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4582",
         profilePicture: "https://example.com/profilepicture/yuki.jpg",
         fullName: "Dr. Yuki Tanaka",
         userName: "yuki_678",
@@ -169,6 +185,7 @@ const seedUsers = async () => {
         password: "yuki6780"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4583",
         profilePicture: "https://example.com/profilepicture/carlos.jpg",
         fullName: "Dr. Carlos Mendez",
         userName: "carlos_789",
@@ -179,6 +196,7 @@ const seedUsers = async () => {
         password: "carlos7891"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4584",
         profilePicture: "https://example.com/profilepicture/emma.jpg",
         fullName: "Dr. Emma Wilson",
         userName: "emma_890",
@@ -189,6 +207,7 @@ const seedUsers = async () => {
         password: "emma8902"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4585",
         profilePicture: "https://example.com/profilepicture/muhammad.jpg",
         fullName: "Dr. Muhammad Ali",
         userName: "muhammad_901",
@@ -199,6 +218,7 @@ const seedUsers = async () => {
         password: "muhammad9013"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4586",
         profilePicture: "https://example.com/profilepicture/liwei.jpg",
         fullName: "Dr. Li Wei",
         userName: "liwei_012",
@@ -209,6 +229,7 @@ const seedUsers = async () => {
         password: "liwei0124"
     },
     {
+        _id : "64d4f8b2c9e77b1a2c8b4587",
         profilePicture: "https://example.com/profilepicture/anna.jpg",
         fullName: "Dr. Anna Kowalski",
         userName: "anna_123",

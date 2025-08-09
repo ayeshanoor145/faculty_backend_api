@@ -6,10 +6,6 @@ let getUsers = async (req, res) => {
     try {
         //Fetch users from the database
         const users = await Users.find()
-            .select(["name", "designation", "subject", "majorSpecialization", "researchArea", "email", "contactNumber", "biosketch"])
-            .skip(5) // Skip the first 5 documents
-            .limit(5) // Limit the result to 5 documents
-            .sort({ _id: -1 }); // Sort by _id in descending order
 
         res.status(200).json({
             message: "Users fetched successfully",

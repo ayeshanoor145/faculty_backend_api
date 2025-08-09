@@ -138,4 +138,11 @@ const deleteDistinctions = async (req, res) => {
 }
 
 
-export { getDistinctions, getDistinction, createDistinction, updateDistinction, deleteDistinction, deleteDistinctions };
+export { 
+  getDistinctions, 
+  getDistinction, 
+  createDistinction, 
+  updateDistinction, 
+  deleteDistinction, 
+  deleteDistinctions 
+};

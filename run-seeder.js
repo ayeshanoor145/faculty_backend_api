@@ -9,7 +9,7 @@ import seedPublications from './seeders/seedPublications.js';
 import seedTrainings from './seeders/seedTrainings.js';
 import seedWorkshops from './seeders/seedWorkshops.js';
 import seedPersonalDetail from './seeders/seedPersonalDetails.js';
-
+import seedUsers from './seeders/seedUsers.js';
 
 const runSeeder = async () => {
     dbConnect();
@@ -23,6 +23,7 @@ const runSeeder = async () => {
     await seedPublications();
     await seedTrainings();
     await seedWorkshops();
+    await seedUsers();
 
 
 
