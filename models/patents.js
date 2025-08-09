@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const patentGrantedSchema = new mongoose.Schema({
   ref_number: String,
   title: String,
@@ -23,8 +22,8 @@ const patentSchema = new mongoose.Schema({
     ref: "Users"
   },
   patent_granted: patentGrantedSchema,
-  patent_submitted: patentSubmittedSchema 
-}) ;
+  patent_submitted: patentSubmittedSchema
+});
 
 const patentsSchema = new mongoose.Schema(patentSchema, { strict: false });
 

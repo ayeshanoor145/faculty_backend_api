@@ -12,7 +12,7 @@ const seedTrainings = async () => {
 
     // 1. Dr. Smith (Computer Science - AI/ML)
     {
-      _id : "64d4f8b2c9e77b1a2c8b4567", // Unique ID for the training
+      _id: "64d4f8b2c9e77b1a2c8b4667", // Unique ID for the training
       user: "64d4f8b2c9e77b1a2c8b4567", // Reference to Dr. Smith's user ID
       trainings: [
         {
@@ -36,8 +36,8 @@ const seedTrainings = async () => {
 
     // 2. Dr. Sarah (Data Science)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4568", // Unique ID for the training
-       user: "64d4f8b2c9e77b1a2c8b4568", // Reference to Dr. Sarah's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4668", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4568", // Reference to Dr. Sarah's user ID
       trainings: [
         {
           type: "University",
@@ -60,8 +60,8 @@ const seedTrainings = async () => {
 
     // 3. Prof. Chen Wei (Deep Learning)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4569", // Unique ID for the training
-       user: "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4669", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
       trainings: [
         {
           type: "University",
@@ -84,8 +84,8 @@ const seedTrainings = async () => {
 
     // 4. Dr. Fatima Khan (Biomedical Engineering)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4570", // Unique ID for the training
-       user:  "64d4f8b2c9e77b1a2c8b4570", // Reference to Dr. Fatima Khan's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4670", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4570", // Reference to Dr. Fatima Khan's user ID
       trainings: [
         {
           type: "University",
@@ -108,8 +108,8 @@ const seedTrainings = async () => {
 
     // 5. Dr. Ahmed Mahmood (Electrical Engineering)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4571", // Unique ID for the training
-       user: "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4671", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
       trainings: [
         {
           type: "University",
@@ -132,8 +132,8 @@ const seedTrainings = async () => {
 
     // 6. Dr. Maria Garcia (Environmental Science)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4572", // Unique ID for the training
-       user: "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4672", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
       trainings: [
         {
           type: "University",
@@ -156,8 +156,8 @@ const seedTrainings = async () => {
 
     // 7. Dr. James Wilson (Physics - Quantum)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4573", // Unique ID for the training
-       user: "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4673", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
       trainings: [
         {
           type: "University",
@@ -180,8 +180,8 @@ const seedTrainings = async () => {
 
     // 8. Dr. Aisha Abdullah (Chemistry - Nanotech)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4574", // Unique ID for the training
-       user: "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4674", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
       trainings: [
         {
           type: "University",
@@ -204,8 +204,8 @@ const seedTrainings = async () => {
 
     // 9. Dr. Robert Kim (Biotechnology)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4575", // Unique ID for the training
-       user: "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4675", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
       trainings: [
         {
           type: "University",
@@ -228,8 +228,8 @@ const seedTrainings = async () => {
 
     // 10. Dr. Elena Petrova (Materials Science)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4576", // Unique ID for the training
-       user: "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4676", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
       trainings: [
         {
           type: "University",
@@ -252,8 +252,8 @@ const seedTrainings = async () => {
 
     // 11. Dr. Ali Hassan (Mechanical Engineering - Robotics)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4577", // Unique ID for the training
-       user: "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4677", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
       trainings: [
         {
           type: "University",
@@ -276,8 +276,8 @@ const seedTrainings = async () => {
 
     // 12. Dr. Sophia Rodriguez (NLP)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4578", // Unique ID for the training
-       user: "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4678", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
       trainings: [
         {
           type: "University",
@@ -300,8 +300,8 @@ const seedTrainings = async () => {
 
     // 13. Dr. Thomas Müller (Physics)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4579", // Unique ID for the training
-        user: "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4679", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
       trainings: [
         {
           type: "University",
@@ -324,8 +324,8 @@ const seedTrainings = async () => {
 
     // 14. Dr. Amina Ndiaye (Epidemiology)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4580", // Unique ID for the training
-        user: "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4680", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
       trainings: [
         {
           type: "University",
@@ -348,8 +348,8 @@ const seedTrainings = async () => {
 
     // 15. Dr. Raj Patel (Biochemistry)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4581", // Unique ID for the training
-        user: "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4681", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
       trainings: [
         {
           type: "University",
@@ -372,8 +372,8 @@ const seedTrainings = async () => {
 
     // 16. Dr. Yuki Tanaka (Computer Engineering)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4582", // Unique ID for the training
-        user: "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4682", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
       trainings: [
         {
           type: "University",
@@ -396,8 +396,8 @@ const seedTrainings = async () => {
 
     // 17. Dr. Carlos Mendez (Environmental Engineering)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4583", // Unique ID for the training
-        user: "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4683", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
       trainings: [
         {
           type: "University",
@@ -420,8 +420,8 @@ const seedTrainings = async () => {
 
     // 18. Dr. Emma Wilson (Neuroscience)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4584", // Unique ID for the training
-        user: "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4684", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
       trainings: [
         {
           type: "University",
@@ -444,8 +444,8 @@ const seedTrainings = async () => {
 
     // 19. Dr. Muhammad Ali (Mathematics)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4585", // Unique ID for the training
-        user: "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4685", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
       trainings: [
         {
           type: "University",
@@ -468,8 +468,8 @@ const seedTrainings = async () => {
 
     // 20. Dr. Li Wei (Materials Science)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4586", // Unique ID for the training
-        user: "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4686", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID
       trainings: [
         {
           type: "University",
@@ -492,8 +492,8 @@ const seedTrainings = async () => {
 
     // 21. Dr. Anna Kowalski (Chemistry)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4587", // Unique ID for the training
-        user: "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4687", // Unique ID for the training
+      user: "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
       trainings: [
         {
           type: "University",

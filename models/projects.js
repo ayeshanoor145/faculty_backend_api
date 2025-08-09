@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-
 const awardedBySchema = new mongoose.Schema({
   name: String,
   type: String,

@@ -12,7 +12,7 @@ const seedWorkshops = async () => {
 
     // 1. Dr. Smith (Computer Science - AI/ML)
     {
-      _id : "64d4f8b2c9e77b1a2c8b4567", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4367", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4567", // Reference to Dr. Smith's user ID
       workshopType: "Organized",
       scope: "International",
@@ -28,7 +28,7 @@ const seedWorkshops = async () => {
 
     // 2. Dr. Sarah (Data Science)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4568", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4368", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4568", // Reference to Dr. Sarah's user ID
       workshopType: "Organized",
       scope: "National",
@@ -43,7 +43,7 @@ const seedWorkshops = async () => {
 
     // 3. Prof. Chen Wei (Deep Learning)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4569", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4369", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
       workshopType: "Organized",
       scope: "International",
@@ -73,8 +73,8 @@ const seedWorkshops = async () => {
 
     // 5. Dr. Ahmed Mahmood (Electrical Engineering)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4571", // Unique ID for the workshop
-      user    : "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4371", // Unique ID for the workshop
+      user: "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
       workshopType: "Organized",
       scope: "National",
       title: "Smart Grid Optimization Workshop",
@@ -88,7 +88,7 @@ const seedWorkshops = async () => {
 
     // 6. Dr. Maria Garcia (Environmental Science)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4572", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4372", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
       workshopType: "Organized",
       scope: "International",
@@ -103,7 +103,7 @@ const seedWorkshops = async () => {
 
     // 7. Dr. James Wilson (Physics)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4573", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4373", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
       workshopType: "Organized",
       scope: "International",
@@ -118,7 +118,7 @@ const seedWorkshops = async () => {
 
     // 8. Dr. Aisha Abdullah (Chemistry - Nanotech)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4574", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4374", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
       workshopType: "Organized",
       scope: "International",
@@ -133,7 +133,7 @@ const seedWorkshops = async () => {
 
     // 9. Dr. Robert Kim (Biotechnology)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4575", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4375", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
       workshopType: "Organized",
       scope: "International",
@@ -148,7 +148,7 @@ const seedWorkshops = async () => {
 
     // 10. Dr. Elena Petrova (Materials Science)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4576", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4376", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
       workshopType: "Organized",
       scope: "International",
@@ -164,7 +164,7 @@ const seedWorkshops = async () => {
     // 11. Dr. Ali Hassan (Mechanical Engineering - Robotics)
     {
       _id: "64d4f8b2c9e77b1a2c8b4577", // Unique ID for the workshop
-      user  : "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
+      user: "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
       workshopType: "Organized",
       scope: "National",
       title: "Industrial Robotics for Smart Manufacturing",
@@ -178,7 +178,7 @@ const seedWorkshops = async () => {
 
     // 12. Dr. Sophia Rodriguez (NLP)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4578", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4378", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
       workshopType: "Organized",
       scope: "International",
@@ -193,8 +193,8 @@ const seedWorkshops = async () => {
 
     // 13. Dr. Thomas Müller (Physics)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4579", // Unique ID for the workshop
-      user  : "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4379", // Unique ID for the workshop
+      user: "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
       workshopType: "Organized",
       scope: "International",
       title: "High-Temperature Superconductivity Workshop",
@@ -208,7 +208,7 @@ const seedWorkshops = async () => {
 
     // 14. Dr. Amina Ndiaye (Epidemiology)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4580", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4380", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
       workshopType: "Organized",
       scope: "Regional",
@@ -223,7 +223,7 @@ const seedWorkshops = async () => {
 
     // 15. Dr. Raj Patel (Biochemistry)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4581", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4381", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
       workshopType: "Organized",
       scope: "International",
@@ -238,7 +238,7 @@ const seedWorkshops = async () => {
 
     // 16. Dr. Yuki Tanaka (Computer Engineering)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4582", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4382", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
       workshopType: "Organized",
       scope: "International",
@@ -253,8 +253,8 @@ const seedWorkshops = async () => {
 
     // 17. Dr. Carlos Mendez (Environmental Engineering)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4583", // Unique ID for the workshop
-      user  : "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
+      _id: "64d4f8b2c9e77b1a2c8b4383", // Unique ID for the workshop
+      user: "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
       workshopType: "Organized",
       scope: "Regional",
       title: "Low-Energy Desalination Technologies",
@@ -268,7 +268,7 @@ const seedWorkshops = async () => {
 
     // 18. Dr. Emma Wilson (Neuroscience)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4584", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4384", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
       workshopType: "Organized",
       scope: "International",
@@ -283,7 +283,7 @@ const seedWorkshops = async () => {
 
     // 19. Dr. Muhammad Ali (Mathematics)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4585", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4385", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
       workshopType: "Organized",
       scope: "International",
@@ -298,7 +298,7 @@ const seedWorkshops = async () => {
 
     // 20. Dr. Li Wei (Materials Science)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4586", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4386", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID
       workshopType: "Organized",
       scope: "International",
@@ -313,7 +313,7 @@ const seedWorkshops = async () => {
 
     // 21. Dr. Anna Kowalski (Chemistry)
     {
-      _id: "64d4f8b2c9e77b1a2c8b4587", // Unique ID for the workshop
+      _id: "64d4f8b2c9e77b1a2c8b4387", // Unique ID for the workshop
       user: "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
       workshopType: "Organized",
       scope: "International",

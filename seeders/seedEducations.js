@@ -10,11 +10,10 @@ const seedEducations = async () => {
     const educations = [
         // 1. Dr. Smith
         {
-            _id : "6896d42a045cf05360fea8b8",
+            _id: "6896d42a045cf05360fea8b8",
             user: "64d4f8b2c9e77b1a2c8b4567", // Reference to Dr. Smith's user ID
             researcherId: "A-1234-5678",
-            education: [
-                {
+            education: [                {
                     degreeType: "Bachelor's",
                     degreeName: "Bachelor of Science in Computer Science",
                     university: "University of Karachi",
@@ -50,8 +49,8 @@ const seedEducations = async () => {
 
         // 2. Dr. Sarah -
         {
-            _id : "6896d42a045cf05360fea8bc",
-            user : "64d4f8b2c9e77b1a2c8b4568", // Reference to Dr. Sarah's user ID
+            _id: "6896d42a045cf05360fea8bc",
+            user: "64d4f8b2c9e77b1a2c8b4568", // Reference to Dr. Sarah's user ID
             researcherId: "B-2345-6789",
             education: [
                 {
@@ -90,8 +89,8 @@ const seedEducations = async () => {
 
         // 3. Prof. Chen Wei
         {
-            _id : "6896d42a045cf05360fea8bd",
-             user : "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
+            _id: "6896d42a045cf05360fea8bd",
+            user: "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
             researcherId: "C-3456-7890",
             education: [
                 {
@@ -130,8 +129,8 @@ const seedEducations = async () => {
 
         // 4. Dr. Fatima Khan 
         {
-            _id : "6896d42a045cf05360fea8be",
-            user : "64d4f8b2c9e77b1a2c8b4570", // Reference to Dr. Fatima Khan's user ID
+            _id: "6896d42a045cf05360fea8be",
+            user: "64d4f8b2c9e77b1a2c8b4570", // Reference to Dr. Fatima Khan's user ID
             researcherId: "D-4567-8901",
             education: [
                 {
@@ -169,8 +168,8 @@ const seedEducations = async () => {
 
         // 5. Dr. Ahmed Mahmood 
         {
-            _id : "6896d42a045cf05360fea8bf",
-            user    : "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
+            _id: "6896d42a045cf05360fea8bf",
+            user: "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
             researcherId: "E-5678-9012",
             education: [
                 {
@@ -209,8 +208,8 @@ const seedEducations = async () => {
 
         // 6. Dr. Maria Garcia 
         {
-            _id : "6896d42a045cf05360fea8c0",
-            user : "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
+            _id: "6896d42a045cf05360fea8c0",
+            user: "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
             researcherId: "F-6789-0123",
             education: [
                 {
@@ -249,8 +248,8 @@ const seedEducations = async () => {
 
         // 7. Dr. James Wilson 
         {
-            _id : "6896d42a045cf05360fea8c1",
-            user : "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
+            _id: "6896d42a045cf05360fea8c1",
+            user: "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
             researcherId: "G-7890-1234",
             education: [
                 {
@@ -289,8 +288,8 @@ const seedEducations = async () => {
 
         // 8. Dr. Aisha Abdullah 
         {
-            _id : "6896d42a045cf05360fea8c2",
-            user : "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
+            _id: "6896d42a045cf05360fea8c2",
+            user: "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
             researcherId: "H-8901-2345",
             education: [
                 {
@@ -329,8 +328,8 @@ const seedEducations = async () => {
 
         // 9. Dr. Robert Kim
         {
-                _id : "6896d42a045cf05360fea8c3",
-            user : "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
+            _id: "6896d42a045cf05360fea8c3",
+            user: "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
             researcherId: "I-9012-3456",
             education: [
                 {
@@ -369,8 +368,8 @@ const seedEducations = async () => {
 
         // 10. Dr. Elena Petrova 
         {
-            _id : "6896d42a045cf05360fea8c4",
-            user : "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
+            _id: "6896d42a045cf05360fea8c4",
+            user: "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
             researcherId: "J-0123-4567",
             education: [
                 {
@@ -409,8 +408,8 @@ const seedEducations = async () => {
 
         // 11. Dr. Ali Hassan 
         {
-            _id : "6896d42a045cf05360fea8c5",
-            user : "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
+            _id: "6896d42a045cf05360fea8c5",
+            user: "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
             researcherId: "K-1234-5678",
             education: [
                 {
@@ -449,8 +448,8 @@ const seedEducations = async () => {
 
         // 12. Dr. Sophia Rodriguez
         {
-            _id : "6896d42a045cf05360fea8c6",
-            user : "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
+            _id: "6896d42a045cf05360fea8c6",
+            user: "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
             researcherId: "L-2345-6789",
             education: [
                 {
@@ -489,8 +488,8 @@ const seedEducations = async () => {
 
         // 13. Dr. Thomas Müller
         {
-            _id : "6896d42a045cf05360fea8c7",
-            user : "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
+            _id: "6896d42a045cf05360fea8c7",
+            user: "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
             researcherId: "M-3456-7890",
             education: [
                 {
@@ -529,8 +528,8 @@ const seedEducations = async () => {
 
         // 14. Dr. Amina Ndiaye 
         {
-            _id : "6896d42a045cf05360fea8c8",
-            user : "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
+            _id: "6896d42a045cf05360fea8c8",
+            user: "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
             researcherId: "N-4567-8901",
             education: [
                 {
@@ -569,8 +568,8 @@ const seedEducations = async () => {
 
         // 15. Dr. Raj Patel
         {
-            _id : "6896d42a045cf05360fea8c9",
-            user : "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
+            _id: "6896d42a045cf05360fea8c9",
+            user: "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
             researcherId: "O-5678-9012",
             education: [
                 {
@@ -609,8 +608,8 @@ const seedEducations = async () => {
 
         // 16. Dr. Yuki Tanaka
         {
-            _id : "6896d42a045cf05360fea8ca",
-            user : "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
+            _id: "6896d42a045cf05360fea8ca",
+            user: "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
             researcherId: "P-6789-0123",
             education: [
                 {
@@ -649,8 +648,8 @@ const seedEducations = async () => {
 
         // 17. Dr. Carlos Mendez
         {
-            _id : "6896d42a045cf05360fea8cb",
-            user : "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
+            _id: "6896d42a045cf05360fea8cb",
+            user: "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
             researcherId: "Q-7890-1234",
             education: [
                 {
@@ -689,8 +688,8 @@ const seedEducations = async () => {
 
         // 18. Dr. Emma Wilson
         {
-            _id : "6896d42a045cf05360fea8cc",
-            user : "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
+            _id: "6896d42a045cf05360fea8cc",
+            user: "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
             researcherId: "R-8901-2345",
             education: [
                 {
@@ -729,8 +728,8 @@ const seedEducations = async () => {
 
         // 19. Dr. Muhammad Ali 
         {
-            _id : "6896d42a045cf05360fea8cd",
-            user : "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
+            _id: "6896d42a045cf05360fea8cd",
+            user: "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
             researcherId: "S-9012-3456",
             education: [
                 {
@@ -769,8 +768,8 @@ const seedEducations = async () => {
 
         // 20. Dr. Li Wei 
         {
-            _id : "6896d42a045cf05360fea8ce",
-            user : "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID
+            _id: "6896d42a045cf05360fea8ce",
+            user: "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID
             researcherId: "T-0123-4567",
             education: [
                 {
@@ -809,8 +808,8 @@ const seedEducations = async () => {
 
         // 21. Dr. Anna Kowalski
         {
-            _id : "6896d42a045cf05360fea8cf",
-            user : "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
+            _id: "6896d42a045cf05360fea8cf",
+            user: "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
             researcherId: "U-1234-5678",
             education: [
                 {
