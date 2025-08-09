@@ -1,19 +1,20 @@
 import { getUsers, getUser, deleteUser,  updateUsers, createUsers } from "../controllers/users.js";
 import express from "express";
+import validateObjectId from "../middleware/validateObjectId.js";
 const router = express.Router();
 
 //Get users
 router.get("/", getUsers);
 
 //Get user by ID
-router.get("/:id", getUser);
+router.get("/:id", validateObjectId, getUser);
 
 
 //Delete user by ID
-router.delete("/:id", deleteUser);
+router.delete("/:id", validateObjectId, deleteUser);
 
 // Update user by ID
-router.put("/:id", updateUsers);
+router.put("/:id", validateObjectId, updateUsers);
 
 // POST create new users
 router.post("/", createUsers);

@@ -1,11 +1,12 @@
 import express from "express";
 import { getBooks, getBook, createBook, updateBook , deleteBook } from "../controllers/books.js";
+import validateObjectId from "../middleware/validateObjectId.js";
 const router = express.Router();
 
 router.get("/", getBooks);
-router.get("/:id", getBook);
+router.get("/:id", validateObjectId, getBook);
 router.post("/", createBook);
-router.put("/:id", updateBook);
-router.delete("/:id", deleteBook);
+router.put("/:id", validateObjectId, updateBook);
+router.delete("/:id", validateObjectId, deleteBook);
 
 export default router;

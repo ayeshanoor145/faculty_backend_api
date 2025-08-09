@@ -47,7 +47,8 @@ const getBook = async (req, res) => {
 // Create book
 const createBook = async (req, res) => {
   try {
-    const book = new BooksModel(req.body);
+    const book = new BooksModel(req.body)
+      ;
     await book.save();
     res.status(201).json({
       message: "Data created successfully",
@@ -96,7 +97,9 @@ const updateBook = async (req, res) => {
 // Delete book
 const deleteBook = async (req, res) => {
   try {
-    const book = await BooksModel.findByIdAndDelete(req.params.id);
+    const book = await BooksModel
+      .findByIdAndDelete(req.params.id)
+      ;
     if (!book)
       return res.status(404).json({
         message: "Data not found",
@@ -117,7 +120,6 @@ const deleteBook = async (req, res) => {
     });
   }
 };
-
 
 
 

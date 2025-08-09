@@ -27,14 +27,7 @@ let getUsers = async (req, res) => {
 let getUser = async (req, res) => {
     try {
         let id = req.params.id;
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(404).json({
-                message: "Invalid user ID",
-                data: null,
-                error: null,
-            })
-        }
-        //Fetch users from the database by id
+        // ObjectId validation handled by middleware
         const user = await Users.findById(id)
         if (!user) {
             return res.status(404).json({
@@ -62,14 +55,7 @@ let getUser = async (req, res) => {
 let deleteUser = async (req, res) => {
     try {
         let id = req.params.id;
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(400).json({
-                message: "Invalid user ID",
-                data: null,
-                error: null,
-            })
-        }
-        //Fetch users from the database by id
+        // ObjectId validation handled by middleware
         const user = await Users.findByIdAndDelete(id)
         if (!user) {
             return res.status(404).json({
@@ -98,15 +84,7 @@ let updateUsers = async (req, res) => {
     try {
         let id = req.params.id;
         let userInfo = req.body;
-
-        if (!mongoose.Types.ObjectId.isValid(id)) {
-            return res.status(404).json({
-                message: "Invalid user ID",
-                data: null,
-                error: null,
-            })
-        }
-        //Fetch users from the database by id
+        // ObjectId validation handled by middleware
         const user = await Users.findByIdAndUpdate(id, userInfo,
             { new: true } //Return the updated document
         );
@@ -133,11 +111,10 @@ let updateUsers = async (req, res) => {
 }
 
 
-
 let createUsers = async (req, res) => {
     try {
         let userInfo = req.body;
-        const user = Users(userInfo);     //create a new user instance
+        const user = Users(userInfo)
         await user.save();    //save the user to database
         res.status(201).json({
             message: "User created successfully",
