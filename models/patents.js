@@ -1,9 +1,6 @@
 import mongoose from "mongoose";
 
 const patentGrantedSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"},
   ref_number: String,
   title: String,
   country: String,
@@ -13,9 +10,6 @@ const patentGrantedSchema = new mongoose.Schema({
 }, { _id: false });
 
 const patentSubmittedSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"},
   title: String,
   submission_date: String,
   country: String,
@@ -24,9 +18,13 @@ const patentSubmittedSchema = new mongoose.Schema({
 }, { _id: false });
 
 const patentSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"
+  },
   patent_granted: patentGrantedSchema,
-  patent_submitted: patentSubmittedSchema
-}, { _id: false });
+  patent_submitted: patentSubmittedSchema 
+}) ;
 
 const patentsSchema = new mongoose.Schema(patentSchema, { strict: false });
 

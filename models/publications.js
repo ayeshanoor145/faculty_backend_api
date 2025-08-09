@@ -1,9 +1,7 @@
 import mongoose from "mongoose";
 
 const publicationEntrySchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"},
+  
   author: String,
   coAuthors: [String],
   title: String,
@@ -18,6 +16,9 @@ const publicationEntrySchema = new mongoose.Schema({
 }, { _id: false });
 
 const publicationsSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"},
   publications: [publicationEntrySchema]
 });
 

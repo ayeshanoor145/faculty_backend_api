@@ -1,9 +1,6 @@
 import mongoose from "mongoose";
 
 const awardedBySchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"},
   name: String,
   type: String,
   country: String,
@@ -16,6 +13,10 @@ const worthSchema = new mongoose.Schema({
 }, { _id: false });
 
 const projectSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"  // This should match exactly with your User model name
+  },
   awardedBy: awardedBySchema,
   pi: String,
   coPi: [String],
@@ -27,5 +28,5 @@ const projectSchema = new mongoose.Schema({
   description: String
 });
 
-const ProjectModel = mongoose.model("Projects", projectSchema);
+const ProjectModel = mongoose.model("Project", projectSchema);
 export default ProjectModel;

@@ -1,9 +1,6 @@
 import mongoose from "mongoose";
 
-const employmentEntrySchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"},
+const employmentSchema = new mongoose.Schema({
   organization: String,
   sector: String,
   post: String,
@@ -14,8 +11,12 @@ const employmentEntrySchema = new mongoose.Schema({
 }, { _id: false });
 
 const employmentRecordSchema = new mongoose.Schema({
-  employmentRecord: [employmentEntrySchema]
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"
+  },
+  employmentRecord: [employmentSchema]
 });
 
-const EmploymentRecordModel = mongoose.model("EmploymentRecords", employmentRecordSchema);
-export default EmploymentRecordModel;
+const EmploymentRecords = mongoose.model("EmploymentRecords", employmentRecordSchema);
+export default EmploymentRecords;
