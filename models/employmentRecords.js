@@ -10,7 +10,7 @@ const employmentSchema = new mongoose.Schema({
   isCurrent: Boolean
 }, { _id: false });
 
-const employmentRecordSchema = new mongoose.Schema({
+const employmentRecordsSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users"
@@ -18,5 +18,5 @@ const employmentRecordSchema = new mongoose.Schema({
   employmentRecord: [employmentSchema]
 });
 
-const EmploymentRecords = mongoose.model("EmploymentRecords", employmentRecordSchema);
+const EmploymentRecords = mongoose.model("EmploymentRecords", employmentRecordsSchema);
 export default EmploymentRecords;

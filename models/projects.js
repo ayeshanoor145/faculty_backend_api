@@ -11,7 +11,7 @@ const worthSchema = new mongoose.Schema({
   currency: String
 }, { _id: false });
 
-const projectSchema = new mongoose.Schema({
+const projectsSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User"  // This should match exactly with your User model name
@@ -27,5 +27,5 @@ const projectSchema = new mongoose.Schema({
   description: String
 });
 
-const ProjectModel = mongoose.model("Project", projectSchema);
-export default ProjectModel;
+const Projects = mongoose.model("Projects", projectsSchema);
+export default Projects;

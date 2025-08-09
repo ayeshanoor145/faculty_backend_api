@@ -27,5 +27,5 @@ const patentSchema = new mongoose.Schema({
 
 const patentsSchema = new mongoose.Schema(patentSchema, { strict: false });
 
-const PatentModel = mongoose.model("Patents", patentsSchema);
-export default PatentModel;
+const Patents = mongoose.model("Patents", patentsSchema);
+export default Patents;

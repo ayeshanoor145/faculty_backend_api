@@ -22,5 +22,5 @@ const publicationsSchema = new mongoose.Schema({
   publications: [publicationEntrySchema]
 });
 
-const PublicationModel = mongoose.model("Publications", publicationsSchema);
-export default PublicationModel;
+const Publications = mongoose.model("Publications", publicationsSchema);
+export default Publications;

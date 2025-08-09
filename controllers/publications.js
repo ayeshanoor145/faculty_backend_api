@@ -1,8 +1,8 @@
-import PublicationModel from "../models/publications.js";
+import Publications from "../models/publications.js";
 
 const getPublications = async (req, res) => {
   try {
-    const publications = await PublicationModel.find();
+    const publications = await Publications.find();
     res.status(200).json({
        message: "Data fetched successfully", 
        data: publications, 
@@ -20,7 +20,7 @@ const getPublications = async (req, res) => {
 
 const getPublication = async (req, res) => {
   try {
-    const publication = await PublicationModel
+    const publication = await Publications
       .findById(req.params.id);
     if (!publication)
       return res.status(404).json({
@@ -45,7 +45,7 @@ const getPublication = async (req, res) => {
 
 const createPublication = async (req, res) => {
   try {
-    const publication = new PublicationModel(req.body);
+    const publication = new Publications(req.body);
     await publication.save();
     res.status(201).json({
       message: "Data created successfully",
@@ -64,7 +64,7 @@ const createPublication = async (req, res) => {
 
 const updatePublication = async (req, res) => {
   try {
-    const publication = await PublicationModel
+    const publication = await Publications
       .findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!publication)
       return res.status(404).json({
@@ -89,7 +89,7 @@ const updatePublication = async (req, res) => {
 
 const deletePublication = async (req, res) => {
   try {
-    const publication = await PublicationModel
+    const publication = await Publications
       .findByIdAndDelete(req.params.id);
     if (!publication)
       return res.status(404).json({

@@ -1,9 +1,9 @@
-import BooksModel from "../models/books.js";
+import Books from "../models/books.js";
 
 // Get all books
 const getBooks = async (req, res) => {
   try {
-    const books = await BooksModel.find();
+    const books = await Books.find();
     res.status(200).json({
       message: "Data fetched successfully",
       data: books,
@@ -22,7 +22,7 @@ const getBooks = async (req, res) => {
 // Get book by ID
 const getBook = async (req, res) => {
   try {
-    const book = await BooksModel.findById(req.params.id);
+    const book = await Books.findById(req.params.id);
     if (!book)
       return res.status(404).json({
         message: "Book not found",
@@ -47,7 +47,7 @@ const getBook = async (req, res) => {
 // Create book
 const createBook = async (req, res) => {
   try {
-    const book = new BooksModel(req.body)
+    const book = new Books(req.body)
       ;
     await book.save();
     res.status(201).json({
@@ -68,7 +68,7 @@ const createBook = async (req, res) => {
 // Update book
 const updateBook = async (req, res) => {
   try {
-    const book = await BooksModel
+    const book = await Books
       .findByIdAndUpdate(req.params.id, req.body,
         {
           new: true
@@ -97,7 +97,7 @@ const updateBook = async (req, res) => {
 // Delete book
 const deleteBook = async (req, res) => {
   try {
-    const book = await BooksModel
+    const book = await Books
       .findByIdAndDelete(req.params.id)
       ;
     if (!book)

@@ -15,5 +15,5 @@ const distinctionsSchema = new mongoose.Schema({
   distinctions: [distinctionSchema]
 });
 
-const DistinctionModel = mongoose.model("Distinction", distinctionsSchema); // Changed to singular "Distinction"
-export default DistinctionModel;
+const Distinctions = mongoose.model("Distinctions", distinctionsSchema); 
+export default Distinctions;

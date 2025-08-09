@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const workshopSchema = new mongoose.Schema({
+const workshopsSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users"},
@@ -15,5 +15,5 @@ const workshopSchema = new mongoose.Schema({
   certificateUrl: String
 });
 
-const WorkshopModel = mongoose.model("Workshops", workshopSchema);
-export default WorkshopModel;
+const Workshops = mongoose.model("Workshops", workshopsSchema);
+export default Workshops;

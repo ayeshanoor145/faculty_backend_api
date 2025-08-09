@@ -1,10 +1,10 @@
-import PatentModel from "../models/patents.js";
+import Patents from "../models/patents.js";
 
 // Controller to handle patent-related operations
 
 const getPatents = async (req, res) => {
   try {
-    const patents = await PatentModel.find();
+    const patents = await Patents.find();
     res.status(200).json({
       message: "Data fetched successfully",
       data: patents,
@@ -22,7 +22,7 @@ const getPatents = async (req, res) => {
 
 const getPatent = async (req, res) => {
   try {
-    const patent = await PatentModel
+    const patent = await Patents
       .findById(req.params.id);
     if (!patent)
       return res.status(404).json({
@@ -47,7 +47,7 @@ const getPatent = async (req, res) => {
 
 const createPatent = async (req, res) => {
   try {
-    const patent = new PatentModel(req.body);
+    const patent = new Patents(req.body);
     await patent.save();
     res.status(201).json({
       message: "Data created successfully",
@@ -66,7 +66,7 @@ const createPatent = async (req, res) => {
 
 const updatePatent = async (req, res) => {
   try {
-    const patent = await PatentModel
+    const patent = await Patents
       .findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!patent)
       return res.status(404).json({

@@ -1,10 +1,10 @@
-import DistinctionModel from "../models/distinctions.js";
+import Distinctions from "../models/distinctions.js";
 
 // Controller to handle distinction-related operations
 
 const getDistinctions = async (req, res) => {
   try {
-    const distinctions = await DistinctionModel.find();
+    const distinctions = await Distinctions.find();
     res.status(200).json({
       message: "Data fetched successfully",
       data: distinctions,
@@ -22,7 +22,7 @@ const getDistinctions = async (req, res) => {
 
 const getDistinction = async (req, res) => {
   try {
-    const distinction = await DistinctionModel.findById(req.params.id);
+    const distinction = await Distinctions.findById(req.params.id);
     if (!distinction)
       return res.status(404).json({
         message: "Distinction not found",
@@ -45,7 +45,7 @@ const getDistinction = async (req, res) => {
 
 const createDistinction = async (req, res) => {
   try {
-    const distinction = new DistinctionModel(req.body);
+    const distinction = new Distinctions(req.body);
     await distinction.save();
     res.status(201).json({
       message: "Data created successfully",
@@ -64,7 +64,7 @@ const createDistinction = async (req, res) => {
 
 const updateDistinction = async (req, res) => {
   try {
-    const distinction = await DistinctionModel.findByIdAndUpdate(req.params.id, req.body, {
+    const distinction = await Distinctions.findByIdAndUpdate(req.params.id, req.body, {
       new: true
     });
     if (!distinction)
@@ -90,7 +90,7 @@ const updateDistinction = async (req, res) => {
 
 const deleteDistinction = async (req, res) => {
   try {
-    const distinction = await DistinctionModel
+    const distinction = await Distinctions
       .findByIdAndDelete(req.params.id);
 
     if (!distinction)

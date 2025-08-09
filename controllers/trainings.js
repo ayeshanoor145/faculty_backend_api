@@ -1,10 +1,10 @@
-import TrainingModel from "../models/trainings.js";
+import Trainings from "../models/trainings.js";
 
 // Controller to handle training-related operations
 
 const getTrainings = async (req, res) => {
   try {
-    const trainings = await TrainingModel.find();
+    const trainings = await Trainings.find();
     res.status(200).json({
       message: "Trainings fetched successfully",
       data: trainings,
@@ -22,7 +22,7 @@ const getTrainings = async (req, res) => {
 
 const getTraining = async (req, res) => {
   try {
-    const training = await TrainingModel
+    const training = await Trainings
       .findById(req.params.id);
     if (!training)
       return res.status(404).json({
@@ -48,7 +48,7 @@ const getTraining = async (req, res) => {
 
 const createTraining = async (req, res) => {
   try {
-    const training = new TrainingModel(req.body);
+    const training = new Trainings(req.body);
     await training.save();
     res.status(201).json({
       message: "Training created successfully",
@@ -67,7 +67,7 @@ const createTraining = async (req, res) => {
 
 const updateTraining = async (req, res) => {
   try {
-    const training = await TrainingModel
+    const training = await Trainings
       .findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!training)
       return res.status(404).json({
@@ -92,7 +92,7 @@ const updateTraining = async (req, res) => {
 
 const deleteTraining = async (req, res) => {
   try {
-    const training = await TrainingModel
+    const training = await Trainings
       .findByIdAndDelete(req.params.id);
     if (!training)
       return res.status(404).json({

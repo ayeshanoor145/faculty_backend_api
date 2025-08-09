@@ -1,10 +1,10 @@
-import ProjectModel from "../models/projects.js";
+import Projects from "../models/projects.js";
 
 // Controller to handle project-related operations
 
 const getProjects = async (req, res) => {
   try {
-    const projects = await ProjectModel.find();
+    const projects = await Projects.find();
     res.status(200).json({
       message: "Data fetched successfully",
       data: projects,
@@ -21,7 +21,7 @@ const getProjects = async (req, res) => {
 
 const getProject = async (req, res) => {
   try {
-    const project = await ProjectModel.findById(req.params.id);
+    const project = await Projects.findById(req.params.id);
     if (!project)
       return res.status(404).json({
         message: "Project not found",
@@ -46,7 +46,7 @@ const getProject = async (req, res) => {
 
 const createProject = async (req, res) => {
   try {
-    const project = new ProjectModel(req.body);
+    const project = new Projects(req.body);
     await project.save();
     res.status(201).json({
       message: "Data created successfully",
@@ -65,7 +65,7 @@ const createProject = async (req, res) => {
 
 const updateProject = async (req, res) => {
   try {
-    const project = await ProjectModel
+    const project = await Projects
       .findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!project)
       return res.status(404).json({
@@ -90,7 +90,7 @@ const updateProject = async (req, res) => {
 
 const deleteProject = async (req, res) => {
   try {
-    const project = await ProjectModel
+    const project = await Projects
       .findByIdAndDelete(req.params.id);
     if (!project) return res.status(404).json({
       message: "Data not found",

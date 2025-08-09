@@ -1,10 +1,10 @@
-import EducationModel from "../models/educations.js";
+import Educations from "../models/educations.js";
 
 // Controller to handle education-related operations
 
 const getEducations = async (req, res) => {
   try {
-    const educations = await EducationModel.find();
+    const educations = await Educations.find();
     res.status(200).json({
       message: "Data fetched successfully",
       data: educations,
@@ -22,7 +22,7 @@ const getEducations = async (req, res) => {
 
 const getEducation = async (req, res) => {
   try {
-    const education = await EducationModel.findById(req.params.id);
+    const education = await Educations.findById(req.params.id);
     if (!education) return res.status(404).json({
       message: "Education not found",
       data: null, error: null
@@ -44,7 +44,7 @@ const getEducation = async (req, res) => {
 
 const createEducations = async (req, res) => {
   try {
-    const education = new EducationModel(req.body);
+    const education = new Educations(req.body);
     await education.save();
     res.status(201).json({
       message: "Data created successfully",
@@ -63,7 +63,7 @@ const createEducations = async (req, res) => {
 
 const updateEducation = async (req, res) => {
   try {
-    const education = await EducationModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const education = await Educations.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!education)
       return res.status(404).json({
         message: "Data not found",
@@ -87,7 +87,7 @@ const updateEducation = async (req, res) => {
 
 const deleteEducation = async (req, res) => {
   try {
-    const education = await EducationModel.findByIdAndDelete(req.params.id);
+    const education = await Educations.findByIdAndDelete(req.params.id);
     if (!education)
       return res.status(404).json({
         message: "Data not found",

@@ -14,7 +14,7 @@ const chapterSchema = new mongoose.Schema({
   language: String
 }, { _id: false });
 
-const bookSchema = new mongoose.Schema({
+const booksSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users"
@@ -30,5 +30,5 @@ const bookSchema = new mongoose.Schema({
   chapters: [chapterSchema]
 });
 
-const BooksModel = mongoose.model("Books", bookSchema);
-export default BooksModel;
+const Books = mongoose.model("Books", booksSchema);
+export default Books;

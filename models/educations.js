@@ -26,5 +26,5 @@ const educationsSchema = new mongoose.Schema({
   highestDegree: highestDegreeSchema
 });
 
-const Education = mongoose.model("Educations", educationsSchema);
-export default Education;
+const Educations = mongoose.model("Educations", educationsSchema);
+export default Educations;

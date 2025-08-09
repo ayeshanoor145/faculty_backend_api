@@ -1,11 +1,24 @@
 import Users from "../models/users.js";
 import mongoose from "mongoose";
+
 // Controller to handle user-related operations
 
 let getUsers = async (req, res) => {
     try {
         //Fetch users from the database
         const users = await Users.find()
+            .populate([
+                "personalDetails",
+                "educations",
+                "employmentRecords",
+                "trainings",
+                "books",
+                "projects",
+                "publications",
+                "patents",
+                "workshops",
+                "distinctions",
+            ]);
 
         res.status(200).json({
             message: "Users fetched successfully",
@@ -18,17 +31,27 @@ let getUsers = async (req, res) => {
             message: "Internal server error",
             data: null,
             error: error.message,
-
         })
     }
 }
-
 
 let getUser = async (req, res) => {
     try {
         let id = req.params.id;
         // ObjectId validation handled by middleware
         const user = await Users.findById(id)
+        .populate([
+                "personalDetails",
+                "educations",
+                "employmentRecords",
+                "trainings",
+                "books",
+                "projects",
+                "publications",
+                "patents",
+                "workshops",
+                "distinctions",
+            ]);
         if (!user) {
             return res.status(404).json({
                 message: "Users not found",
@@ -51,12 +74,23 @@ let getUser = async (req, res) => {
     }
 }
 
-
 let deleteUser = async (req, res) => {
     try {
         let id = req.params.id;
         // ObjectId validation handled by middleware
         const user = await Users.findByIdAndDelete(id)
+        .populate([
+                "personalDetails",
+                "educations",
+                "employmentRecords",
+                "trainings",
+                "books",
+                "projects",
+                "publications",
+                "patents",
+                "workshops",
+                "distinctions",
+            ]);
         if (!user) {
             return res.status(404).json({
                 message: "User not found",
@@ -79,7 +113,6 @@ let deleteUser = async (req, res) => {
     }
 }
 
-
 let updateUsers = async (req, res) => {
     try {
         let id = req.params.id;
@@ -87,7 +120,18 @@ let updateUsers = async (req, res) => {
         // ObjectId validation handled by middleware
         const user = await Users.findByIdAndUpdate(id, userInfo,
             { new: true } //Return the updated document
-        );
+        ).populate([
+                "personalDetails",
+                "educations",
+                "employmentRecords",
+                "trainings",
+                "books",
+                "projects",
+                "publications",
+                "patents",
+                "workshops",
+                "distinctions",
+            ]);
         if (!user) {
             return res.status(404).json({
                 message: "Users not found",
@@ -110,18 +154,31 @@ let updateUsers = async (req, res) => {
     }
 }
 
-
 let createUsers = async (req, res) => {
     try {
         let userInfo = req.body;
-        const user = Users(userInfo)
-        await user.save();    //save the user to database
+        const user = new Users(userInfo); // Use 'new' keyword to create instance
+        await user.save(); // Save the user to database
+        
+        const populatedUser = await Users.findById(user._id)
+            .populate([
+                "personalDetails",
+                "educations",
+                "employmentRecords",
+                "trainings",
+                "books",
+                "projects",
+                "publications",
+                "patents",
+                "workshops",
+                "distinctions",
+            ]);
+            
         res.status(201).json({
             message: "User created successfully",
-            data: user,
+            data: populatedUser || user, // Return populated user if available, otherwise the basic user
             error: null,
-        })
-
+        });
     }
     catch (error) {
         res.status(500).json({
@@ -130,8 +187,6 @@ let createUsers = async (req, res) => {
             error: error.message,
         })
     }
-
 }
 
-
-export { getUsers, getUser, deleteUser, updateUsers , createUsers };
+export { getUsers, getUser, deleteUser, updateUsers, createUsers };

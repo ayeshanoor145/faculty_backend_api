@@ -1,10 +1,10 @@
-import WorkshopModel from "../models/workshops.js";
+import Workshops from "../models/workshops.js";
 
 // Controller to handle workshop-related operations
 
 const getWorkshops = async (req, res) => {
   try {
-    const workshops = await WorkshopModel.find();
+    const workshops = await Workshops.find();
     res.status(200).json({
       message: "Data fetched successfully",
       data: workshops,
@@ -22,7 +22,7 @@ const getWorkshops = async (req, res) => {
 
 const getWorkshop = async (req, res) => {
   try {
-    const workshop = await WorkshopModel
+    const workshop = await Workshops
       .findById(req.params.id);
     if (!workshop)
       return res.status(404).json({
@@ -47,7 +47,7 @@ const getWorkshop = async (req, res) => {
 
 const createWorkshop = async (req, res) => {
   try {
-    const workshop = new WorkshopModel(req.body);
+    const workshop = new Workshops(req.body);
     await workshop.save();
     res.status(201).json({
       message: "Data created successfully",
@@ -66,7 +66,7 @@ const createWorkshop = async (req, res) => {
 
 const updateWorkshop = async (req, res) => {
   try {
-    const workshop = await WorkshopModel
+    const workshop = await Workshops
       .findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!workshop)
       return res.status(404).json({
@@ -91,7 +91,7 @@ const updateWorkshop = async (req, res) => {
 
 const deleteWorkshop = async (req, res) => {
   try {
-    const workshop = await WorkshopModel
+    const workshop = await Workshops
       .findByIdAndDelete(req.params.id);
     if (!workshop)
       return res.status(404).json({
