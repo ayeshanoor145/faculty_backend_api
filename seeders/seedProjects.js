@@ -12,6 +12,8 @@ const seedProjects = async () => {
 
         // 1. Dr. Smith's Project
         {
+            _id: "6896d42a045cf05360fea93c", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4567", // Reference to Dr. Smith's user ID
             awardedBy: {
                 name: "Higher Education Commission (HEC)",
                 type: "National",
@@ -33,7 +35,9 @@ const seedProjects = async () => {
 
         // 2. Dr. Sarah's Project
         {
-           awardedBy: {
+            _id: "6896d42a045cf05360fea93d", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4568", // Reference to Dr. Sarah's user ID
+            awardedBy: {
                 name: "National Science Foundation",
                 type: "International",
                 country: "USA",
@@ -54,6 +58,8 @@ const seedProjects = async () => {
 
         // 3. Prof. Chen Wei's Project
         {
+            _id: "6896d42a045cf05360fea93e", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
             awardedBy: {
                 name: "National Natural Science Foundation of China",
                 type: "National",
@@ -74,7 +80,9 @@ const seedProjects = async () => {
 
         // 4. Dr. Fatima Khan's Project
         {
-           awardedBy: {
+            _id: "6896d42a045cf05360fea93f", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4570", // Reference to Dr. Fatima Khan's user ID
+            awardedBy: {
                 name: "Higher Education Commission (HEC)",
                 type: "National",
                 country: "Pakistan",
@@ -95,6 +103,8 @@ const seedProjects = async () => {
 
         // 5. Dr. Ahmed Mahmood's Project
         {
+            _id: "6896d42a045cf05360fea940", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
             awardedBy: {
                 name: "Engineering and Physical Sciences Research Council",
                 type: "National",
@@ -115,6 +125,8 @@ const seedProjects = async () => {
 
         // 6. Dr. Maria Garcia's Project
         {
+            _id: "6896d42a045cf05360fea941", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
             awardedBy: {
                 name: "European Research Council",
                 type: "International",
@@ -136,6 +148,8 @@ const seedProjects = async () => {
 
         // 7. Dr. James Wilson's Project
         {
+            _id: "6896d42a045cf05360fea942", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
             awardedBy: {
                 name: "National Science Foundation",
                 type: "International",
@@ -156,7 +170,9 @@ const seedProjects = async () => {
 
         // 8. Dr. Aisha Abdullah's Project
         {
-          awardedBy: {
+            _id: "6896d42a045cf05360fea943", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
+            awardedBy: {
                 name: "King Abdullah University of Science and Technology",
                 type: "National",
                 country: "Saudi Arabia",
@@ -177,6 +193,8 @@ const seedProjects = async () => {
 
         // 9. Dr. Robert Kim's Project
         {
+            _id: "6896d42a045cf05360fea944", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
             awardedBy: {
                 name: "National Research Foundation of Korea",
                 type: "National",
@@ -197,6 +215,8 @@ const seedProjects = async () => {
 
         // 10. Dr. Elena Petrova's Project
         {
+            _id: "6896d42a045cf05360fea945", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
             awardedBy: {
                 name: "Russian Science Foundation",
                 type: "National",
@@ -218,7 +238,9 @@ const seedProjects = async () => {
 
         // 11. Dr. Ali Hassan's Project
         {
-          awardedBy: {
+            _id: "6896d42a045cf05360fea946", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
+            awardedBy: {
                 name: "Higher Education Commission (HEC)",
                 type: "National",
                 country: "Pakistan",
@@ -238,7 +260,9 @@ const seedProjects = async () => {
 
         // 12. Dr. Sophia Rodriguez's Project
         {
-          awardedBy: {
+            _id: "6896d42a045cf05360fea947", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
+            awardedBy: {
                 name: "National Scientific and Technical Research Council",
                 type: "National",
                 country: "Argentina",
@@ -259,7 +283,9 @@ const seedProjects = async () => {
 
         // 13. Dr. Thomas Müller's Project
         {
-          awardedBy: {
+            _id: "6896d42a045cf05360fea948", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
+            awardedBy: {
                 name: "German Research Foundation",
                 type: "National",
                 country: "Germany",
@@ -279,7 +305,9 @@ const seedProjects = async () => {
 
         // 14. Dr. Amina Ndiaye's Project
         {
-           awardedBy: {
+            _id: "6896d42a045cf05360fea949", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
+            awardedBy: {
                 name: "World Health Organization",
                 type: "International",
                 country: "Switzerland",
@@ -300,7 +328,9 @@ const seedProjects = async () => {
 
         // 15. Dr. Raj Patel's Project
         {
-           awardedBy: {
+            _id: "6896d42a045cf05360fea950", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
+            awardedBy: {
                 name: "Canadian Institutes of Health Research",
                 type: "National",
                 country: "Canada",
@@ -320,6 +350,8 @@ const seedProjects = async () => {
 
         // 16. Dr. Yuki Tanaka's Project
         {
+            _id: "6896d42a045cf05360fea951", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
             awardedBy: {
                 name: "Japan Society for the Promotion of Science",
                 type: "National",
@@ -341,7 +373,9 @@ const seedProjects = async () => {
 
         // 17. Dr. Carlos Mendez's Project
         {
-           awardedBy: {
+            _id: "6896d42a045cf05360fea952", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
+            awardedBy: {
                 name: "National Council of Science and Technology",
                 type: "National",
                 country: "Mexico",
@@ -361,7 +395,9 @@ const seedProjects = async () => {
 
         // 18. Dr. Emma Wilson's Project
         {
-           awardedBy: {
+            _id: "6896d42a045cf05360fea953", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
+            awardedBy: {
                 name: "Wellcome Trust",
                 type: "International",
                 country: "UK",
@@ -382,6 +418,8 @@ const seedProjects = async () => {
 
         // 19. Dr. Muhammad Ali's Project
         {
+            _id: "6896d42a045cf05360fea954", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
             awardedBy: {
                 name: "Higher Education Commission (HEC)",
                 type: "National",
@@ -401,7 +439,9 @@ const seedProjects = async () => {
         },
 
         // 20. Dr. Li Wei's Project
-        {         
+        {
+            _id: "6896d42a045cf05360fea955", // Unique ID for the project    
+            user: "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID  
             awardedBy: {
                 name: "National Natural Science Foundation of China",
                 type: "National",
@@ -423,7 +463,9 @@ const seedProjects = async () => {
 
         // 21. Dr. Anna Kowalski's Project
         {
-           awardedBy: {
+            _id: "6896d42a045cf05360fea956", // Unique ID for the project
+            user: "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
+            awardedBy: {
                 name: "European Research Council",
                 type: "International",
                 country: "EU",
@@ -444,7 +486,7 @@ const seedProjects = async () => {
     ];
 
 
-    
+
     await ProjectModel.insertMany(projects);
     console.log('Projects seeded successfully');
 };

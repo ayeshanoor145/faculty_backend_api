@@ -11,6 +11,8 @@ const seedPatents = async () => {
 
         // 1. Dr. Smith (Computer Science - AI/ML)
         {
+            _id: "6896d42a045cf05360fea926",
+            user: "64d4f8b2c9e77b1a2c8b4567", // Reference to Dr. Smith's user ID
             patent_granted: {
                 ref_number: "US11223344B2",
                 title: "Adaptive Neural Network Architecture for Low-Resource Language Processing",
@@ -23,6 +25,8 @@ const seedPatents = async () => {
 
         // 2. Dr. Sarah (Data Science)
         {
+            _id: "6896d42a045cf05360fea927",
+            user: "64d4f8b2c9e77b1a2c8b4568", // Reference to Dr. Sarah's user ID
             patent_granted: {
                 ref_number: "US10998877A1",
                 title: "Federated Learning System for Privacy-Preserving Healthcare Data Analysis",
@@ -35,6 +39,8 @@ const seedPatents = async () => {
 
         // 3. Prof. Chen Wei (Deep Learning)
         {
+            _id: "6896d42a045cf05360fea928",
+            user: "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
             patent_granted: {
                 ref_number: "CN202210567890",
                 title: "3D Computer Vision System Using Hybrid Attention Mechanisms",
@@ -47,6 +53,8 @@ const seedPatents = async () => {
 
         // 4. Dr. Fatima Khan (Biomedical Engineering)
         {
+            _id: "6896d42a045cf05360fea929",
+            user:  "64d4f8b2c9e77b1a2c8b4570", // Reference to Dr. Fatima Khan's user ID
             patent_submitted: {
                 title: "Low-Cost EEG Headset for Brain-Computer Interfaces",
                 submission_date: "2023-02-18",
@@ -58,6 +66,8 @@ const seedPatents = async () => {
 
         // 5. Dr. Ahmed Mahmood (Electrical Engineering)
         {
+            _id: "6896d42a045cf05360fea92a",
+            user: "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
             patent_granted: {
                 ref_number: "PK2022000456",
                 title: "AI-Based Smart Grid Optimization System for Developing Countries",
@@ -70,6 +80,8 @@ const seedPatents = async () => {
 
         // 6. Dr. Maria Garcia (Environmental Science)
         {
+            _id: "6896d42a045cf05360fea92b",
+            user: "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
             patent_submitted: {
                 title: "Tropical Forest Carbon Sequestration Monitoring System",
                 submission_date: "2023-01-25",
@@ -81,6 +93,8 @@ const seedPatents = async () => {
 
         // 7. Dr. James Wilson (Physics)
         {
+            _id: "6896d42a045cf05360fea92c",
+            user: "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
             patent_granted: {
                 ref_number: "GB2598765B",
                 title: "Quantum Entanglement Measurement Device for Novel Superconductors",
@@ -93,6 +107,8 @@ const seedPatents = async () => {
 
         // 8. Dr. Aisha Abdullah (Chemistry - Nanotech)
         {
+            _id: "6896d42a045cf05360fea92d",
+            user: "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
             patent_granted: {
                 ref_number: "SA2023001234",
                 title: "Gold Nanoparticle Drug Delivery System for Targeted Cancer Therapy",
@@ -105,6 +121,8 @@ const seedPatents = async () => {
 
         // 9. Dr. Robert Kim (Biotechnology)
         {
+            _id: "6896d42a045cf05360fea92e",
+            user: "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
             patent_granted: {
                 ref_number: "US11447788B2",
                 title: "CRISPR-Cas9 Gene Editing Method for Drought-Resistant Crops",
@@ -117,6 +135,8 @@ const seedPatents = async () => {
 
         // 10. Dr. Elena Petrova (Materials Science)
         {
+            _id: "6896d42a045cf05360fea92f",
+            user: "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
             patent_granted: {
                 ref_number: "RU2022156789",
                 title: "Biodegradable Polymer Composite for Food Packaging",
@@ -129,6 +149,8 @@ const seedPatents = async () => {
 
         // 11. Dr. Ali Hassan (Mechanical Engineering - Robotics)
         {
+            _id: "6896d42a045cf05360fea930",
+            user: "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
             patent_submitted: {
                 title: "AI-Powered Robotic Arm for Precision Manufacturing",
                 submission_date: "2023-04-15",
@@ -140,6 +162,8 @@ const seedPatents = async () => {
 
         // 12. Dr. Sophia Rodriguez (NLP)
         {
+            _id: "6896d42a045cf05360fea931",
+            user: "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
             patent_granted: {
                 ref_number: "ES2022304567",
                 title: "Neural Machine Translation System for Indigenous Languages",
@@ -152,6 +176,8 @@ const seedPatents = async () => {
 
         // 13. Dr. Thomas Müller (Physics)
         {
+            _id: "6896d42a045cf05360fea932",
+            user: "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
             patent_granted: {
                 ref_number: "DE202315678",
                 title: "High-Temperature Superconducting Material Composition",
@@ -164,6 +190,8 @@ const seedPatents = async () => {
 
         // 14. Dr. Amina Ndiaye (Epidemiology)
         {
+            _id: "6896d42a045cf05360fea933",
+            user: "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
             patent_submitted: {
                 title: "Community-Based Malaria Surveillance and Alert System",
                 submission_date: "2022-11-15",
@@ -175,6 +203,8 @@ const seedPatents = async () => {
 
         // 15. Dr. Raj Patel (Biochemistry)
         {
+            _id: "6896d42a045cf05360fea934",
+            user: "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
             patent_granted: {
                 ref_number: "CA3021456B",
                 title: "Engineered Enzyme for Plastic Waste Degradation",
@@ -187,6 +217,8 @@ const seedPatents = async () => {
 
         // 16. Dr. Yuki Tanaka (Computer Engineering)
         {
+            _id: "6896d42a045cf05360fea935",
+            user: "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
             patent_granted: {
                 ref_number: "JP2022156789",
                 title: "Neuromorphic Computing Chip Architecture",
@@ -199,6 +231,8 @@ const seedPatents = async () => {
 
         // 17. Dr. Carlos Mendez (Environmental Engineering)
         {
+            _id: "6896d42a045cf05360fea936",
+            user: "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
             patent_submitted: {
                 title: "Low-Energy Membrane Desalination System",
                 submission_date: "2023-03-18",
@@ -210,6 +244,8 @@ const seedPatents = async () => {
 
         // 18. Dr. Emma Wilson (Neuroscience)
         {
+            _id: "6896d42a045cf05360fea937",
+            user: "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
             patent_granted: {
                 ref_number: "GB2601234B",
                 title: "Non-Invasive Memory Enhancement Stimulation Device",
@@ -222,6 +258,8 @@ const seedPatents = async () => {
 
         // 19. Dr. Muhammad Ali (Mathematics)
         {
+            _id: "6896d42a045cf05360fea938",
+            user: "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
             patent_submitted: {
                 title: "Computational Fluid Dynamics Optimization Algorithm",
                 submission_date: "2022-10-05",
@@ -233,6 +271,8 @@ const seedPatents = async () => {
 
         // 20. Dr. Li Wei (Materials Science)
         {
+            _id: "6896d42a045cf05360fea939",
+            user: "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID
             patent_granted: {
                 ref_number: "CN2023102345",
                 title: "Flexible Graphene-Based Electronic Skin for Wearable Devices",
@@ -245,6 +285,8 @@ const seedPatents = async () => {
 
         // 21. Dr. Anna Kowalski (Chemistry)
         {
+            _id: "6896d42a045cf05360fea93a",
+            user: "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
             patent_granted: {
                 ref_number: "PL2022005678",
                 title: "Green Catalytic Process for Pharmaceutical Intermediate Synthesis",

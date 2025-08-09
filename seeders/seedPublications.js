@@ -1,5 +1,5 @@
 const seedPublications = async () => {
-    const module = await import ('../models/publications.js');
+    const module = await import('../models/publications.js');
     const PublicationModel = module.default;
     const count = await PublicationModel.countDocuments();
     if (count > 0) {
@@ -10,8 +10,10 @@ const seedPublications = async () => {
 
     const publications = [
 
-                // 1. Dr. Smith (Computer Science - AI/ML)
+        // 1. Dr. Smith (Computer Science - AI/ML)
         {
+            _id: "6896d42a045cf05360fea879", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4567", // Reference to Dr. Smith's user ID
             "publications":
             {
                 "author": "Dr. Smith (Corresponding Author)",
@@ -31,6 +33,8 @@ const seedPublications = async () => {
 
         // 2. Dr. Sarah (Data Science)
         {
+            _id: "6896d42a045cf05360fea880", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4568", // Reference to Dr. Sarah's user ID
             "publications": [
                 {
                     "author": "Dr. Sarah (Corresponding Author)",
@@ -51,6 +55,8 @@ const seedPublications = async () => {
 
         // 3. Prof. Chen Wei (Deep Learning)
         {
+            _id: "6896d42a045cf05360fea881", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
             "publications": [
                 {
                     "author": "Prof. Chen Wei (Corresponding Author)",
@@ -71,6 +77,8 @@ const seedPublications = async () => {
 
         // 4. Dr. Fatima Khan (Biomedical Engineering)
         {
+            _id: "6896d42a045cf05360fea882", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4570", // Reference to Dr. Fatima Khan's user ID
             "publications": [
                 {
                     "author": "Dr. Fatima Khan (Corresponding Author)",
@@ -91,6 +99,8 @@ const seedPublications = async () => {
 
         // 5. Dr. Ahmed Mahmood (Electrical Engineering)
         {
+            _id: "6896d42a045cf05360fea883", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
             "publications": [
                 {
                     "author": "Dr. Ahmed Mahmood (Corresponding Author)",
@@ -111,6 +121,8 @@ const seedPublications = async () => {
 
         // 6. Dr. Maria Garcia (Environmental Science)
         {
+            _id: "6896d42a045cf05360fea884", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
             "publications": [
                 {
                     "author": "Dr. Maria Garcia (Corresponding Author)",
@@ -131,6 +143,8 @@ const seedPublications = async () => {
 
         // 7. Dr. James Wilson (Physics - Quantum)
         {
+            _id: "6896d42a045cf05360fea885", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
             "publications": [
                 {
                     "author": "Dr. James Wilson (Corresponding Author)",
@@ -151,6 +165,8 @@ const seedPublications = async () => {
 
         // 8. Dr. Aisha Abdullah (Chemistry - Nanotech)
         {
+            _id: "6896d42a045cf05360fea886", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
             "publications": [
                 {
                     "author": "Dr. Aisha Abdullah (Corresponding Author)",
@@ -171,6 +187,8 @@ const seedPublications = async () => {
 
         // 9. Dr. Robert Kim (Biotechnology)
         {
+            _id: "6896d42a045cf05360fea887", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
             "publications": [
                 {
                     "author": "Dr. Robert Kim (Corresponding Author)",
@@ -191,6 +209,8 @@ const seedPublications = async () => {
 
         // 10. Dr. Elena Petrova (Materials Science)
         {
+            _id: "6896d42a045cf05360fea888", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
             "publications": [
                 {
                     "author": "Dr. Elena Petrova (Corresponding Author)",
@@ -211,6 +231,8 @@ const seedPublications = async () => {
 
         // 11. Dr. Ali Hassan (Mechanical Engineering - Robotics)
         {
+            _id: "6896d42a045cf05360fea889", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
             "publications": [
                 {
                     "author": "Dr. Ali Hassan (Corresponding Author)",
@@ -231,6 +253,8 @@ const seedPublications = async () => {
 
         // 12. Dr. Sophia Rodriguez (NLP)
         {
+            _id: "6896d42a045cf05360fea890", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
             "publications": [
                 {
                     "author": "Dr. Sophia Rodriguez (Corresponding Author)",
@@ -251,6 +275,8 @@ const seedPublications = async () => {
 
         // 13. Dr. Thomas Müller (Physics)
         {
+            _id: "6896d42a045cf05360fea891", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
             "publications": [
                 {
                     "author": "Dr. Thomas Müller (Corresponding Author)",
@@ -271,6 +297,8 @@ const seedPublications = async () => {
 
         // 14. Dr. Amina Ndiaye (Epidemiology)
         {
+            _id: "6896d42a045cf05360fea892", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
             "publications": [
                 {
                     "author": "Dr. Amina Ndiaye (Corresponding Author)",
@@ -291,6 +319,8 @@ const seedPublications = async () => {
 
         // 15. Dr. Raj Patel (Biochemistry)
         {
+            _id: "6896d42a045cf05360fea893", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
             "publications": [
                 {
                     "author": "Dr. Raj Patel (Corresponding Author)",
@@ -311,6 +341,8 @@ const seedPublications = async () => {
 
         // 16. Dr. Yuki Tanaka (Computer Engineering)
         {
+            _id: "6896d42a045cf05360fea894", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
             "publications": [
                 {
                     "author": "Dr. Yuki Tanaka (Corresponding Author)",
@@ -331,6 +363,8 @@ const seedPublications = async () => {
 
         // 17. Dr. Carlos Mendez (Environmental Engineering)
         {
+            _id: "6896d42a045cf05360fea895", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
             "publications": [
                 {
                     "author": "Dr. Carlos Mendez (Corresponding Author)",
@@ -351,6 +385,8 @@ const seedPublications = async () => {
 
         // 18. Dr. Emma Wilson (Neuroscience)
         {
+            _id: "6896d42a045cf05360fea896", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
             "publications": [
                 {
                     "author": "Dr. Emma Wilson (Corresponding Author)",
@@ -371,6 +407,8 @@ const seedPublications = async () => {
 
         // 19. Dr. Muhammad Ali (Mathematics)
         {
+            _id: "6896d42a045cf05360fea897", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
             "publications": [
                 {
                     "author": "Dr. Muhammad Ali (Corresponding Author)",
@@ -391,6 +429,8 @@ const seedPublications = async () => {
 
         // 20. Dr. Li Wei (Materials Science)
         {
+            _id: "6896d42a045cf05360fea898", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID
             "publications": [
                 {
                     "author": "Dr. Li Wei (Corresponding Author)",
@@ -411,6 +451,8 @@ const seedPublications = async () => {
 
         // 21. Dr. Anna Kowalski (Chemistry)
         {
+            _id: "6896d42a045cf05360fea899", // Unique ID for the publication
+            user: "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
             "publications": [
                 {
                     "author": "Dr. Anna Kowalski (Corresponding Author)",
@@ -431,7 +473,7 @@ const seedPublications = async () => {
 
 
     ];
-    await PublicationModel. insertMany(publications);
+    await PublicationModel.insertMany(publications);
     console.log('Publications seeded successfully');
 };
 export default seedPublications;

@@ -11,6 +11,7 @@ const seedBooks = async () => {
 
         // 1. Dr. Smith (Computer Science - AI)
         {
+            _id : "6896dec821f554752db754e1",
             user: "64d4f8b2c9e77b1a2c8b4567",
             title: "Advanced Machine Learning Techniques",
             authors: ["Dr. Smith", "Dr. Sarah"],
@@ -35,6 +36,7 @@ const seedBooks = async () => {
 
         // 2. Dr. Sarah (Computer Science - Data Science)
         {
+            _id : "6896dec821f554752db754e2",
             user: "64d4f8b2c9e77b1a2c8b4568",
             title: "Big Data Analytics: Principles and Practice",
             authors: ["Dr. Sarah"],
@@ -59,6 +61,7 @@ const seedBooks = async () => {
 
         // 3. Prof. Chen Wei (Computer Science - Deep Learning)
         {
+            _id : "6896dec821f554752db754e3",
             user: "64d4f8b2c9e77b1a2c8b4569",
             title: "Deep Learning Architectures",
             authors: ["Prof. Chen Wei"],
@@ -83,6 +86,7 @@ const seedBooks = async () => {
 
         // 4. Dr. Fatima Khan (Biomedical Engineering - Neural Engineering)
         {
+            _id : "6896dec821f554752db754e4",
             user: "64d4f8b2c9e77b1a2c8b4570",
             title: "Brain-Computer Interfaces: Fundamentals and Applications",
             authors: ["Dr. Fatima Khan"],
@@ -107,6 +111,7 @@ const seedBooks = async () => {
 
         // 5. Dr. Ahmed Mahmood (Electrical Engineering - Power Systems)
         {
+            _id : "6896dec821f554752db754e5",
             user: "64d4f8b2c9e77b1a2c8b4571",
             title: "Smart Grid Technologies for Developing Countries",
             authors: ["Dr. Ahmed Mahmood"],
@@ -131,6 +136,7 @@ const seedBooks = async () => {
 
         // 6. Dr. Maria Garcia (Environmental Science - Climate Change)
         {
+            _id : "6896dec821f554752db754e6",
             user: "64d4f8b2c9e77b1a2c8b4572",
             title: "Climate Change in Latin America: Impacts and Solutions",
             authors: ["Dr. Maria Garcia", "Dr. Carlos Mendez"],
@@ -155,6 +161,7 @@ const seedBooks = async () => {
 
         // 7. Dr. James Wilson (Physics - Quantum Mechanics)
         {
+            _id : "6896dec821f554752db754e7",
             user: "64d4f8b2c9e77b1a2c8b4573",
             title: "Quantum Computing: Theory and Practice",
             authors: ["Dr. James Wilson"],
@@ -179,6 +186,7 @@ const seedBooks = async () => {
 
         // 8. Dr. Aisha Abdullah (Chemistry - Nanotechnology)
         {
+            _id : "6896dec821f554752db754e8",
             user: "64d4f8b2c9e77b1a2c8b4574",
             title: "Nanomaterials for Medical Applications",
             authors: ["Dr. Aisha Abdullah"],
@@ -203,6 +211,7 @@ const seedBooks = async () => {
 
         // 9. Dr. Robert Kim (Biotechnology - Genetic Engineering)
         {
+            _id : "6896dec821f554752db754e9",
             user: "64d4f8b2c9e77b1a2c8b4575",
             title: "CRISPR Technology: Principles and Applications",
             authors: ["Dr. Robert Kim"],
@@ -227,6 +236,7 @@ const seedBooks = async () => {
 
         // 10. Dr. Elena Petrova (Materials Science - Polymers)
         {
+            _id : "6896dec821f554752db754ea",
             user: "64d4f8b2c9e77b1a2c8b4576",
             title: "Sustainable Polymer Materials",
             authors: ["Dr. Elena Petrova"],
@@ -251,6 +261,7 @@ const seedBooks = async () => {
 
         // 11. Dr. Ali Hassan (Mechanical Engineering - Robotics)
         {
+            _id : "6896dec821f554752db754eb",
             user: "64d4f8b2c9e77b1a2c8b4577",
             title: "Industrial Robotics and Automation",
             authors: ["Dr. Ali Hassan"],
@@ -275,6 +286,7 @@ const seedBooks = async () => {
 
         // 12. Dr. Sophia Rodriguez (Computer Science - NLP)
         {
+            _id : "6896dec821f554752db754ec",
             user: "64d4f8b2c9e77b1a2c8b4578",
             title: "Natural Language Processing for Low-Resource Languages",
             authors: ["Dr. Sophia Rodriguez"],
@@ -299,6 +311,7 @@ const seedBooks = async () => {
 
         // 13. Dr. Thomas Müller (Physics - Condensed Matter)
         {
+            _id : "6896dec821f554752db754ed",
             user: "64d4f8b2c9e77b1a2c8b4579",
             title: "Superconductivity in Novel Materials",
             authors: ["Dr. Thomas Müller"],
@@ -323,6 +336,7 @@ const seedBooks = async () => {
 
         // 14. Dr. Amina Ndiaye (Epidemiology - Infectious Diseases)
         {
+            _id : "6896dec821f554752db754ee",
             user: "64d4f8b2c9e77b1a2c8b4580",
             title: "Malaria Control in West Africa",
             authors: ["Dr. Amina Ndiaye"],
@@ -347,6 +361,7 @@ const seedBooks = async () => {
 
         // 15. Dr. Raj Patel (Biochemistry - Enzymology)
         {
+            _id : "6896dec821f554752db754ef",
             user: "64d4f8b2c9e77b1a2c8b4581",
             title: "Enzyme Engineering for Industrial Applications",
             authors: ["Dr. Raj Patel"],
@@ -371,6 +386,7 @@ const seedBooks = async () => {
 
         // 16. Dr. Yuki Tanaka (Computer Engineering - Computer Architecture)
         {
+            _id : "6896dec821f554752db754f0",
             user: "64d4f8b2c9e77b1a2c8b4582",
             title: "Next-Generation Computer Architectures",
             authors: ["Dr. Yuki Tanaka"],
@@ -395,6 +411,7 @@ const seedBooks = async () => {
 
         // 17. Dr. Carlos Mendez (Environmental Engineering - Water Treatment)
         {
+            _id : "6896dec821f554752db754f1",
             user: "64d4f8b2c9e77b1a2c8b4583",
             title: "Advanced Water Treatment Technologies",
             authors: ["Dr. Carlos Mendez"],
@@ -419,6 +436,7 @@ const seedBooks = async () => {
 
         // 18. Dr. Emma Wilson (Neuroscience - Cognitive Neuroscience)
         {
+            _id : "6896dec821f554752db754f2",
             user: "64d4f8b2c9e77b1a2c8b4584",
             title: "Memory Systems in the Brain",
             authors: ["Dr. Emma Wilson"],
@@ -443,6 +461,7 @@ const seedBooks = async () => {
 
         // 19. Dr. Muhammad Ali (Mathematics - Applied Mathematics)
         {
+            _id : "6896dec821f554752db754f3",
             user: "64d4f8b2c9e77b1a2c8b4585",
             title: "Mathematical Modeling of Fluid Dynamics",
             authors: ["Dr. Muhammad Ali"],
@@ -467,6 +486,7 @@ const seedBooks = async () => {
 
         // 20. Dr. Li Wei (Materials Engineering - Nanomaterials)
         {
+            _id : "6896dec821f554752db754f4",
             user: "64d4f8b2c9e77b1a2c8b4586",
             title: "Graphene-Based Materials and Applications",
             authors: ["Dr. Li Wei"],
@@ -491,6 +511,7 @@ const seedBooks = async () => {
 
         // 21. Dr. Anna Kowalski (Chemistry - Organic Chemistry)
         {
+            _id : "6896dec821f554752db754f5",
             user: "64d4f8b2c9e77b1a2c8b4587",
             title: "Green Catalysis in Organic Synthesis",
             authors: ["Dr. Anna Kowalski"],

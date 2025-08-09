@@ -11,6 +11,7 @@ const seedDistinctions = async () => {
 
         // 1. Dr. Smith (Computer Science - AI/ML)
         {
+            _id : "6896d42a045cf05360fea8a1",
             user: "64d4f8b2c9e77b1a2c8b4567",
             distinctions: [
                 {
@@ -36,6 +37,7 @@ const seedDistinctions = async () => {
 
         // 2. Dr. Sarah (Data Science)
         {
+            _id : "6896d42a045cf05360fea8a2",
             user: "64d4f8b2c9e77b1a2c8b4568",
             distinctions: [
                 {
@@ -55,6 +57,7 @@ const seedDistinctions = async () => {
 
         // 3. Prof. Chen Wei (Deep Learning)
         {
+            _id : "6896d42a045cf05360fea8a3",
             user: "64d4f8b2c9e77b1a2c8b4569",
             distinctions: [
                 {
@@ -74,6 +77,7 @@ const seedDistinctions = async () => {
 
         // 4. Dr. Fatima Khan (Biomedical Engineering)
         {
+            _id : "6896d42a045cf05360fea8a4",
             user: "64d4f8b2c9e77b1a2c8b4570",
             distinctions: [
                 {
@@ -93,7 +97,7 @@ const seedDistinctions = async () => {
 
         // 5. Dr. Ahmed Mahmood (Electrical Engineering)
         {
-
+            _id : "6896d42a045cf05360fea8a5",
             user: "64d4f8b2c9e77b1a2c8b4571",
             distinctions: [
                 {
@@ -113,6 +117,7 @@ const seedDistinctions = async () => {
 
         // 6. Dr. Maria Garcia (Environmental Science)
         {
+            _id : "6896d42a045cf05360fea8a6",
             user: "64d4f8b2c9e77b1a2c8b4572",
             distinctions: [
                 {
@@ -132,6 +137,7 @@ const seedDistinctions = async () => {
 
         // 7. Dr. James Wilson (Physics - Quantum)
         {
+            _id : "6896d42a045cf05360fea8a7",
             user: "64d4f8b2c9e77b1a2c8b4573",
             distinctions: [
                 {
@@ -151,6 +157,7 @@ const seedDistinctions = async () => {
 
         // 8. Dr. Aisha Abdullah (Chemistry - Nanotech)
         {
+            _id : "6896d42a045cf05360fea8a8",
             user: "64d4f8b2c9e77b1a2c8b4574",
             distinctions: [
                 {
@@ -170,6 +177,7 @@ const seedDistinctions = async () => {
 
         // 9. Dr. Robert Kim (Biotechnology)
         {
+            _id : "6896d42a045cf05360fea8a9",
             user: "64d4f8b2c9e77b1a2c8b4575",
             distinctions: [
                 {
@@ -189,6 +197,7 @@ const seedDistinctions = async () => {
 
         // 10. Dr. Elena Petrova (Materials Science)
         {
+            _id : "6896d42a045cf05360fea8aa",
             user: "64d4f8b2c9e77b1a2c8b4576",
             distinctions: [
                 {
@@ -208,6 +217,7 @@ const seedDistinctions = async () => {
 
         // 11. Dr. Ali Hassan (Mechanical Engineering - Robotics)
         {
+            _id : "6896d42a045cf05360fea8ab",
             user: "64d4f8b2c9e77b1a2c8b4577",
             distinctions: [
                 {
@@ -227,6 +237,7 @@ const seedDistinctions = async () => {
 
         // 12. Dr. Sophia Rodriguez (NLP)
         {
+            _id : "6896d42a045cf05360fea8ac",
             user: "64d4f8b2c9e77b1a2c8b4578",
             distinctions: [
                 {
@@ -246,6 +257,7 @@ const seedDistinctions = async () => {
 
         // 13. Dr. Thomas Müller (Physics)
         {
+            _id : "6896d42a045cf05360fea8ad",
             user: "64d4f8b2c9e77b1a2c8b4579",
             distinctions: [
                 {
@@ -265,6 +277,7 @@ const seedDistinctions = async () => {
 
         // 14. Dr. Amina Ndiaye (Epidemiology)
         {
+            _id : "6896d42a045cf05360fea8ae",
             user: "64d4f8b2c9e77b1a2c8b4580",
             distinctions: [
                 {
@@ -284,6 +297,7 @@ const seedDistinctions = async () => {
 
         // 15. Dr. Raj Patel (Biochemistry)
         {
+            _id : "6896d42a045cf05360fea8af",
             user: "64d4f8b2c9e77b1a2c8b4581",
             distinctions: [
                 {
@@ -303,6 +317,7 @@ const seedDistinctions = async () => {
 
         // 16. Dr. Yuki Tanaka (Computer Engineering)
         {
+            _id : "6896d42a045cf05360fea8b0",
             user: "64d4f8b2c9e77b1a2c8b4582",
             distinctions: [
                 {
@@ -322,6 +337,7 @@ const seedDistinctions = async () => {
 
         // 17. Dr. Carlos Mendez (Environmental Engineering)
         {
+            _id : "6896d42a045cf05360fea8b1",
 
             user: "64d4f8b2c9e77b1a2c8b4583",
             distinctions: [
@@ -342,6 +358,7 @@ const seedDistinctions = async () => {
 
         // 18. Dr. Emma Wilson (Neuroscience)
         {
+            _id : "6896d42a045cf05360fea8b2",
             user: "64d4f8b2c9e77b1a2c8b4584",
             distinctions: [
                 {
@@ -361,6 +378,7 @@ const seedDistinctions = async () => {
 
         // 19. Dr. Muhammad Ali (Mathematics)
         {
+            _id : "6896d42a045cf05360fea8b3",
             user: "64d4f8b2c9e77b1a2c8b4585",
             distinctions: [
                 {
@@ -381,6 +399,7 @@ const seedDistinctions = async () => {
 
         // 20. Dr. Li Wei (Materials Science)
         {
+            _id : "6896d42a045cf05360fea8b4",
             user: "64d4f8b2c9e77b1a2c8b4586",
             distinctions: [
                 {
@@ -400,6 +419,7 @@ const seedDistinctions = async () => {
 
         // 21. Dr. Anna Kowalski (Chemistry)
         {
+            _id : "6896d42a045cf05360fea8b5",
             user: "64d4f8b2c9e77b1a2c8b4587",
             distinctions: [
                 {

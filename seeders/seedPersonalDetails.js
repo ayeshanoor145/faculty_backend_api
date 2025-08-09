@@ -10,6 +10,8 @@ const seedPersonalDetails = async () => {
     const personalDetails = [
 
         {
+            _id: "6896d42a045cf05360fea873",
+             user: "64d4f8b2c9e77b1a2c8b4567", // Reference to Dr. Smith's user ID
             name: "Dr. Smith",
             academicTitle: "Professor",
             designation: "Senior Research Fellow",
@@ -35,6 +37,8 @@ const seedPersonalDetails = async () => {
         },
         
         {
+            _id: "6896d42a045cf05360fea874",
+            user: "64d4f8b2c9e77b1a2c8b4568", // Reference to Dr. Sarah's user ID
             name: "Dr. Sarah",
             academicTitle: "Professor",
             designation: "Department Head",
@@ -53,6 +57,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea875",
+             user: "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
             name: "Prof. Chen Wei",
             academicTitle: "Associate Professor",
             designation: "AI Lab Director",
@@ -70,6 +76,8 @@ const seedPersonalDetails = async () => {
             biosketch: "Pioneer in deep learning with multiple award-winning publications."
         },
         {
+            _id: "6896d42a045cf05360fea876",
+             user: "64d4f8b2c9e77b1a2c8b4570", // Reference to Dr. Fatima Khan's user ID
             name: "Dr. Fatima Khan",
             academicTitle: "Assistant Professor",
             designation: "Research Scientist",
@@ -88,6 +96,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea877",
+             user: "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
             name: "Dr. Ahmed Mahmood",
             academicTitle: "Professor",
             designation: "Dean of Engineering",
@@ -106,6 +116,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea878",
+             user: "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
             name: "Dr. Maria Garcia",
             academicTitle: "Research Professor",
             designation: "Principal Investigator",
@@ -124,6 +136,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea879",
+             user: "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
             name: "Dr. James Wilson",
             academicTitle: "Professor",
             designation: "Department Chair",
@@ -142,6 +156,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea87a",
+             user: "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
             name: "Dr. Aisha Abdullah",
             academicTitle: "Associate Professor",
             designation: "Research Lead",
@@ -161,6 +177,8 @@ const seedPersonalDetails = async () => {
 
 
         {
+            _id: "6896d42a045cf05360fea87b",
+             user: "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
             name: "Dr. Robert Kim",
             academicTitle: "Assistant Professor",
             designation: "Lab Director",
@@ -179,6 +197,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea87c",
+             user: "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
             name: "Dr. Elena Petrova",
             academicTitle: "Professor",
             designation: "Research Coordinator",
@@ -199,6 +219,8 @@ const seedPersonalDetails = async () => {
 
 
         {
+            _id: "6896d42a045cf05360fea87d",
+             user: "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
             name: "Dr. Ali Hassan",
             academicTitle: "Professor",
             designation: "Department Head",
@@ -218,6 +240,8 @@ const seedPersonalDetails = async () => {
 
 
         {
+            _id: "6896d42a045cf05360fea87e",
+             user: "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
             name: "Dr. Sophia Rodriguez",
             academicTitle: "Associate Professor",
             designation: "AI Research Lead",
@@ -236,6 +260,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea87f",
+             user: "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
             name: "Dr. Thomas Müller",
             academicTitle: "Professor",
             designation: "Institute Director",
@@ -254,6 +280,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea880",
+             user: "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
             name: "Dr. Amina Ndiaye",
             academicTitle: "Research Professor",
             designation: "Public Health Lead",
@@ -273,6 +301,8 @@ const seedPersonalDetails = async () => {
 
 
         {
+            _id: "6896d42a045cf05360fea881",
+             user: "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
             name: "Dr. Raj Patel",
             academicTitle: "Assistant Professor",
             designation: "Lab Head",
@@ -291,6 +321,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea882",
+             user: "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
             name: "Dr. Yuki Tanaka",
             academicTitle: "Professor",
             designation: "Department Chair",
@@ -309,6 +341,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea883",
+             user: "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
             name: "Dr. Carlos Mendez",
             academicTitle: "Associate Professor",
             designation: "Research Coordinator",
@@ -327,6 +361,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea884",
+             user: "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
             name: "Dr. Emma Wilson",
             academicTitle: "Professor",
             designation: "Research Director",
@@ -345,6 +381,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea885",
+             user: "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
             name: "Dr. Muhammad Ali",
             academicTitle: "Professor",
             designation: "Dean of Science",
@@ -363,6 +401,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea886",
+             user: "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID
             name: "Dr. Li Wei",
             academicTitle: "Research Professor",
             designation: "Lab Director",
@@ -381,6 +421,8 @@ const seedPersonalDetails = async () => {
         },
 
         {
+            _id: "6896d42a045cf05360fea887",
+             user: "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
             name: "Dr. Anna Kowalski",
             academicTitle: "Assistant Professor",
             designation: "Research Scientist",
