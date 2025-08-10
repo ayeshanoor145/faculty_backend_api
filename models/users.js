@@ -9,43 +9,43 @@ const usersSchema = new mongoose.Schema({
   code: String,
   codeExpires: String,
   password: String,
-  personalDetails: {
+  personalDetail: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "PersonalDetails" 
+    ref: "PersonalDetails"
   },
-  educations: {
+  education: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Educations"
   },
-  employmentRecords: {
+  employmentRecord: {
     type: mongoose.Schema.Types.ObjectId,
-    ref:  "  EmploymentRecords"
+    ref: "EmploymentRecords"
   },
-  trainings: {
+  training: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Trainings"
   },
-  books: {
+  book: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Books"
   },
-  projects: {
+  project: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Projects"
   },
-  publications: {
+  publication: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Publications"
   },
-  patents: {
+  patent: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Patents"
   },
-  workshops: {
+  workshop: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Workshops"
   },
-  distinctions: {
+  distinction: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Distinctions"
   }

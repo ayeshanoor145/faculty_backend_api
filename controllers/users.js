@@ -1,5 +1,4 @@
 import Users from "../models/users.js";
-import mongoose from "mongoose";
 
 // Controller to handle user-related operations
 
@@ -8,18 +7,17 @@ let getUsers = async (req, res) => {
         //Fetch users from the database
         const users = await Users.find()
             .populate([
-                "personalDetails",
-                "educations",
-                "employmentRecords",
-                "trainings",
-                "books",
-                "projects",
-                "publications",
-                "patents",
-                "workshops",
-                "distinctions",
+                "personalDetail",
+                "education",
+                "employmentRecord",
+                "training",
+                "book",
+                "project",
+                "publication",
+                "patent",
+                "workshop",
+                "distinction",
             ]);
-
         res.status(200).json({
             message: "Users fetched successfully",
             data: users,
@@ -40,17 +38,17 @@ let getUser = async (req, res) => {
         let id = req.params.id;
         // ObjectId validation handled by middleware
         const user = await Users.findById(id)
-        .populate([
-                "personalDetails",
-                "educations",
-                "employmentRecords",
-                "trainings",
-                "books",
-                "projects",
-                "publications",
-                "patents",
-                "workshops",
-                "distinctions",
+            .populate([
+                "personalDetail",
+                "education",
+                "employmentRecord",
+                "training",
+                "book",
+                "project",
+                "publication",
+                "patent",
+                "workshop",
+                "distinction",
             ]);
         if (!user) {
             return res.status(404).json({
@@ -79,17 +77,17 @@ let deleteUser = async (req, res) => {
         let id = req.params.id;
         // ObjectId validation handled by middleware
         const user = await Users.findByIdAndDelete(id)
-        .populate([
-                "personalDetails",
-                "educations",
-                "employmentRecords",
-                "trainings",
-                "books",
-                "projects",
-                "publications",
-                "patents",
-                "workshops",
-                "distinctions",
+            .populate([
+                "personalDetail",
+                "education",
+                "employmentRecord",
+                "training",
+                "book",
+                "project",
+                "publication",
+                "patent",
+                "workshop",
+                "distinction",
             ]);
         if (!user) {
             return res.status(404).json({
@@ -121,17 +119,17 @@ let updateUsers = async (req, res) => {
         const user = await Users.findByIdAndUpdate(id, userInfo,
             { new: true } //Return the updated document
         ).populate([
-                "personalDetails",
-                "educations",
-                "employmentRecords",
-                "trainings",
-                "books",
-                "projects",
-                "publications",
-                "patents",
-                "workshops",
-                "distinctions",
-            ]);
+            "personalDetail",
+            "education",
+            "employmentRecord",
+            "training",
+            "book",
+            "project",
+            "publication",
+            "patent",
+            "workshop",
+            "distinction",
+        ]);
         if (!user) {
             return res.status(404).json({
                 message: "Users not found",
@@ -159,21 +157,21 @@ let createUsers = async (req, res) => {
         let userInfo = req.body;
         const user = new Users(userInfo); // Use 'new' keyword to create instance
         await user.save(); // Save the user to database
-        
+
         const populatedUser = await Users.findById(user._id)
             .populate([
-                "personalDetails",
-                "educations",
-                "employmentRecords",
-                "trainings",
-                "books",
-                "projects",
-                "publications",
-                "patents",
-                "workshops",
-                "distinctions",
+                "personalDetail",
+                "education",
+                "employmentRecord",
+                "training",
+                "book",
+                "project",
+                "publication",
+                "patent",
+                "workshop",
+                "distinction",
             ]);
-            
+
         res.status(201).json({
             message: "User created successfully",
             data: populatedUser || user, // Return populated user if available, otherwise the basic user
