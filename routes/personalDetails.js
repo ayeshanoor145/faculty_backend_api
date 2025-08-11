@@ -1,6 +1,8 @@
 import { getPersonalDetails, getPersonalDetail, createPersonalDetails, deletePersonalDetail, updatePersonalDetails } from "../controllers/personalDetails.js";
 import express from "express";
 import validateObjectId from "../middleware/validateObjectId.js";
+import verifyToken from "../middleware/auth.js";
+
 const router = express.Router();
 
 //Get PersonalDetails
@@ -10,12 +12,12 @@ router.get("/", getPersonalDetails);
 router.get("/:id", validateObjectId, getPersonalDetail);
 
 //delete PersonalDetail
-router.delete("/:id", validateObjectId, deletePersonalDetail);
+router.delete("/:id", verifyToken,  validateObjectId, deletePersonalDetail);
 
 // POST create new PersonalDetails
-router.post("/", createPersonalDetails);
+router.post("/", verifyToken,  createPersonalDetails);
 
 //PUT request
-router.put("/:id", validateObjectId, updatePersonalDetails);
+router.put("/:id", verifyToken,  validateObjectId, updatePersonalDetails);
 
 export default router;

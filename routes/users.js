@@ -1,6 +1,16 @@
-import { getUsers, getUser, signinUser , deleteUser,  updateUsers, signupUser } from "../controllers/users.js";
+import {
+  getUsers,
+  getUser,
+  signinUser,
+  signupUser,
+  changePassword,
+  deleteUser,
+  updateUsers,
+} from "../controllers/users.js";
 import express from "express";
 import validateObjectId from "../middleware/validateObjectId.js";
+import verifyToken from "../middleware/auth.js";
+
 const router = express.Router();
 
 //Get users
@@ -19,5 +29,7 @@ router.put("/users:id", validateObjectId, updateUsers);
 router.post("/register", signupUser);
 router.post("/signin", signinUser);
 
+// Change password
+router.put("/changePassword/",verifyToken,  changePassword);
 
 export default router;
