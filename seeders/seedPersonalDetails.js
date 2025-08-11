@@ -1,18 +1,17 @@
 const seedPersonalDetails = async () => {
-    const module = await import('../models/personalDetails.js');
+    const module = await import("../models/personalDetails.js");
     const PersonalDetailModel = module.default;
     const count = await PersonalDetailModel.countDocuments();
     if (count > 0) {
-        console.log('PersonalDetails already seeded');
+        console.log("PersonalDetails already seeded");
         return;
     }
 
     const personalDetails = [
-
         {
             _id: "6896d42a045cf05360fea873",
-             user: "64d4f8b2c9e77b1a2c8b4567", // Reference to Dr. Smith's user ID
-            name: "Dr. Smith",
+            user: "64d4f8b2c9e77b1a2c8b4567", // Reference to Dr. Smith's user ID
+            fullName: "Dr. Smith",
             academicTitle: "Professor",
             designation: "Senior Research Fellow",
             subject: "Computer Science",
@@ -20,11 +19,11 @@ const seedPersonalDetails = async () => {
             researchArea: [
                 "Machine Learning",
                 "Natural Language Processing",
-                "Computer Vision"
+                "Computer Vision",
             ],
             nationality: {
                 type: "single",
-                countries: ["Pakistan"]
+                countries: ["Pakistan"],
             },
             researcherId: "A-1234-5678",
             researcherUrl: "https://www.researcherid.com/A-1234-5678",
@@ -33,13 +32,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/citations?user=XYZ123",
             email: "smith@gmail.com",
             contactNumber: "03234567891",
-            biosketch: "Dr. Smith is a leading expert in Artificial Intelligence with over 15 years of experience in machine learning applications. As a Professor of Computer Science, he has published over 100 peer-reviewed papers in top-tier conferences and journals."
+            biosketch:
+                "Dr. Smith is a leading expert in Artificial Intelligence with over 15 years of experience in machine learning applications. As a Professor of Computer Science, he has published over 100 peer-reviewed papers in top-tier conferences and journals.",
         },
-        
+
         {
             _id: "6896d42a045cf05360fea874",
             user: "64d4f8b2c9e77b1a2c8b4568", // Reference to Dr. Sarah's user ID
-            name: "Dr. Sarah",
+            fullName: "Dr. Sarah",
             academicTitle: "Professor",
             designation: "Department Head",
             subject: "Computer Science",
@@ -53,13 +53,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/sjohnson",
             email: "sjohnson@univ.edu",
             contactNumber: "+12025551234",
-            biosketch: "Data science expert with 15 years experience in industry and academia."
+            biosketch:
+                "Data science expert with 15 years experience in industry and academia.",
         },
 
         {
             _id: "6896d42a045cf05360fea875",
-             user: "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
-            name: "Prof. Chen Wei",
+            user: "64d4f8b2c9e77b1a2c8b4569", // Reference to Prof. Chen Wei's user ID
+            fullName: "Prof. Chen Wei",
             academicTitle: "Associate Professor",
             designation: "AI Lab Director",
             subject: "Computer Science",
@@ -73,12 +74,13 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/chenwei",
             email: "chenwei@ai.edu.cn",
             contactNumber: "+8613812345678",
-            biosketch: "Pioneer in deep learning with multiple award-winning publications."
+            biosketch:
+                "Pioneer in deep learning with multiple award-winning publications.",
         },
         {
             _id: "6896d42a045cf05360fea876",
-             user: "64d4f8b2c9e77b1a2c8b4570", // Reference to Dr. Fatima Khan's user ID
-            name: "Dr. Fatima Khan",
+            user: "64d4f8b2c9e77b1a2c8b4570", // Reference to Dr. Fatima Khan's user ID
+            fullName: "Dr. Fatima Khan",
             academicTitle: "Assistant Professor",
             designation: "Research Scientist",
             subject: "Biomedical Engineering",
@@ -92,13 +94,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/fkhan",
             email: "fkhan@biomed.edu.pk",
             contactNumber: "03001234567",
-            biosketch: "Developing affordable medical devices for neurological disorders."
+            biosketch:
+                "Developing affordable medical devices for neurological disorders.",
         },
 
         {
             _id: "6896d42a045cf05360fea877",
-             user: "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
-            name: "Dr. Ahmed Mahmood",
+            user: "64d4f8b2c9e77b1a2c8b4571", // Reference to Dr. Ahmed Mahmood's user ID
+            fullName: "Dr. Ahmed Mahmood",
             academicTitle: "Professor",
             designation: "Dean of Engineering",
             subject: "Electrical Engineering",
@@ -112,13 +115,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/amahmood",
             email: "amahmood@eng.edu.pk",
             contactNumber: "03331234567",
-            biosketch: "Leading researcher in sustainable energy solutions for developing countries."
+            biosketch:
+                "Leading researcher in sustainable energy solutions for developing countries.",
         },
 
         {
             _id: "6896d42a045cf05360fea878",
-             user: "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
-            name: "Dr. Maria Garcia",
+            user: "64d4f8b2c9e77b1a2c8b4572", // Reference to Dr. Maria Garcia's user ID
+            fullName: "Dr. Maria Garcia",
             academicTitle: "Research Professor",
             designation: "Principal Investigator",
             subject: "Environmental Science",
@@ -132,13 +136,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/mgarcia",
             email: "mgarcia@envsci.edu",
             contactNumber: "+525512345678",
-            biosketch: "Climate scientist specializing in Latin American ecosystems and policy."
+            biosketch:
+                "Climate scientist specializing in Latin American ecosystems and policy.",
         },
 
         {
             _id: "6896d42a045cf05360fea879",
-             user: "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
-            name: "Dr. James Wilson",
+            user: "64d4f8b2c9e77b1a2c8b4573", // Reference to Dr. James Wilson's user ID
+            fullName: "Dr. James Wilson",
             academicTitle: "Professor",
             designation: "Department Chair",
             subject: "Physics",
@@ -152,13 +157,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/jwilson",
             email: "j.wilson@physics.edu",
             contactNumber: "+441234567890",
-            biosketch: "Theoretical physicist working on quantum information theory applications."
+            biosketch:
+                "Theoretical physicist working on quantum information theory applications.",
         },
 
         {
             _id: "6896d42a045cf05360fea87a",
-             user: "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
-            name: "Dr. Aisha Abdullah",
+            user: "64d4f8b2c9e77b1a2c8b4574", // Reference to Dr. Aisha Abdullah's user ID
+            fullName: "Dr. Aisha Abdullah",
             academicTitle: "Associate Professor",
             designation: "Research Lead",
             subject: "Chemistry",
@@ -172,14 +178,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/aabdullah",
             email: "a.abdullah@chem.edu.sa",
             contactNumber: "+966501234567",
-            biosketch: "Developing nano-scale solutions for targeted cancer therapies."
+            biosketch:
+                "Developing nano-scale solutions for targeted cancer therapies.",
         },
-
 
         {
             _id: "6896d42a045cf05360fea87b",
-             user: "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
-            name: "Dr. Robert Kim",
+            user: "64d4f8b2c9e77b1a2c8b4575", // Reference to Dr. Robert Kim's user ID
+            fullName: "Dr. Robert Kim",
             academicTitle: "Assistant Professor",
             designation: "Lab Director",
             subject: "Biotechnology",
@@ -193,13 +199,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/rkim",
             email: "r.kim@biotech.edu",
             contactNumber: "+821012345678",
-            biosketch: "Genetic engineering specialist focusing on agricultural applications."
+            biosketch:
+                "Genetic engineering specialist focusing on agricultural applications.",
         },
 
         {
             _id: "6896d42a045cf05360fea87c",
-             user: "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
-            name: "Dr. Elena Petrova",
+            user: "64d4f8b2c9e77b1a2c8b4576", // Reference to Dr. Elena Petrova's user ID
+            fullName: "Dr. Elena Petrova",
             academicTitle: "Professor",
             designation: "Research Coordinator",
             subject: "Materials Science",
@@ -213,15 +220,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/epetrova",
             email: "e.petrova@matsci.ru",
             contactNumber: "+79161234567",
-            biosketch: "Developing sustainable polymer materials for industrial applications."
+            biosketch:
+                "Developing sustainable polymer materials for industrial applications.",
         },
-
-
 
         {
             _id: "6896d42a045cf05360fea87d",
-             user: "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
-            name: "Dr. Ali Hassan",
+            user: "64d4f8b2c9e77b1a2c8b4577", // Reference to Dr. Ali Hassan's user ID
+            fullName: "Dr. Ali Hassan",
             academicTitle: "Professor",
             designation: "Department Head",
             subject: "Mechanical Engineering",
@@ -235,14 +241,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/ahassan",
             email: "a.hassan@mech.pk",
             contactNumber: "03011234567",
-            biosketch: "Leading robotics researcher with focus on manufacturing applications."
+            biosketch:
+                "Leading robotics researcher with focus on manufacturing applications.",
         },
-
 
         {
             _id: "6896d42a045cf05360fea87e",
-             user: "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
-            name: "Dr. Sophia Rodriguez",
+            user: "64d4f8b2c9e77b1a2c8b4578", // Reference to Dr. Sophia Rodriguez's user ID
+            fullName: "Dr. Sophia Rodriguez",
             academicTitle: "Associate Professor",
             designation: "AI Research Lead",
             subject: "Computer Science",
@@ -256,13 +262,13 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/srodriguez",
             email: "s.rodriguez@ai.edu",
             contactNumber: "+541112345678",
-            biosketch: "Multilingual NLP expert focusing on low-resource languages."
+            biosketch: "Multilingual NLP expert focusing on low-resource languages.",
         },
 
         {
             _id: "6896d42a045cf05360fea87f",
-             user: "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
-            name: "Dr. Thomas Müller",
+            user: "64d4f8b2c9e77b1a2c8b4579", // Reference to Dr. Thomas Müller's user ID
+            fullName: "Dr. Thomas Müller",
             academicTitle: "Professor",
             designation: "Institute Director",
             subject: "Physics",
@@ -276,13 +282,13 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/tmuller",
             email: "t.muller@physics.de",
             contactNumber: "+4915123456789",
-            biosketch: "Experimental physicist working on novel quantum materials."
+            biosketch: "Experimental physicist working on novel quantum materials.",
         },
 
         {
             _id: "6896d42a045cf05360fea880",
-             user: "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
-            name: "Dr. Amina Ndiaye",
+            user: "64d4f8b2c9e77b1a2c8b4580", // Reference to Dr. Amina Ndiaye's user ID
+            fullName: "Dr. Amina Ndiaye",
             academicTitle: "Research Professor",
             designation: "Public Health Lead",
             subject: "Epidemiology",
@@ -296,14 +302,13 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/andiaye",
             email: "a.ndiaye@health.sn",
             contactNumber: "+221771234567",
-            biosketch: "Leading expert on infectious disease control in West Africa."
+            biosketch: "Leading expert on infectious disease control in West Africa.",
         },
-
 
         {
             _id: "6896d42a045cf05360fea881",
-             user: "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
-            name: "Dr. Raj Patel",
+            user: "64d4f8b2c9e77b1a2c8b4581", // Reference to Dr. Raj Patel's user ID
+            fullName: "Dr. Raj Patel",
             academicTitle: "Assistant Professor",
             designation: "Lab Head",
             subject: "Biochemistry",
@@ -317,13 +322,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/rpatel",
             email: "r.patel@biochem.ca",
             contactNumber: "+14161234567",
-            biosketch: "Enzyme engineering specialist developing industrial biocatalysts."
+            biosketch:
+                "Enzyme engineering specialist developing industrial biocatalysts.",
         },
 
         {
             _id: "6896d42a045cf05360fea882",
-             user: "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
-            name: "Dr. Yuki Tanaka",
+            user: "64d4f8b2c9e77b1a2c8b4582", // Reference to Dr. Yuki Tanaka's user ID
+            fullName: "Dr. Yuki Tanaka",
             academicTitle: "Professor",
             designation: "Department Chair",
             subject: "Computer Engineering",
@@ -337,13 +343,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/ytanaka",
             email: "y.tanaka@ce.jp",
             contactNumber: "+81312345678",
-            biosketch: "Computer architect working on next-generation computing paradigms."
+            biosketch:
+                "Computer architect working on next-generation computing paradigms.",
         },
 
         {
             _id: "6896d42a045cf05360fea883",
-             user: "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
-            name: "Dr. Carlos Mendez",
+            user: "64d4f8b2c9e77b1a2c8b4583", // Reference to Dr. Carlos Mendez's user ID
+            fullName: "Dr. Carlos Mendez",
             academicTitle: "Associate Professor",
             designation: "Research Coordinator",
             subject: "Environmental Engineering",
@@ -357,13 +364,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/cmendez",
             email: "c.mendez@enveng.mx",
             contactNumber: "+525512345678",
-            biosketch: "Developing affordable water treatment solutions for arid regions."
+            biosketch:
+                "Developing affordable water treatment solutions for arid regions.",
         },
 
         {
             _id: "6896d42a045cf05360fea884",
-             user: "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
-            name: "Dr. Emma Wilson",
+            user: "64d4f8b2c9e77b1a2c8b4584", // Reference to Dr. Emma Wilson's user ID
+            fullName: "Dr. Emma Wilson",
             academicTitle: "Professor",
             designation: "Research Director",
             subject: "Neuroscience",
@@ -377,13 +385,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/ewilson",
             email: "e.wilson@neuro.edu",
             contactNumber: "+441234567890",
-            biosketch: "Cognitive neuroscientist studying memory formation and retention."
+            biosketch:
+                "Cognitive neuroscientist studying memory formation and retention.",
         },
 
         {
             _id: "6896d42a045cf05360fea885",
-             user: "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
-            name: "Dr. Muhammad Ali",
+            user: "64d4f8b2c9e77b1a2c8b4585", // Reference to Dr. Muhammad Ali's user ID
+            fullName: "Dr. Muhammad Ali",
             academicTitle: "Professor",
             designation: "Dean of Science",
             subject: "Mathematics",
@@ -397,13 +406,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/mali",
             email: "m.ali@math.edu.pk",
             contactNumber: "03331234567",
-            biosketch: "Applied mathematician working on industrial and biological systems."
+            biosketch:
+                "Applied mathematician working on industrial and biological systems.",
         },
 
         {
             _id: "6896d42a045cf05360fea886",
-             user: "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID
-            name: "Dr. Li Wei",
+            user: "64d4f8b2c9e77b1a2c8b4586", // Reference to Dr. Li Wei's user ID
+            fullName: "Dr. Li Wei",
             academicTitle: "Research Professor",
             designation: "Lab Director",
             subject: "Materials Engineering",
@@ -417,13 +427,14 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/lwei",
             email: "l.wei@mateng.cn",
             contactNumber: "+8613812345678",
-            biosketch: "Pioneer in graphene applications for electronics and energy storage."
+            biosketch:
+                "Pioneer in graphene applications for electronics and energy storage.",
         },
 
         {
             _id: "6896d42a045cf05360fea887",
-             user: "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
-            name: "Dr. Anna Kowalski",
+            user: "64d4f8b2c9e77b1a2c8b4587", // Reference to Dr. Anna Kowalski's user ID
+            fullName: "Dr. Anna Kowalski",
             academicTitle: "Assistant Professor",
             designation: "Research Scientist",
             subject: "Chemistry",
@@ -437,13 +448,12 @@ const seedPersonalDetails = async () => {
             googleScholarLink: "https://scholar.google.com/akowalski",
             email: "a.kowalski@chem.pl",
             contactNumber: "+48123456789",
-            biosketch: "Developing sustainable catalytic processes for industrial chemistry."
-        }
-
+            biosketch:
+                "Developing sustainable catalytic processes for industrial chemistry.",
+        },
     ];
 
-
     await PersonalDetailModel.insertMany(personalDetails);
-    console.log('PersonalDetails seeded successfully');
+    console.log("PersonalDetails seeded successfully");
 };
 export default seedPersonalDetails;

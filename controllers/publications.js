@@ -4,17 +4,17 @@ const getPublications = async (req, res) => {
   try {
     const publications = await Publications.find();
     res.status(200).json({
-       message: "Data fetched successfully", 
-       data: publications, 
-       error: null 
-      });
-  } 
+      message: "Data fetched successfully",
+      data: publications,
+      error: null
+    });
+  }
   catch (error) {
     res.status(500).json({
-       message: "Internal server error",
-        data: null, 
-        error: error.message
-       });
+      message: "Internal server error",
+      data: null,
+      error: error.message
+    });
   }
 };
 

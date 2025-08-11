@@ -19,7 +19,6 @@ let verifyToken = (req, res, next) => {
                     error: err.message,
                 });
             }
-
             req.user = decoded; // Attach user info to request object
             next();
         });

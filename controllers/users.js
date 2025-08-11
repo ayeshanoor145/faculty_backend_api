@@ -6,18 +6,7 @@ import jwt from "jsonwebtoken";
 const getUsers = async (req, res) => {
   try {
     //Fetch users from the database
-    const users = await Users.find().populate([
-      "personalDetail",
-      "education",
-      "employmentRecord",
-      "training",
-      "book",
-      "project",
-      "publication",
-      "patent",
-      "workshop",
-      "distinction",
-    ]);
+    const users = await Users.find()
     res.status(200).json({
       message: "Users fetched successfully",
       data: users,
@@ -36,18 +25,7 @@ const getUser = async (req, res) => {
   try {
     let id = req.params.id;
     // ObjectId validation handled by middleware
-    const user = await Users.findById(id).populate([
-      "personalDetail",
-      "education",
-      "employmentRecord",
-      "training",
-      "book",
-      "project",
-      "publication",
-      "patent",
-      "workshop",
-      "distinction",
-    ]);
+    const user = await Users.findById(id)
     if (!user) {
       return res.status(404).json({
         message: "Users not found",
@@ -73,18 +51,7 @@ const deleteUser = async (req, res) => {
   try {
     let id = req.params.id;
     // ObjectId validation handled by middleware
-    const user = await Users.findByIdAndDelete(id).populate([
-      "personalDetail",
-      "education",
-      "employmentRecord",
-      "training",
-      "book",
-      "project",
-      "publication",
-      "patent",
-      "workshop",
-      "distinction",
-    ]);
+    const user = await Users.findByIdAndDelete(id);
     if (!user) {
       return res.status(404).json({
         message: "User not found",
@@ -115,18 +82,7 @@ const updateUsers = async (req, res) => {
       id,
       userInfo,
       { new: true } //Return the updated document
-    ).populate([
-      "personalDetail",
-      "education",
-      "employmentRecord",
-      "training",
-      "book",
-      "project",
-      "publication",
-      "patent",
-      "workshop",
-      "distinction",
-    ]);
+    );
     if (!user) {
       return res.status(404).json({
         message: "Users not found",
@@ -154,7 +110,7 @@ const signupUser = async (req, res) => {
 
   // Validation checks
   if (!fullName) {
-    errors.push("FullName is required");
+    errors.push("fullName is required");
   }
   if (!email) {
     errors.push("Email is required");
@@ -206,18 +162,7 @@ const signupUser = async (req, res) => {
       });
       await user.save(); // Save the user to database
 
-      const populatedUser = await Users.findById(user._id).populate([
-        "personalDetail",
-        "education",
-        "employmentRecord",
-        "training",
-        "book",
-        "project",
-        "publication",
-        "patent",
-        "workshop",
-        "distinction",
-      ]);
+      const populatedUser = await Users.findById(user._id)
 
       let tempUser = {
         fullName: user.fullName,
@@ -309,7 +254,7 @@ const signinUser = async (req, res) => {
         token: token,
         user: {
           fullName: user.fullName,
-          userName: user.userName,
+          userfullName: user.userName,
           email: user.email,
           role: user.role,
           createdAt: user.createdAt,

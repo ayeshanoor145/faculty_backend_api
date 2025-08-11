@@ -48,7 +48,25 @@ const getPersonalDetail = async (req, res) => {
 // Create new personal detail
 const createPersonalDetails = async (req, res) => {
   try {
-    const detail = new PersonalDetailsModel(req.body);
+    let { fullName, designation, contactNumber, biosketch } = req.body;
+    let error = [];
+    if (!fullName)
+      error.push("Full fullName is required");
+    if (!designation)
+      error.push("Designation is required");
+    if (!contactNumber)
+      error.push("Contact number is required");
+    if (!biosketch)
+      error.push("Biosketch is required");
+    if (error.length > 0) {
+      return res.status(400).json({
+        message: "Validation error",
+        data: null,
+        error: error.join(", ")
+      });
+    }
+    let user = req.user;
+    const detail = new PersonalDetailsModel({ fullName, designation, contactNumber, biosketch, user: user.id });
     await detail.save();
     res.status(201).json({
       message: "Data detail created successfully",

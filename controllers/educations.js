@@ -8,14 +8,13 @@ const getEducations = async (req, res) => {
     res.status(200).json({
       message: "Data fetched successfully",
       data: educations,
-      error: null
+      error: null,
     });
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).json({
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: error.message,
     });
   }
 };
@@ -23,64 +22,71 @@ const getEducations = async (req, res) => {
 const getEducation = async (req, res) => {
   try {
     const education = await Educations.findById(req.params.id);
-    if (!education) return res.status(404).json({
-      message: "Education not found",
-      data: null, error: null
-    });
+    if (!education)
+      return res.status(404).json({
+        message: "Education not found",
+        data: null,
+        error: null,
+      });
     res.status(200).json({
       message: "Education by ID fetched successfully",
       data: education,
-      error: null
+      error: null,
     });
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).json({
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: error.message,
     });
   }
 };
 
 const createEducations = async (req, res) => {
-  try {
-    const education = new Educations(req.body);
-    await education.save();
+  try {   
+      
+
+    let user = req.user; // Assuming user is set in the request object
+      const education = new Educations(req.body, { user: user.id,   });
+    await education.save(); // Save the new education document to the database
+    // Respond with the created education document
     res.status(201).json({
       message: "Data created successfully",
       data: education,
-      error: null
+      error: null,
     });
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).json({
-      message: "Internal server error",
+      message: "Internal server error", 
       data: null,
-      error: error.message
+      error: error.message,
     });
   }
 };
 
 const updateEducation = async (req, res) => {
   try {
-    const education = await Educations.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const education = await Educations.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    );
     if (!education)
       return res.status(404).json({
         message: "Data not found",
         data: null,
-        error: null
+        error: null,
       });
     res.status(200).json({
       message: "Data updated successfully",
       data: education,
-      error: null
+      error: null,
     });
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).json({
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: error.message,
     });
   }
 };
@@ -92,22 +98,26 @@ const deleteEducation = async (req, res) => {
       return res.status(404).json({
         message: "Data not found",
         data: null,
-        error: null
+        error: null,
       });
     res.status(200).json({
       message: "Data deleted successfully",
       data: education,
-      error: null
+      error: null,
     });
-  }
-  catch (error) {
+  } catch (error) {
     res.status(500).json({
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: error.message,
     });
   }
 };
 
-
-export { getEducations, getEducation, createEducations, updateEducation, deleteEducation };
+export {
+  getEducations,
+  getEducation,
+  createEducations,
+  updateEducation,
+  deleteEducation,
+};
