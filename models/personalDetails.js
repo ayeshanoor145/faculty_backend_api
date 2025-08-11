@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-//PersonalDetails schema
+// PersonalDetails schema
 const personalDetailsSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -15,7 +15,7 @@ const personalDetailsSchema = mongoose.Schema({
   subject: String,
   majorSpecialization: String,
   researchArea: {
-    type: [String],  // Changed to array of strings
+    type: [String],  // Array of strings
     required: true
   },            
   nationality: {
@@ -52,9 +52,11 @@ const personalDetailsSchema = mongoose.Schema({
     type: String,
     required: true
   },
+}, {
+  timestamps: true // Optional: adds createdAt and updatedAt fields
 });
 
-// personalDetails Model
+// Create model
 const PersonalDetails = mongoose.model("PersonalDetails", personalDetailsSchema);
 
 export default PersonalDetails;

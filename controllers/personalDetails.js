@@ -45,35 +45,80 @@ const getPersonalDetail = async (req, res) => {
   }
 };
 
-// Create new personal detail
+// Create new personal detail - CORRECTED VERSION
 const createPersonalDetails = async (req, res) => {
   try {
-    let { fullName, designation, contactNumber, biosketch } = req.body;
-    let error = [];
-    if (!fullName)
-      error.push("Full fullName is required");
-    if (!designation)
-      error.push("Designation is required");
-    if (!contactNumber)
-      error.push("Contact number is required");
-    if (!biosketch)
-      error.push("Biosketch is required");
-    if (error.length > 0) {
+    // Destructure ALL required fields from request body
+    const { 
+      fullName, 
+      designation, 
+      contactNumber, 
+      biosketch,
+      email, // Added missing required field
+      researchArea, // Added missing required field
+      // Other optional fields can be added here
+      academicTitle,
+      subject,
+      majorSpecialization,
+      nationality,
+      researcherId,
+      researcherUrl,
+      orcidId,
+      orcidUrl,
+      googleScholarLink
+    } = req.body;
+
+    // Validate ALL required fields
+    let errors = [];
+    if (!fullName) errors.push("Full name is required");
+    if (!designation) errors.push("Designation is required");
+    if (!contactNumber) errors.push("Contact number is required");
+    if (!biosketch) errors.push("Biosketch is required");
+    if (!email) errors.push("Email is required");
+    if (!researchArea) errors.push("Research area is required");
+
+    if (errors.length > 0) {
       return res.status(400).json({
         message: "Validation error",
         data: null,
-        error: error.join(", ")
+        error: errors.join(", ")
       });
     }
-    let user = req.user;
-    const detail = new PersonalDetailsModel({ fullName, designation, contactNumber, biosketch, user: user.id });
+
+    // Get user from request (assuming you have authentication middleware)
+    const user = req.user;
+
+    // Create new document with ALL fields
+    const detail = new PersonalDetailsModel({
+      user: user.id,
+      fullName,
+      designation,
+      contactNumber,
+      biosketch,
+      email, // Include email in the document
+      researchArea, // Include researchArea in the document
+      // Include other fields
+      academicTitle,
+      subject,
+      majorSpecialization,
+      nationality,
+      researcherId,
+      researcherUrl,
+      orcidId,
+      orcidUrl,
+      googleScholarLink
+    });
+
     await detail.save();
+    
     res.status(201).json({
-      message: "Data detail created successfully",
+      message: "Personal details created successfully",
       data: detail,
       error: null
     });
   } catch (error) {
+    // More detailed error logging
+    console.error("Error creating personal details:", error);
     res.status(500).json({
       message: "Internal server error",
       data: null,
