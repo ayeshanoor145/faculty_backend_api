@@ -1,54 +1,110 @@
 import mongoose from "mongoose";
 
 const usersSchema = new mongoose.Schema({
-  profilePicture: String,
-  fullName: String,
-  userName: String,
-  email: String,
-  contactNumber: String,
-  code: String,
-  codeExpires: String,
-  password: String,
+  profilePicture: {
+    type: String,
+    default: "default.jpg",
+  },
+  fullName: {
+    type: String,
+    required: true,
+  },
+  userName: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true,
+    validate: {
+      validator: function (v) {
+        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v);
+      },
+      message: (props) => `${props.value} is not a valid email!`,
+    },
+  },
+  role: {
+    type: String,
+    enum: ["admin", "user"],  
+    default: "user",
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
+  status: {
+    type: String,  
+    enum: ["active", "inactive"],
+    default: "active"
+  },
+  contactNumber: {
+    type: String,
+    default: "",
+  },
+  code: {
+    type: String,
+    default: "",
+  },
+  codeExpires: {
+    type: Date,
+    default: Date.now,
+  },
+  address: {
+    type: String,
+    default: "",
+  },
+  password: {
+    type: String,
+    required: true,
+  },
   personalDetail: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "PersonalDetails"
+    ref: "PersonalDetails",
   },
   education: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Educations"
+    ref: "Educations",
   },
   employmentRecord: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "EmploymentRecords"
+    ref: "EmploymentRecords",
   },
   training: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Trainings"
+    ref: "Trainings",
   },
   book: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Books"
+    ref: "Books",
   },
   project: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Projects"
+    ref: "Projects",
   },
   publication: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Publications"
+    ref: "Publications",
   },
   patent: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Patents"
+    ref: "Patents",
   },
   workshop: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Workshops"
+    ref: "Workshops",
   },
   distinction: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Distinctions"
-  }
+    ref: "Distinctions",
+  },
 });
 
 const Users = mongoose.model("Users", usersSchema);

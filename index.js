@@ -42,7 +42,8 @@ app.use('/api/publications', publicationRoutes);
 app.use('/api/trainings', trainingRoutes);
 app.use('/api/workshops', workshopRoutes);
 app.use('/api/employmentRecords', employmentRecordRouter);
-app.use('/api/users', users);
+
+app.use('/api/auth', users);
 
 const port = process.env.PORT || 5000;
 const host = process.env.HOST || 'localhost';
