@@ -7,29 +7,26 @@ import {
   deleteUser,
   updateUsers,
 } from "../controllers/users.js";
+
 import express from "express";
 import validateObjectId from "../middleware/validateObjectId.js";
-import verifyToken from "../middleware/auth.js";
+import { verifyToken, verifyAdmin } from "../middleware/auth.js";
 
 const router = express.Router();
 
-//Get users
-router.get("/users", getUsers);
+router.get("/users", verifyToken, verifyAdmin, getUsers);
 
-//Get user by ID
-router.get("/users/:id", validateObjectId, getUser);
+router.get("/me", verifyToken, getUser);
 
-//Delete user by ID
 router.delete("/users/:id", validateObjectId, deleteUser);
 
-// Update user by ID
-router.put("/users:id", validateObjectId, updateUsers);
+// Update existing user by ID
+router.put("/users/:id", validateObjectId, verifyToken, updateUsers);
 
-// POST create new users
 router.post("/register", signupUser);
+
 router.post("/signin", signinUser);
 
-// Change password
-router.put("/changePassword/",verifyToken,  changePassword);
+router.put("/changePassword/", verifyToken, changePassword);
 
 export default router;

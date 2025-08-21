@@ -16,8 +16,8 @@ const seedTrainings = async () => {
       user: "64d4f8b2c9e77b1a2c8b4567", // Reference to Dr. Smith's user ID
       trainings: [
         {
-          type: "University",
-          scope: "International",
+          type: "University",    // Type of training (e.g., University, HEC, NGO, Industry, Private sector)
+          scope: "International",   // Scope of training (e.g., International, National, Regional)
           subject: "Advanced Deep Learning Architectures",
           yearAttended: 2022,
           institution: "Stanford University",

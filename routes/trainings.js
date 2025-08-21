@@ -1,11 +1,10 @@
 import express from "express";
 import { getTrainings, getTraining, createTraining, updateTraining, deleteTraining } from "../controllers/trainings.js";
 import validateObjectId from "../middleware/validateObjectId.js";
-import verifyToken from "../middleware/auth.js";
-
+import { verifyToken, verifyAdmin } from "../middleware/auth.js";
 const router = express.Router();
 
-router.get("/", getTrainings);
+router.get("/",verifyAdmin, getTrainings);
 router.get("/:id", validateObjectId, getTraining);
 router.post("/", verifyToken,  createTraining);
 router.put("/:id", verifyToken,  validateObjectId, updateTraining);

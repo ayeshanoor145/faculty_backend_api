@@ -3,7 +3,7 @@ import Books from "../models/books.js";
 // Get all books
 const getBooks = async (req, res) => {
   try {
-    const books = await Books.find().populate(["user"]);
+    const books = await Books.find();
     res.status(200).json({
       message: "Data fetched successfully",
       data: books,

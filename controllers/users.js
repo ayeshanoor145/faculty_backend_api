@@ -6,7 +6,9 @@ import jwt from "jsonwebtoken";
 const getUsers = async (req, res) => {
   try {
     //Fetch users from the database
-    const users = await Users.find()
+    const users = await Users.find().select(
+      " fullName userName email role contactNumber address status createdAt updatedAt profilePicture"
+    );
     res.status(200).json({
       message: "Users fetched successfully",
       data: users,
@@ -23,34 +25,66 @@ const getUsers = async (req, res) => {
 
 const getUser = async (req, res) => {
   try {
-    let id = req.params.id;
+    let id = req.user.userId; // Changed from req.user.id to req.user.userId
+    console.log(req.user);
+    
     // ObjectId validation handled by middleware
-    const user = await Users.findById(id)
+    const user = await Users.findById(id).select([
+      "_id",
+      "fullName",
+      "userName",
+      "profilePicture",
+      "email",
+      "role",
+      "createdAt",
+      "updatedAt",
+      "status",
+      "contactNumber",
+      "address",
+      "code"
+    ]);
+
     if (!user) {
       return res.status(404).json({
-        message: "Users not found",
+        success: false,
+        message: "User not found",
         data: null,
-        error: null,
+        error: "User not found in database"
       });
     }
+
     res.status(200).json({
-      message: "Users fetched successfully by ID",
-      data: user,
-      error: null,
+      success: true,
+      message: "User data fetched successfully by ID",
+      data: {
+        _id: user._id,
+        fullName: user.fullName,
+        userName: user.userName,
+        profilePicture: user.profilePicture,
+        email: user.email,
+        role: user.role,
+        createdAt: user.createdAt,
+        updatedAt: user.updatedAt,
+        status: user.status,
+        contactNumber: user.contactNumber,
+        address: user.address,
+        code: user.code,
+      },
+      error: null
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message,
+      error: error.message
     });
   }
 };
 
 const deleteUser = async (req, res) => {
   try {
-    let id = req.params.id;
-    // ObjectId validation handled by middleware
+    const id = req.params.id; // Get user ID from request parameters
     const user = await Users.findByIdAndDelete(id);
     if (!user) {
       return res.status(404).json({
@@ -105,156 +139,79 @@ const updateUsers = async (req, res) => {
 };
 
 const signupUser = async (req, res) => {
-  const { fullName, email, password, confirmPassword } = req.body;
-  const errors = []; // Initialize errors array
-
-  // Validation checks
-  if (!fullName) {
-    errors.push("fullName is required");
-  }
-  if (!email) {
-    errors.push("Email is required");
-  }
-  if (!password) {
-    errors.push("Password is required");
-  }
-  if (!confirmPassword) {
-    errors.push("Confirm Password is required");
-  }
-  if (password !== confirmPassword) {
-    errors.push("Passwords do not match");
-  }
-  if (errors.length > 0) {
-    return res.status(400).json({
-      message: "Validation errors",
-      data: null,
-      error: errors.join(", "), // Show all errors
-    });
-  }
-
-  // Check if user already exists
-  const existingUser = await Users.findOne({ email });
-  if (existingUser) {
-    return res.status(400).json({
-      message: "Validation error",
-      data: null,
-      error: "User already exists with this email",
-    });
-  }
-
-  // Hash the password and create user inside the callback
-  bcrypt.hash(password, 10, async (err, hash) => {
-    if (err) {
-      return res.status(500).json({
-        message: "Internal server error",
-        data: null,
-        error: err.message,
-      });
-    }
-
-    try {
-      // Create new user with hashed password
-      const user = new Users({
-        fullName,
-        email,
-        userName: email.split("@")[0], // Generate username from email
-        password: hash,
-      });
-      await user.save(); // Save the user to database
-
-      const populatedUser = await Users.findById(user._id)
-
-      let tempUser = {
-        fullName: user.fullName,
-        userName: user.userName,
-        email: user.email,
-        role: user.role,
-        createdAt: user.createdAt,
-        updatedAt: user.updatedAt,
-        status: user.status,
-        contactNumber: user.contactNumber,
-        address: user.address,
-      };
-
-      res.status(201).json({
-        message: "SignUp successful",
-        data: populatedUser || tempUser, // Return populated user if available, otherwise the basic user
-        error: null,
-      });
-    } catch (error) {
-      res.status(500).json({
-        message: "Internal server error",
-        data: null,
-        error: error.message,
-      });
-    }
-  });
-};
-
-const signinUser = async (req, res) => {
   try {
-    let { email, password } = req.body;
-    const user = await Users.findOne({ email: email });
-    // Validate required fields
-    if (!password) {
-      return res.status(400).json({
-        message: "Password is required",
-        data: null,
-        error: "Missing password field",
-      });
+    let { fullName, email, password, confirmPassword, role } = req.body;
+    let validationErrors = [];
+    if (!fullName) {
+      validationErrors.push("Full name is required");
     }
     if (!email) {
+      validationErrors.push("Email is required");
+    }
+    if (!password) {
+      validationErrors.push("Password is required");
+    }
+    if (!confirmPassword) {
+      validationErrors.push("Password confirmation is required");
+    }
+    if (password !== confirmPassword) {
+      validationErrors.push("Passwords do not match");
+    }
+    if (validationErrors.length > 0) {
       return res.status(400).json({
-        message: "Email is required",
+        success: false,
+        message: "Validation errors",
         data: null,
-        error: "Missing email field",
+        error: validationErrors,
       });
     }
 
-    // Find user by either email OR username
-
-    if (!user) {
-      return res.status(401).json({
-        message: "Authentication failed",
+    // Check if user already exists
+    const existingUser = await Users.findOne({ email: email });
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: "Validation error",
         data: null,
-        error: "Invalid email or password",
-      });
-    }
-    // Check if user has password set
-    if (!user.password) {
-      return res.status(401).json({
-        message: "Authentication failed",
-        data: null,
-        error: "Password not set for this user",
+        error: "User already exists with this email",
       });
     }
 
-    // Compare provided password with stored hashed password
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({
-        message: "Authentication failed",
-        data: null,
-        error: "Invalid email or password",
-      });
-    }
+    // Hash the password and create user inside the callback
+    bcrypt.hash(password, 10, async (err, hash) => {
+      try {
+        if (err) {
+          return res.status(500).json({
+            success: false,
+            message: "Internal server error",
+            data: null,
+            error: err.message,
+          });
+        }
 
-    // Only if all checks pass, generate token and return success
-    const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: process.env.JWT_EXPIRES_IN,
-      }
-    );
+        // Generate verification code
+        const code = Math.floor(1000 + Math.random() * 9000); // Generate a random 4-digit code
+        const codeExpires = new Date(Date.now() + 10 * 60 * 1000); // Code expires in 10 minutes
 
-    res.status(200).json({
-      message: "User logged in successfully",
-      data: {
-        token: token,
-        user: {
+        // Create new user with hashed password
+        const user = new Users({
+          fullName,
+          email,
+          userName: email.split("@")[0], // Generate username from email
+          password: hash,
+          role: role || "user", // Use provided role or default to 'user',
+          code, // Add the code to the user
+          codeExpires, // Add the expiration time for the code
+          active: false, // Set active to false initially
+        });
+
+        await user.save(); // Save the user to database
+
+        // Prepare user data for response
+        const userData = {
+          _id: user._id,
           fullName: user.fullName,
-          userfullName: user.userName,
+          userName: user.userName,
           email: user.email,
           role: user.role,
           createdAt: user.createdAt,
@@ -262,9 +219,20 @@ const signinUser = async (req, res) => {
           status: user.status,
           contactNumber: user.contactNumber,
           address: user.address,
-        },
-      },
-      error: null,
+        };
+
+        res.status(201).json({
+          message: "SignUp successful",
+          data: userData,
+          error: null,
+        });
+      } catch (error) {
+        res.status(500).json({
+          message: "Internal server error",
+          data: null, // Don't include user data in error case as it might not exist
+          error: error.message,
+        });
+      }
     });
   } catch (error) {
     res.status(500).json({
@@ -275,80 +243,168 @@ const signinUser = async (req, res) => {
   }
 };
 
+const signinUser = async (req, res) => {
+  try {
+    const { email, password, userName } = req.body;
+
+    // Validate required fields
+    if (!password) {
+      return res.status(400).json({
+        success: false,
+        message: "Password is required",
+        data: null,
+        error: "Missing password field",
+      });
+    }
+
+    if (!userName && !email) {
+      return res.status(400).json({
+        success: false,
+        message: "Email or Username is required",
+        data: null,
+        error: "Missing email or username field",
+      });
+    }
+
+    // Find user by either email OR username
+    const query = userName ? { userName } : { email };
+    const user = await Users.findOne(query).select("+password");
+
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: "Authentication failed",
+        data: null,
+        error: "Invalid credentials",
+      });
+    }
+
+    // Verify password
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: "Authentication failed",
+        data: null,
+        error: "Invalid credentials",
+      });
+    }
+
+    if (user.status !== "active") {
+      return res.status(403).json({
+        success: false,
+        message: "Account is inactive",
+        data: null,
+        error: "Your account is inactive. Please contact support.",
+      });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign(
+      { userId: user._id, role: user.role },
+      process.env.JWT_SECRET,
+      { expiresIn: process.env.JWT_EXPIRES_IN }
+    );
+
+    // Prepare user data for response (excluding sensitive info)
+    const userData = {
+      _id: user._id,
+      fullName: user.fullName,
+      userName: user.userName,
+      email: user.email,
+      role: user.role,
+      status: user.status,
+      contactNumber: user.contactNumber,
+      address: user.address,
+    };
+
+    return res.status(200).json({
+      success: true,
+      message: "Login successful",
+      data: { token, user: userData },
+      error: null,
+    });
+  } catch (error) {
+    console.error("Login error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      data: null,
+      error: error.message,
+    });
+  }
+};
+
 const changePassword = async (req, res) => {
   try {
-    let userId = req.user.userId; // Get user ID from the request object
-   
+    let userId = req.user.userId;
 
-      const { oldPassword, newPassword, confirmPassword } = req.body;
-      let errors = [];
-      // Validate required fields
-      if (!oldPassword) {
-        errors.push("Old password is required");
-      }
-      if (!newPassword) {
-        errors.push("Password is required");
-      }
-      if (!confirmPassword) {
-        errors.push("Confirm password is required");
-      }
-      if (oldPassword === newPassword) {
-        errors.push("New password must be different from old password");
-      }
-      if (newPassword !== confirmPassword) {
-        errors.push("Passwords do not match");
-      }
-      // If there are validation errors, return them
-      if (newPassword.length < 6) {
-        errors.push("Password must be at least 6 characters long");
-      }
-      if (errors.length > 0) {
-        return res.status(400).json({
-          message: "Validation errors",
-          data: null,
-          error: errors.join(", "),
-        });
-      }
+    const { oldPassword, newPassword, confirmPassword } = req.body;
+    let errors = [];
+    // Validate required fields
+    if (!oldPassword) errors.push("Old password is required");
+    if (!newPassword) errors.push("Password is required");
+    if (!confirmPassword) errors.push("Confirm password is required");
+    if (oldPassword === newPassword)
+      errors.push("New password must be different from old password");
+    if (newPassword !== confirmPassword) errors.push("Passwords do not match");
+    if (newPassword.length < 6)
+      errors.push("Password must be at least 6 characters long");
 
-      // Find user by ID
-      const user = await Users.findById(userId);
-      if (!user) {
-        return res.status(404).json({
-          message: "User not found",
-          data: null,
-          error: null,
-        });
-      }
-
-      // Compare old password with stored hashed password
-      const isMatch = await bcrypt.compare(oldPassword, user.password);
-      if (!isMatch) {
-        return res.status(401).json({
-          message: "Change password failed",
-          data: null,
-          error: "Invalid old password",
-        });
-      }
-
-      // Hash the new password and update the user
-      bcrypt.hash(newPassword, 10, async (err, hash) => {
-        if (err) {
-          return res.status(500).json({
-            message: "Internal server error",
-            data: null,
-            error: err.message,
-          });
-        }
-
-        user.password = hash; // Update the password with the new hashed password
+    if (errors.length > 0) {
+      return res.status(400).json({
+        message: "Validation errors",
+        data: null,
+        error: errors.join(", "),
       });
-      await user.save();
+    }
 
-      res.status(200).json({
-        message: "Password changed successfully",
+    const user = await Users.findById(userId);
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
         data: null,
         error: null,
       });
+    }
+
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: "Change password failed",
+        data: null,
+        error: "Invalid old password",
+      });
+    }
+
+    // Using bcrypt.hash with callback
+    bcrypt.hash(newPassword, 10, async (err, hash) => {
+      if (err) {
+        return res.status(500).json({
+          message: "Internal server error",
+          data: null,
+          error: "Failed to hash password",
+        });
+      }
+
+      try {
+        user.password = hash;
+        await user.save();
+
+        res.status(200).json({
+          message: "Password changed successfully",
+          data: null,
+          error: null,
+        });
+      } catch (saveError) {
+        res.status(500).json({
+          message: "Internal server error",
+          data: null,
+          error: saveError.message,
+        });
+      }
+    });
   } catch (error) {
     res.status(500).json({
       message: "Internal server error",
@@ -360,10 +416,10 @@ const changePassword = async (req, res) => {
 
 export {
   getUsers,
+  getUser,
   signinUser,
   signupUser,
   changePassword,
-  getUser,
   deleteUser,
   updateUsers,
 };

@@ -54,9 +54,8 @@ const createPersonalDetails = async (req, res) => {
       designation, 
       contactNumber, 
       biosketch,
-      email, // Added missing required field
-      researchArea, // Added missing required field
-      // Other optional fields can be added here
+      email, 
+      researchArea,
       academicTitle,
       subject,
       majorSpecialization,

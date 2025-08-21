@@ -1,11 +1,11 @@
 import express from "express";
 import { getEducations, getEducation, createEducations, updateEducation, deleteEducation } from "../controllers/educations.js";
 import validateObjectId from "../middleware/validateObjectId.js";
-import verifyToken from "../middleware/auth.js";
+import { verifyToken, verifyAdmin } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getEducations);
+router.get("/" ,  verifyToken, verifyAdmin, getEducations);
 router.get("/:id", validateObjectId, getEducation);
 router.post("/", verifyToken,  createEducations);
 router.put("/:id", verifyToken,  validateObjectId, updateEducation);

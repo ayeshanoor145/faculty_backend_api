@@ -26,7 +26,11 @@ const personalDetailsSchema = mongoose.Schema({
     },
     countries: [String]  // Array of country strings
   },
-  researcherId: String,
+  researcherId: {
+    type : String,
+    unique: true,
+    sparse: true  // Allows multiple users to have null researcherId
+  },
   researcherUrl: String,
   orcidId: String,
   orcidUrl: String,

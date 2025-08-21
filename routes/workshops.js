@@ -1,11 +1,11 @@
 import express from "express";
 import { getWorkshops, getWorkshop, createWorkshop, updateWorkshop, deleteWorkshop } from "../controllers/workshops.js";
 import validateObjectId from "../middleware/validateObjectId.js";
-import verifyToken from "../middleware/auth.js";
+import { verifyToken, verifyAdmin } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getWorkshops);
+router.get("/",verifyAdmin, getWorkshops);
 router.get("/:id", validateObjectId, getWorkshop);
 router.post("/", verifyToken,  createWorkshop);
 router.put("/:id", verifyToken,  validateObjectId, updateWorkshop);

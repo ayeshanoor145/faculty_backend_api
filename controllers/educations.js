@@ -1,10 +1,19 @@
 import Educations from "../models/educations.js";
-
 // Controller to handle education-related operations
 
 const getEducations = async (req, res) => {
   try {
-    const educations = await Educations.find();
+    const educations = await Educations.find().populate("user", [
+      "fullName",
+      "email",
+    ]); // Populate user details
+    if (!educations || educations.length === 0) {
+      return res.status(404).json({
+        message: "No educations found",
+        data: null,
+        error: null,
+      });
+    }
     res.status(200).json({
       message: "Data fetched successfully",
       data: educations,
@@ -21,7 +30,10 @@ const getEducations = async (req, res) => {
 
 const getEducation = async (req, res) => {
   try {
-    const education = await Educations.findById(req.params.id);
+    const education = await Educations.findById(req.params.id).populate(
+      "user",
+      ["fullName", "email"]
+    );
     if (!education)
       return res.status(404).json({
         message: "Education not found",
@@ -43,22 +55,48 @@ const getEducation = async (req, res) => {
 };
 
 const createEducations = async (req, res) => {
-  try {   
-      
+  try {
+    // Check for existing education
+    const existingEducation = await Educations.findOne({
+      researcherId: req.body.researcherId,
+      user: req.user._id,
+    });
 
-    let user = req.user; // Assuming user is set in the request object
-      const education = new Educations(req.body, { user: user.id,   });
-    await education.save(); // Save the new education document to the database
-    // Respond with the created education document
+    if (existingEducation) {
+      return res.status(400).json({
+        message:
+          "Education with this researcherId already exists for this user",
+        error: "Duplicate researcherId",
+      });
+    }
+
+    // Validate education data
+    if (!req.body.education?.length) {
+      return res.status(400).json({
+        message: "Validation error",
+        error: "At least one education entry is required",
+      });
+    }
+
+    // Create and save education
+    const education = await Educations.create({
+      ...req.body,
+      user: req.user._id,
+    });
+
+    // Get education with populated user data
+    const result = await Educations.findById(education._id).populate("user", [
+      "fullName",
+      "email",
+    ]);
+
     res.status(201).json({
-      message: "Data created successfully",
-      data: education,
-      error: null,
+      message: "Education created successfully",
+      data: result,
     });
   } catch (error) {
     res.status(500).json({
-      message: "Internal server error", 
-      data: null,
+      message: "Error creating education",
       error: error.message,
     });
   }
@@ -66,14 +104,24 @@ const createEducations = async (req, res) => {
 
 const updateEducation = async (req, res) => {
   try {
-    const education = await Educations.findByIdAndUpdate(
-      req.params.id,
-      req.body,
-      { new: true }
-    );
+    const id = req.params.id;
+    let educationData = req.body;
+    let user = req.user;
+    let userId = user._id;
+
+    const education = await Educations.findOneAndUpdate(
+      {
+        _id: id,
+        user: userId, // Ensure the user owns the education record
+      },
+      educationData,
+      {
+        new: true,
+      }
+    ).populate("user", ["fullName", "email"]);
     if (!education)
       return res.status(404).json({
-        message: "Data not found",
+        message: "Education record not found or not owned by user",
         data: null,
         error: null,
       });
@@ -93,13 +141,22 @@ const updateEducation = async (req, res) => {
 
 const deleteEducation = async (req, res) => {
   try {
-    const education = await Educations.findByIdAndDelete(req.params.id);
-    if (!education)
-      return res.status(404).json({
-        message: "Data not found",
+    let id = req.params.id;
+
+    const user = req.user;
+    const education = await Educations.deleteOne({
+      _id: id,
+      user: user._id, // Ensure the user owns the education record
+    });
+
+    if (education.deletedCount === 0) {
+      return res.status(200).json({
+        message: "Education not found or not owned by user",
         data: null,
         error: null,
       });
+    }
+
     res.status(200).json({
       message: "Data deleted successfully",
       data: education,

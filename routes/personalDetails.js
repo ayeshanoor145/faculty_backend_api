@@ -1,12 +1,11 @@
 import { getPersonalDetails, getPersonalDetail, createPersonalDetails, deletePersonalDetail, updatePersonalDetails } from "../controllers/personalDetails.js";
 import express from "express";
 import validateObjectId from "../middleware/validateObjectId.js";
-import verifyToken from "../middleware/auth.js";
-
+import { verifyToken, verifyAdmin } from "../middleware/auth.js";
 const router = express.Router();
 
 //Get PersonalDetails
-router.get("/", getPersonalDetails);
+router.get("/", verifyAdmin, getPersonalDetails);
 
 //Get PersonalDetail by ID
 router.get("/:id", validateObjectId, getPersonalDetail);

@@ -30,4 +30,17 @@ let verifyToken = (req, res, next) => {
         });
     }
 };
-export default verifyToken;
+
+const verifyAdmin = (req, res, next) => {
+    if (req.user && req.user.role === 'admin') {
+        next(); // User is admin, proceed to the next middleware
+    } else {
+        return res.status(403).json({
+            message: "Access denied. Admins only.",
+            data: null,
+            error: "Forbidden",
+        });
+    }
+}
+
+export { verifyToken, verifyAdmin };
