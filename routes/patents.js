@@ -5,7 +5,7 @@ import { verifyToken, verifyAdmin } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/",verifyAdmin, getPatents);
+router.get("/", getPatents);
 router.get("/:id", validateObjectId, getPatent);
 router.post("/", verifyToken,  createPatent);
 router.put("/:id", verifyToken,  validateObjectId, updatePatent);

@@ -5,7 +5,7 @@ import { verifyToken, verifyAdmin } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/",verifyAdmin, getEmploymentRecords);
+router.get("/", getEmploymentRecords);
 router.get("/:id", validateObjectId, getEmploymentRecord);
 router.post("/", verifyToken,  createEmploymentRecord);
 router.put("/:id", verifyToken,  validateObjectId, updateEmploymentRecord);

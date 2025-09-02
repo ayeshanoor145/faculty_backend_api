@@ -1,9 +1,9 @@
 const seedUsers = async () => {
-    const module = await import('../models/users.js');
+    const module = await import("../models/users.js");
     const UserModel = module.default;
     const count = await UserModel.countDocuments();
     if (count > 0) {
-        console.log('Users already seeded');
+        console.log("Users already seeded");
         return;
     }
 
@@ -38,7 +38,7 @@ const seedUsers = async () => {
             code: "2345",
             codeExpires: new Date("2025-08-10"),
             address: "456 Oak Avenue, Boston, USA",
-            password: "sarah2345"
+            password: "sarah2345",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4569",
@@ -54,7 +54,7 @@ const seedUsers = async () => {
             code: "3456",
             codeExpires: new Date("2025-08-11"),
             address: "789 Bamboo Road, Beijing, China",
-            password: "chenwei3456"
+            password: "chenwei3456",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4570",
@@ -70,7 +70,7 @@ const seedUsers = async () => {
             code: "4567",
             codeExpires: new Date("2025-08-12"),
             address: "101 Garden Town, Lahore, Pakistan",
-            password: "fatima4567"
+            password: "fatima4567",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4571",
@@ -86,7 +86,7 @@ const seedUsers = async () => {
             code: "5678",
             codeExpires: new Date("2025-08-13"),
             address: "202 Model Town, Karachi, Pakistan",
-            password: "ahmed5678"
+            password: "ahmed5678",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4572",
@@ -102,7 +102,7 @@ const seedUsers = async () => {
             code: "6789",
             codeExpires: new Date("2025-08-14"),
             address: "303 Sun Street, Mexico City, Mexico",
-            password: "maria6789"
+            password: "maria6789",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4573",
@@ -118,7 +118,7 @@ const seedUsers = async () => {
             code: "7890",
             codeExpires: new Date("2025-08-15"),
             address: "404 Oxford Street, London, UK",
-            password: "james7890"
+            password: "james7890",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4574",
@@ -134,7 +134,7 @@ const seedUsers = async () => {
             code: "8901",
             codeExpires: new Date("2025-08-16"),
             address: "505 Palm Avenue, Riyadh, Saudi Arabia",
-            password: "aisha8901"
+            password: "aisha8901",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4575",
@@ -150,7 +150,7 @@ const seedUsers = async () => {
             code: "9012",
             codeExpires: new Date("2025-08-17"),
             address: "606 Seoul Street, Seoul, South Korea",
-            password: "robert9012"
+            password: "robert9012",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4576",
@@ -166,7 +166,7 @@ const seedUsers = async () => {
             code: "0123",
             codeExpires: new Date("2025-08-18"),
             address: "707 Red Square, Moscow, Russia",
-            password: "elena0123"
+            password: "elena0123",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4577",
@@ -182,7 +182,7 @@ const seedUsers = async () => {
             code: "1235",
             codeExpires: new Date("2025-08-19"),
             address: "808 Faisal Avenue, Islamabad, Pakistan",
-            password: "ali1235"
+            password: "ali1235",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4578",
@@ -198,7 +198,7 @@ const seedUsers = async () => {
             code: "2346",
             codeExpires: new Date("2025-08-20"),
             address: "909 Tango Street, Buenos Aires, Argentina",
-            password: "sophia2346"
+            password: "sophia2346",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4579",
@@ -214,7 +214,7 @@ const seedUsers = async () => {
             code: "3457",
             codeExpires: new Date("2025-08-21"),
             address: "1010 Berliner Street, Berlin, Germany",
-            password: "thomas3457"
+            password: "thomas3457",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4580",
@@ -230,7 +230,7 @@ const seedUsers = async () => {
             code: "4568",
             codeExpires: new Date("2025-08-22"),
             address: "1111 Baobab Avenue, Dakar, Senegal",
-            password: "amina4568"
+            password: "amina4568",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4581",
@@ -246,7 +246,7 @@ const seedUsers = async () => {
             code: "5679",
             codeExpires: new Date("2025-08-23"),
             address: "1212 Maple Street, Toronto, Canada",
-            password: "raj5679"
+            password: "raj5679",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4582",
@@ -262,7 +262,7 @@ const seedUsers = async () => {
             code: "6780",
             codeExpires: new Date("2025-08-24"),
             address: "1313 Sakura Lane, Tokyo, Japan",
-            password: "yuki6780"
+            password: "yuki6780",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4583",
@@ -278,7 +278,7 @@ const seedUsers = async () => {
             code: "7891",
             codeExpires: new Date("2025-08-25"),
             address: "1414 Cactus Road, Guadalajara, Mexico",
-            password: "carlos7891"
+            password: "carlos7891",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4584",
@@ -294,7 +294,7 @@ const seedUsers = async () => {
             code: "8902",
             codeExpires: new Date("2025-08-26"),
             address: "1515 Thames Street, London, UK",
-            password: "emma8902"
+            password: "emma8902",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4585",
@@ -310,7 +310,7 @@ const seedUsers = async () => {
             code: "9013",
             codeExpires: new Date("2025-08-27"),
             address: "1616 Jinnah Avenue, Lahore, Pakistan",
-            password: "muhammad9013"
+            password: "muhammad9013",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4586",
@@ -326,7 +326,7 @@ const seedUsers = async () => {
             code: "0124",
             codeExpires: new Date("2025-08-28"),
             address: "1717 Dragon Road, Shanghai, China",
-            password: "liwei0124"
+            password: "liwei0124",
         },
         {
             _id: "64d4f8b2c9e77b1a2c8b4587",
@@ -342,11 +342,11 @@ const seedUsers = async () => {
             code: "1236",
             codeExpires: new Date("2025-08-29"),
             address: "1818 Vistula Street, Warsaw, Poland",
-            password: "anna1236"
+            password: "anna1236",
         }
     ];
 
     await UserModel.insertMany(users);
-    console.log('Users seeded successfully');
+    console.log("Users seeded successfully");
 };
 export default seedUsers;

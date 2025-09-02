@@ -1,6 +1,7 @@
 import Users from "../models/users.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import sendEmail from "../utils/send-mail.js";
 // Controller to handle user-related operations
 
 const getUsers = async (req, res) => {
@@ -27,7 +28,7 @@ const getUser = async (req, res) => {
   try {
     let id = req.user.userId; // Changed from req.user.id to req.user.userId
     console.log(req.user);
-    
+
     // ObjectId validation handled by middleware
     const user = await Users.findById(id).select([
       "_id",
@@ -202,10 +203,12 @@ const signupUser = async (req, res) => {
           role: role || "user", // Use provided role or default to 'user',
           code, // Add the code to the user
           codeExpires, // Add the expiration time for the code
-          active: false, // Set active to false initially
+          status: "inactive" // Set default status to 'inactive'
         });
 
-        await user.save(); // Save the user to database
+        await user.save(); // Save the user to database,
+
+        sendEmail(email, "Verify your email", String(code));
 
         // Prepare user data for response
         const userData = {
@@ -295,7 +298,7 @@ const signinUser = async (req, res) => {
         success: false,
         message: "Account is inactive",
         data: null,
-        error: "Your account is inactive. Please contact support.",
+        error: "Please verify your email to activate your account",
       });
     }
 

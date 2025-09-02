@@ -93,9 +93,22 @@ Backend uses a MongoDB database with the following collections:
 │   ├── trainings.js
 │   ├── users.js
 │   └── workshops.js
-├── seeders/               # Seeder files for initial data
+├── seeders/                # API routes
+│   ├── seedBooks.js
+│   ├── seedDistinctions.js
+│   ├── seedEducations.js
+│   ├── seedEmploymentRecords.js
+│   ├── seedPatents.js
+│   ├── seedPersonalDetails.js
 │   ├── seedProjects.js
-│   └── seedUsers.js
+│   ├── seedPublications.js
+│   ├── seedTrainings.js
+│   ├── seedUsers.js
+│   └── seedWorkshops.js
+├── utils/
+│   └── send-mail.js
+├── views/
+│   └── email.handlebars
 ├── .env.example           # Example environment variables
 ├── index.js               # Server entry point
 ├── package.json           # Project metadata and scripts
@@ -186,12 +199,15 @@ Use Postman or similar tools to test endpoints.
 
 ---
 
-## 📄 License
+##  License
 
 This project is licensed under the **ISC License**.
 
 ---
 
-## 👤 Author
+## 👤 Authors & Mentors
 
-Developed by **Ayesha Noor** and the **Faculty App Backend Team**.
+| Role         | Name                                                                 |
+| ------------ | -------------------------------------------------------------------- |
+| 🧑‍💻 Author   | [Ayesha Noor](https://github.com/ayeshanoor148) – Developer of HostelValy Backend API |
+| 🎓 Mentor    | [Sir Allah Rakha](https://github.com/sudo-allahrakha) – Project Supervisor |

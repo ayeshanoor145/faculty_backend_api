@@ -4,7 +4,7 @@ import validateObjectId from "../middleware/validateObjectId.js";
 import { verifyToken, verifyAdmin } from "../middleware/auth.js";
 const router = express.Router();
 
-router.get("/",verifyAdmin, getTrainings);
+router.get("/", getTrainings);
 router.get("/:id", validateObjectId, getTraining);
 router.post("/", verifyToken,  createTraining);
 router.put("/:id", verifyToken,  validateObjectId, updateTraining);

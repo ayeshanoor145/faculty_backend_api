@@ -14,19 +14,12 @@ import { verifyToken, verifyAdmin } from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/users", verifyToken, verifyAdmin, getUsers);
-
+router.get("/users", getUsers);
 router.get("/me", verifyToken, getUser);
-
-router.delete("/users/:id", validateObjectId, deleteUser);
-
-// Update existing user by ID
-router.put("/users/:id", validateObjectId, verifyToken, updateUsers);
-
-router.post("/register", signupUser);
-
-router.post("/signin", signinUser);
-
 router.put("/changePassword/", verifyToken, changePassword);
+router.delete("/users/:id", validateObjectId, deleteUser);
+router.put("/users/:id", validateObjectId, verifyToken, updateUsers);
+router.post("/register", signupUser);
+router.post("/signin", signinUser);
 
 export default router;
