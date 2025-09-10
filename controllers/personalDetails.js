@@ -14,8 +14,8 @@ const getPersonalDetails = async (req, res) => {
       });
     }
     res.status(200).json({
-      message: "Data details fetched successfully",
-      data: details,
+      message: "Data fetched successfully",
+      data: personalDetails,
       error: null
     });
   }

@@ -16,7 +16,7 @@ const getEmploymentRecords = async (req, res) => {
     }
     res.status(200).json({
       message: "Data records fetched successfully",
-      data: records,
+      data: employmentRecords,
       error: null
     });
   }

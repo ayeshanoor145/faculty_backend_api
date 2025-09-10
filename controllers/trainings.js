@@ -2,7 +2,7 @@ import Trainings from "../models/trainings.js";
 
 // Controller to handle training-related operations
 
-const getTrainings = async (req, res) => {
+const getTrainings = async (req, res) => { 
   try {
     const trainings = await Trainings.find();
     if (!trainings || trainings.length === 0) {
