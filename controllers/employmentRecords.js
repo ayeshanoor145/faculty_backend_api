@@ -1,10 +1,19 @@
+import EmploymentRecords from "../models/employmentRecords.js";
 import EmploymentRecordModel from "../models/employmentRecords.js";
 
 // Controller to handle employment record-related operations
 
 const getEmploymentRecords = async (req, res) => {
   try {
-    const records = await EmploymentRecordModel.find();
+    const employmentRecords = await EmploymentRecords.find();
+
+    if (!employmentRecords || employmentRecords.length === 0) {
+      return res.status(404).json({
+        message: "No employment records found",
+        data: null,
+        error: null
+      });
+    }
     res.status(200).json({
       message: "Data records fetched successfully",
       data: records,
@@ -90,14 +99,19 @@ const updateEmploymentRecord = async (req, res) => {
 
 const deleteEmploymentRecord = async (req, res) => {
   try {
-    const record = await EmploymentRecordModel
-      .findByIdAndDelete(req.params.id);
-    if (!record)
+    let id = req.params.id;
+    const user = req.user;
+    const record = await EmploymentRecords.deleteOne({
+      _id: id,
+      user:  user._id  // Ensure the user owns the employment record
+    });
+    if (!record || record.deletedCount === 0) {
       return res.status(404).json({
-        message: "Data not found",
+        message: "Data not found or you are not authorized to delete this record",
         data: null,
         error: null
       });
+    }
     res.status(200).json({
       message: "Data deleted successfully",
       data: record,

@@ -10,7 +10,7 @@ let verifyToken = (req, res, next) => {
                 error: "No token provided",
             });
         }
-        token = token.split(" ")[1]; // Remove 'Bearer ' prefix
+        token = token.split(" ")[1];
         jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
             if (err) {
                 return res.status(401).json({
@@ -26,21 +26,23 @@ let verifyToken = (req, res, next) => {
         return res.status(500).json({
             message: "Internal server error",
             data: null,
-            error: error.message,
+            error: [error.message],
         });
     }
 };
 
-const verifyAdmin = (req, res, next) => {
-    if (req.user && req.user.role === 'admin') {
-        next(); // User is admin, proceed to the next middleware
-    } else {
-        return res.status(403).json({
-            message: "Access denied. Admins only.",
-            data: null,
-            error: "Forbidden",
-        });
-    }
+const authorizeRoles = (...allowedRoles) => {
+    return (req, res, next) => {
+        if (!req.user || !allowedRoles.includes(req.user.role)) {
+            return res.status(403).json({
+                success: false,
+                message: "Forbidden: You don't have enough privileges",
+                data: null,
+                error: "Access denied",
+            });
+        }
+        next();
+    };
 }
 
-export { verifyToken, verifyAdmin };
+export { verifyToken, authorizeRoles };

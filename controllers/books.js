@@ -4,6 +4,13 @@ import Books from "../models/books.js";
 const getBooks = async (req, res) => {
   try {
     const books = await Books.find();
+    if (!books || books.length === 0) {
+      return res.status(404).json({
+        message: "No books found",
+        data: null,
+        error: null,
+      });
+    }
     res.status(200).json({
       message: "Data fetched successfully",
       data: books,
@@ -90,13 +97,22 @@ const updateBook = async (req, res) => {
 // Delete book
 const deleteBook = async (req, res) => {
   try {
-    const book = await Books.findByIdAndDelete(req.params.id);
-    if (!book)
+
+    let id = req.params.id;
+    const user = req.user;
+    const book = await Books.deleteOne({
+      _id: id,
+      user : user._id  // Ensure the user owns the book record
+    });
+    if (!book || book.deletedCount === 0) {
       return res.status(404).json({
-        message: "Data not found",
+        message: "Data not found or you are not authorized to delete this book",
+        success: false,
         data: null,
         error: null,
       });
+    }
+  
     res.status(200).json({
       message: "Data deleted successfully",
       data: book,

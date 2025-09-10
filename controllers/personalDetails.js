@@ -1,9 +1,18 @@
+import PersonalDetails from "../models/personalDetails.js";
 import PersonalDetailsModel from "../models/personalDetails.js";
 
 // Get all personal details
 const getPersonalDetails = async (req, res) => {
   try {
-    const details = await PersonalDetailsModel.find();
+    const personalDetails = await PersonalDetails.find();
+
+    if (!personalDetails || personalDetails.length === 0) {
+      return res.status(404).json({
+        message: "No personal details found",
+        data: null,
+        error: null
+      });
+    }
     res.status(200).json({
       message: "Data details fetched successfully",
       data: details,
@@ -49,12 +58,9 @@ const getPersonalDetail = async (req, res) => {
 const createPersonalDetails = async (req, res) => {
   try {
     // Destructure ALL required fields from request body
-    const { 
-      fullName, 
-      designation, 
-      contactNumber, 
+    const {
+      designation,
       biosketch,
-      email, 
       researchArea,
       academicTitle,
       subject,
@@ -69,11 +75,8 @@ const createPersonalDetails = async (req, res) => {
 
     // Validate ALL required fields
     let errors = [];
-    if (!fullName) errors.push("Full name is required");
     if (!designation) errors.push("Designation is required");
-    if (!contactNumber) errors.push("Contact number is required");
     if (!biosketch) errors.push("Biosketch is required");
-    if (!email) errors.push("Email is required");
     if (!researchArea) errors.push("Research area is required");
 
     if (errors.length > 0) {
@@ -90,11 +93,8 @@ const createPersonalDetails = async (req, res) => {
     // Create new document with ALL fields
     const detail = new PersonalDetailsModel({
       user: user.id,
-      fullName,
       designation,
-      contactNumber,
       biosketch,
-      email, // Include email in the document
       researchArea, // Include researchArea in the document
       // Include other fields
       academicTitle,
@@ -109,7 +109,7 @@ const createPersonalDetails = async (req, res) => {
     });
 
     await detail.save();
-    
+
     res.status(201).json({
       message: "Personal details created successfully",
       data: detail,
@@ -155,13 +155,20 @@ const updatePersonalDetails = async (req, res) => {
 // Delete personal detail by ID
 const deletePersonalDetail = async (req, res) => {
   try {
-    const detail = await PersonalDetailsModel
-      .findByIdAndDelete(req.params.id);
-    if (!detail) return res.status(404).json({
-      message: "Data detail not found",
-      data: null,
-      error: null
-    });
+    let id = req.params.id;
+    const user = req.user;
+    const detail = await PersonalDetails.deleteOne({
+      _id: id,
+      user: user._id, // Ensure the user owns the personal details     
+    })
+    if (!detail || detail.deletedCount === 0) {
+      return res.status(404).json({
+        message: "Personal detail not found or not owned by user",
+        success: false,
+        data: null,
+        error: null
+      });
+    }
     res.status(200).json({
       message: "Data detail deleted successfully",
       data: detail,

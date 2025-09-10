@@ -5,6 +5,13 @@ import Workshops from "../models/workshops.js";
 const getWorkshops = async (req, res) => {
   try {
     const workshops = await Workshops.find();
+    if (!workshops || workshops.length === 0) {
+      return res.status(404).json({
+        message: "No workshops found",
+        data: null,
+        error: null
+      });
+    }
     res.status(200).json({
       message: "Data fetched successfully",
       data: workshops,
@@ -50,6 +57,7 @@ const createWorkshop = async (req, res) => {
     const workshop = new Workshops(req.body);
     await workshop.save();
     res.status(201).json({
+      success: true,
       message: "Data created successfully",
       data: workshop,
       error: null
@@ -57,6 +65,7 @@ const createWorkshop = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
       error: error.message
@@ -70,11 +79,13 @@ const updateWorkshop = async (req, res) => {
       .findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!workshop)
       return res.status(404).json({
+        success: false,
         message: "Data not found",
         data: null,
         error: null
       });
     res.status(200).json({
+      success: true,
       message: "Data updated successfully",
       data: workshop,
       error: null
@@ -91,18 +102,24 @@ const updateWorkshop = async (req, res) => {
 
 const deleteWorkshop = async (req, res) => {
   try {
-    const workshop = await Workshops
-      .findByIdAndDelete(req.params.id);
-    if (!workshop)
+    let id = req.params.id;
+    const user = req.user;
+    const workshop = await Workshops.deleteOne({
+      _id: id,
+      user: user._id
+    });
+    if (!workshop || workshop.deletedCount === 0) {
       return res.status(404).json({
-        message: "Data not found",
+        message: "Data not found or not owned by user",
+        success: false,
         data: null,
-        error: null
+        error: null,
       });
+    }
     res.status(200).json({
       message: "Data deleted successfully",
       data: workshop,
-      error: null
+      error: null,
     });
   }
   catch (error) {

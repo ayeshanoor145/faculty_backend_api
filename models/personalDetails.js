@@ -6,10 +6,6 @@ const personalDetailsSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Users"
   },
-  fullName: {
-    type: String,
-    required: true
-  },
   academicTitle: String,
   designation: String,
   subject: String,
@@ -35,23 +31,6 @@ const personalDetailsSchema = mongoose.Schema({
   orcidId: String,
   orcidUrl: String,
   googleScholarLink: String,
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    lowercase: true,
-    trim: true,
-    validate: {
-      validator: function (v) {
-        return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(v);
-      },
-      message: (props) => `${props.value} is not a valid email!`,
-    },
-  },
-  contactNumber: {
-    type: String,
-    required: true
-  },
   biosketch: {
     type: String,
     required: true

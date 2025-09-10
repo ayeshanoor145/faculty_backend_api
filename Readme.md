@@ -139,7 +139,7 @@ Create a `.env` file using `.env.example` as a template:
 ```env
 PORT=5000
 HOST=localhost
-MONGODB_URI="mongodb://localhost:27017/faculty_app"
+MONGODB_URI="mongodb://localhost:27017/faculty_new"
 WEBAPP_URL="http://localhost:8081"
 JWT_SECRET=your_jwt_secret
 JWT_EXPIRES_IN=1h

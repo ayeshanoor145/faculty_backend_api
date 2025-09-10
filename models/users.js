@@ -50,7 +50,7 @@ const usersSchema = new mongoose.Schema({
     default: "",
   },
   code: {
-    type: String,
+    type: Number,
     default: null,
   },
   codeExpires: {

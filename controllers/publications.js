@@ -3,6 +3,13 @@ import Publications from "../models/publications.js";
 const getPublications = async (req, res) => {
   try {
     const publications = await Publications.find();
+    if (!publications || publications.length === 0) {
+      return res.status(404).json({
+        message: "No publications found",
+        data: null,
+        error: null
+      });
+    }
     res.status(200).json({
       message: "Data fetched successfully",
       data: publications,
@@ -89,14 +96,22 @@ const updatePublication = async (req, res) => {
 
 const deletePublication = async (req, res) => {
   try {
-    const publication = await Publications
-      .findByIdAndDelete(req.params.id);
-    if (!publication)
+    let id = req.params.id;
+    const user = req.user;
+    const publication = await Publications.deleteOne({
+      _id: id,
+      user: user._id, // Ensure the user owns the publication 
+    });
+
+    if (!publication || publication.deletedCount === 0) {
       return res.status(404).json({
-        message: "Data not found",
+        message: "Publication  not found or not owned by user",
+        success: false,
         data: null,
-        error: null
+        error: null,
       });
+    }
+
     res.status(200).json({
       message: "Data deleted successfully",
       data: publication,

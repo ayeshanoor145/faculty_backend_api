@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 const seedUsers = async () => {
     const module = await import("../models/users.js");
     const UserModel = module.default;

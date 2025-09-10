@@ -10,6 +10,13 @@ const getUsers = async (req, res) => {
     const users = await Users.find().select(
       " fullName userName email role contactNumber address status createdAt updatedAt profilePicture"
     );
+    if (!users || users.length === 0) {
+      return res.status(404).json({
+        message: "No users found",
+        data: null,
+        error: null,
+      });
+    }
     res.status(200).json({
       message: "Users fetched successfully",
       data: users,
@@ -24,9 +31,9 @@ const getUsers = async (req, res) => {
   }
 };
 
-const getUser = async (req, res) => {
+const getProfile = async (req, res) => {
   try {
-    let id = req.user.userId; // Changed from req.user.id to req.user.userId
+    let id = req.user.userId;
     console.log(req.user);
 
     // ObjectId validation handled by middleware
@@ -95,7 +102,7 @@ const deleteUser = async (req, res) => {
       });
     }
     res.status(200).json({
-      message: "Users deleted successfully",
+      message: "User deleted successfully",
       data: user,
       error: null,
     });
@@ -239,6 +246,129 @@ const signupUser = async (req, res) => {
     });
   } catch (error) {
     res.status(500).json({
+      message: "Internal server error",
+      data: null,
+      error: error.message,
+    });
+  }
+};
+
+const verifyEmail = async (req, res) => {
+  try {
+    const { email, code } = req.body;
+    let errors = [];
+    if (!email) {
+      errors.push("Email is required");
+    }
+    if (!code) {
+      errors.push("Verification code is required");
+    }
+    if (errors.length > 0) {
+      return res.status(400).json({
+        success: false,
+        message: "Validation errors",
+        data: null,
+        error: errors,
+      });
+    }
+    const user = await Users.findOne({ email: email });
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+        data: null,
+        error: "No user found with this email",
+      });
+    }
+    if (user.status === "active") {
+      return res.status(400).json({
+        success: false,
+        message: "User already verified",
+        data: null,
+        error: "This account is already active",
+      });
+    }
+    if (user.code !== parseInt(code)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid verification code",
+        data: null,
+        error: "The provided code does not match",
+      });
+    }
+    if (user.codeExpires < new Date()) {
+      return res.status(400).json({
+        success: false,
+        message: "Verification code expired",
+        data: null,
+        error: "The verification code has expired. Please request a new one.",
+      });
+    }
+
+    user.status = "active";
+    user.code = null;
+    user.codeExpires = null;
+    await user.save();
+    res.status(200).json({
+      success: true,
+      message: "Email verified successfully",
+      data: null,
+      error: null,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Internal server error",
+      data: null,
+      error: error.message,
+    });
+  }
+};
+
+const resendCode = async (req, res) => {
+  try {
+    const { email } = req.body;
+    if (!email) {
+      return res.status(400).json({
+        success: false,
+        message: "Email is required",
+        data: null,
+        error: "Missing email field",
+      });
+    }
+    const user = await Users.findOne({ email: email });
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+        data: null,
+        error: "No user found with this email",
+      });
+    }
+    if (user.status === "active") {
+      return res.status(400).json({
+        success: false,
+        message: "User already verified",
+        data: null,
+        error: "This account is already active",
+      });
+    }
+    // Generate new verification code
+    const code = Math.floor(1000 + Math.random() * 9000);
+    const codeExpires = new Date(Date.now() + 10 * 60 * 1000); // Code expires in 10 minutes
+    user.code = code;
+    user.codeExpires = codeExpires;
+    await user.save();
+    sendEmail(email, "Verify your email", String(code));
+    res.status(200).json({
+      success: true,
+      message: "Verification code resent successfully",
+      data: null,
+      error: null,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
       error: error.message,
@@ -419,9 +549,11 @@ const changePassword = async (req, res) => {
 
 export {
   getUsers,
-  getUser,
+  getProfile,
   signinUser,
   signupUser,
+  verifyEmail,
+  resendCode,
   changePassword,
   deleteUser,
   updateUsers,

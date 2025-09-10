@@ -35,10 +35,6 @@ const educationsSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "PersonalDetails"
   },
-  researcherId: {
-    type: String,
-    unique: true
-  },
   education: [educationEntrySchema],
   highestDegree: highestDegreeSchema
 },

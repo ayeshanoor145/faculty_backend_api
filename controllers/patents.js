@@ -5,6 +5,13 @@ import Patents from "../models/patents.js";
 const getPatents = async (req, res) => {
   try {
     const patents = await Patents.find();
+    if (!patents || patents.length === 0) {
+      return res.status(404).json({
+        message: "No patents found",
+        data: null,
+        error: null
+      });
+    }
     res.status(200).json({
       message: "Data fetched successfully",
       data: patents,
@@ -92,13 +99,19 @@ const updatePatent = async (req, res) => {
 
 const deletePatent = async (req, res) => {
   try {
-    const patent = await PatentModel
-      .findByIdAndDelete(req.params.id);
-    if (!patent) return res.status(404).json({
-      message: "Data not found",
-      data: null,
-      error: null
+    let id = req.params.id;
+    const user = req.user;
+    const patent = await Patents.deleteOne({ 
+      _id: id,
+      user: user._id  // Ensure the user owns the patent record
     });
+    if (!patent|| patent.deletedCount === 0) {
+      return res.status(404).json({
+        message: "Data not found or you are not authorized to delete this patent",
+        data: null,
+        error: null
+      });
+    }
     res.status(200).json({
       message: "Data deleted successfully",
       data: patent,

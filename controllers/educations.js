@@ -56,20 +56,6 @@ const getEducation = async (req, res) => {
 
 const createEducations = async (req, res) => {
   try {
-    // Check for existing education
-    const existingEducation = await Educations.findOne({
-      researcherId: req.body.researcherId,
-      user: req.user._id,
-    });
-
-    if (existingEducation) {
-      return res.status(400).json({
-        message:
-          "Education with this researcherId already exists for this user",
-        error: "Duplicate researcherId",
-      });
-    }
-
     // Validate education data
     if (!req.body.education?.length) {
       return res.status(400).json({
@@ -91,11 +77,15 @@ const createEducations = async (req, res) => {
     ]);
 
     res.status(201).json({
+      success: true,
       message: "Education created successfully",
       data: result,
+      error: null,
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
+      data: null,
       message: "Error creating education",
       error: error.message,
     });
@@ -142,16 +132,16 @@ const updateEducation = async (req, res) => {
 const deleteEducation = async (req, res) => {
   try {
     let id = req.params.id;
-
     const user = req.user;
     const education = await Educations.deleteOne({
       _id: id,
       user: user._id, // Ensure the user owns the education record
     });
 
-    if (education.deletedCount === 0) {
-      return res.status(200).json({
+    if (!education || education.deletedCount === 0) {
+      return res.status(404).json({
         message: "Education not found or not owned by user",
+        success: false,
         data: null,
         error: null,
       });

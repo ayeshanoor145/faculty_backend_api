@@ -5,6 +5,14 @@ import Distinctions from "../models/distinctions.js";
 const getDistinctions = async (req, res) => {
   try {
     const distinctions = await Distinctions.find();
+
+    if (!distinctions || distinctions.length === 0) {
+      return res.status(404).json({
+        message: "No distinctions found",
+        data: null,
+        error: null
+      });
+    }
     res.status(200).json({
       message: "Data fetched successfully",
       data: distinctions,
@@ -90,15 +98,20 @@ const updateDistinction = async (req, res) => {
 
 const deleteDistinction = async (req, res) => {
   try {
-    const distinction = await Distinctions
-      .findByIdAndDelete(req.params.id);
-
-    if (!distinction)
+    let id = req.params.id;
+    const user = req.user;
+    const distinction = await Distinctions.deleteOne({
+      _id: id,
+      user: user._id  // Ensure the user owns the distinction record
+    });
+    if (!distinction || distinction.deletedCount === 0) {
       return res.status(404).json({
-        message: "Data not found",
+        success: false,
+        message: "Data not found or you are not authorized to delete this distinction",
         data: null,
         error: null
       });
+    }
     res.status(200).json({
       message: "Data deleted successfully",
       data: distinction,
