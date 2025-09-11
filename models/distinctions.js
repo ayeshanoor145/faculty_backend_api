@@ -1,19 +1,16 @@
 import mongoose from "mongoose";
 
-const distinctionSchema = new mongoose.Schema({
+const distinctionsSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"
+  },
   awardName: String,
   year: Number,
   scope: String,
   awardingBody: String
-}, { _id: false });
+}
+);
 
-const distinctionsSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User" 
-  },
-  distinctions: [distinctionSchema]
-});
-
-const Distinctions = mongoose.model("Distinctions", distinctionsSchema); 
+const Distinctions = mongoose.model("Distinctions", distinctionsSchema);
 export default Distinctions;

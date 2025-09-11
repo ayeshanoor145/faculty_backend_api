@@ -13,7 +13,7 @@ const personalDetailsSchema = mongoose.Schema({
   researchArea: {
     type: [String],  // Array of strings
     required: true
-  },            
+  },
   nationality: {
     type: {  // Subdocument structure
       type: String,
@@ -23,7 +23,7 @@ const personalDetailsSchema = mongoose.Schema({
     countries: [String]  // Array of country strings
   },
   researcherId: {
-    type : String,
+    type: String,
     unique: true,
     sparse: true  // Allows multiple users to have null researcherId
   },

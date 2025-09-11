@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
-const employmentSchema = new mongoose.Schema({
+const employmentRecordsSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"
+  },
   organization: String,
   sector: String,
   post: String,
@@ -8,15 +12,8 @@ const employmentSchema = new mongoose.Schema({
   dateFrom: String,
   dateTo: String,
   isCurrent: Boolean
-}, { _id: false });
-
-const employmentRecordsSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"
-  },
-  employmentRecord: [employmentSchema]
-});
+}
+);
 
 const EmploymentRecords = mongoose.model("EmploymentRecords", employmentRecordsSchema);
 export default EmploymentRecords;

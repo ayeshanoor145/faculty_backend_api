@@ -1,19 +1,5 @@
 import mongoose from "mongoose";
 
-const chapterSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"
-  },
-  chapterTitle: String,
-  author: String,
-  bookTitle: String,
-  publicationDate: String,
-  publishingAgency: String,
-  pages: Number,
-  language: String
-}, { _id: false });
-
 const booksSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
@@ -27,7 +13,17 @@ const booksSchema = new mongoose.Schema({
   isHECRecognized: Boolean,
   pages: Number,
   language: String,
-  chapters: [chapterSchema]
+  chapters: [
+    {
+      chapterTitle: String,
+      author: String,
+      bookTitle: String,
+      publicationDate: String,
+      publishingAgency: String,
+      pages: Number,
+      language: String
+    }
+  ]
 });
 
 const Books = mongoose.model("Books", booksSchema);

@@ -1,7 +1,10 @@
 import mongoose from "mongoose";
 
-const publicationEntrySchema = new mongoose.Schema({
-  
+const publicationsSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Users"
+  },
   author: String,
   coAuthors: [String],
   title: String,
@@ -13,13 +16,6 @@ const publicationEntrySchema = new mongoose.Schema({
   doi: String,
   journalType: String,
   hecRecognized: Boolean
-}, { _id: false });
-
-const publicationsSchema = new mongoose.Schema({
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Users"},
-  publications: [publicationEntrySchema]
 });
 
 const Publications = mongoose.model("Publications", publicationsSchema);

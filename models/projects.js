@@ -1,25 +1,22 @@
 import mongoose from "mongoose";
-const awardedBySchema = new mongoose.Schema({
-  name: String,
-  type: String,
-  country: String,
-  website: String
-}, { _id: false });
-
-const worthSchema = new mongoose.Schema({
-  value: Number,
-  currency: String
-}, { _id: false });
 
 const projectsSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User"  // This should match exactly with your User model name
+    ref: "Users"
   },
-  awardedBy: awardedBySchema,
+  awardedBy: {
+    name: String,
+    type: String,
+    country: String,
+    website: String
+  },
   pi: String,
   coPi: [String],
-  worth: worthSchema,
+  worth: {
+    value: Number,
+    currency: String
+  },
   title: String,
   startDate: String,
   completionDate: String,

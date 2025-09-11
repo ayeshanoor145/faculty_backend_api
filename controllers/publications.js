@@ -109,6 +109,7 @@ const deletePublication = async (req, res) => {
   try {
     let id = req.params.id;
     const user = req.user;
+    console.log(user);
     const publication = await Publications.deleteOne({
       _id: id,
       user: user._id, // Ensure the user owns the publication 
@@ -119,7 +120,7 @@ const deletePublication = async (req, res) => {
         success: false,
         message: "Publication not found or not owned by user",
         data: null,
-        error: ["Publication not found or not owned by user"], // Fixed: removed error.message reference
+        error: ["Publication not found or not owned by user"], 
       });
     }
 
