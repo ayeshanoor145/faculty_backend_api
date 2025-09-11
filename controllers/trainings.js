@@ -2,17 +2,19 @@ import Trainings from "../models/trainings.js";
 
 // Controller to handle training-related operations
 
-const getTrainings = async (req, res) => { 
+const getTrainings = async (req, res) => {
   try {
     const trainings = await Trainings.find();
     if (!trainings || trainings.length === 0) {
       return res.status(404).json({
+        success: false,
         message: "No trainings found",
         data: null,
-        error: null
+        error: ["No trainings found"], // Fixed: removed error.message reference
       });
     }
     res.status(200).json({
+      success: true,
       message: "Trainings fetched successfully",
       data: trainings,
       error: null
@@ -20,9 +22,10 @@ const getTrainings = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -33,11 +36,13 @@ const getTraining = async (req, res) => {
       .findById(req.params.id);
     if (!training)
       return res.status(404).json({
+        success: false,
         message: "Training not found",
         data: null,
-        error: null
+        error: ["Training not found with the provided ID"], // Fixed: removed error.message reference
       });
     res.status(200).json({
+      success: true,
       message: "Training by ID fetched successfully",
       data: training,
       error: null
@@ -46,9 +51,10 @@ const getTraining = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -58,6 +64,7 @@ const createTraining = async (req, res) => {
     const training = new Trainings(req.body);
     await training.save();
     res.status(201).json({
+      success: true,
       message: "Training created successfully",
       data: training,
       error: null
@@ -65,9 +72,10 @@ const createTraining = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -78,11 +86,13 @@ const updateTraining = async (req, res) => {
       .findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!training)
       return res.status(404).json({
+        success: false,
         message: "Training not found",
         data: null,
-        error: null
+        error: ["Training not found with the provided ID"], // Fixed: removed error.message reference
       });
     res.status(200).json({
+      success: true,
       message: "Training updated successfully",
       data: training,
       error: null
@@ -90,9 +100,10 @@ const updateTraining = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -111,10 +122,11 @@ const deleteTraining = async (req, res) => {
         message: "Training not found or not owned by user",
         success: false,
         data: null,
-        error: null,
+        error: ["Training not found or not owned by user"], // Fixed: removed error.message reference
       });
     }
     res.status(200).json({
+      success: true,
       message: "Training deleted successfully",
       data: training,
       error: null
@@ -122,8 +134,10 @@ const deleteTraining = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
-      data: null, error: error.message
+      data: null,
+      error: [error.message],
     });
   }
 };

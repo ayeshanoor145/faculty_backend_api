@@ -29,7 +29,7 @@ const usersSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    enum: ["admin", "user"],  
+    enum: ["admin", "user"],
     default: "user",
   },
   createdAt: {
@@ -41,7 +41,7 @@ const usersSchema = new mongoose.Schema({
     default: Date.now,
   },
   status: {
-    type: String,  
+    type: String,
     enum: ["active", "inactive"],
     default: "inactive"
   },
@@ -65,7 +65,9 @@ const usersSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-});
+},
+  { timestamps: true }
+);
 
 const Users = mongoose.model("Users", usersSchema);
 export default Users;

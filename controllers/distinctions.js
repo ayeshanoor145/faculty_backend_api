@@ -8,12 +8,14 @@ const getDistinctions = async (req, res) => {
 
     if (!distinctions || distinctions.length === 0) {
       return res.status(404).json({
+        success: false,
         message: "No distinctions found",
         data: null,
-        error: null
+        error: ["No distinctions available in the database"],
       });
     }
     res.status(200).json({
+      success: true,
       message: "Data fetched successfully",
       data: distinctions,
       error: null
@@ -21,9 +23,10 @@ const getDistinctions = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -33,20 +36,23 @@ const getDistinction = async (req, res) => {
     const distinction = await Distinctions.findById(req.params.id);
     if (!distinction)
       return res.status(404).json({
+        success: false,
         message: "Distinction not found",
         data: null,
-        error: null
+        error: ["Distinction not found with the provided ID"],
       });
     res.status(200).json({
+      success: true,
       message: "Distinction by ID fetched successfully",
       data: distinction,
       error: null
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -56,6 +62,7 @@ const createDistinction = async (req, res) => {
     const distinction = new Distinctions(req.body);
     await distinction.save();
     res.status(201).json({
+      success: true,
       message: "Data created successfully",
       data: distinction,
       error: null
@@ -63,9 +70,10 @@ const createDistinction = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -77,11 +85,13 @@ const updateDistinction = async (req, res) => {
     });
     if (!distinction)
       return res.status(404).json({
+        success: false,
         message: "Data not found",
         data: null,
-        error: null
+        error: ["Distinction not found with the provided ID"],
       });
     res.status(200).json({
+      success: true,
       message: "Data updated successfully",
       data: distinction,
       error: null
@@ -89,9 +99,10 @@ const updateDistinction = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -109,10 +120,11 @@ const deleteDistinction = async (req, res) => {
         success: false,
         message: "Data not found or you are not authorized to delete this distinction",
         data: null,
-        error: null
+        error: ["Distinction not found or you don't have permission to delete it"]
       });
     }
     res.status(200).json({
+      success: true,
       message: "Data deleted successfully",
       data: distinction,
       error: null
@@ -120,18 +132,12 @@ const deleteDistinction = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message]
     });
   }
 };
 
-
-export { 
-  getDistinctions, 
-  getDistinction, 
-  createDistinction, 
-  updateDistinction, 
-  deleteDistinction
-};
+export { getDistinctions, getDistinction, createDistinction, updateDistinction, deleteDistinction };

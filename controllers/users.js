@@ -2,6 +2,7 @@ import Users from "../models/users.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import sendEmail from "../utils/send-mail.js";
+
 // Controller to handle user-related operations
 
 const getUsers = async (req, res) => {
@@ -12,21 +13,24 @@ const getUsers = async (req, res) => {
     );
     if (!users || users.length === 0) {
       return res.status(404).json({
+        success: false,
         message: "No users found",
         data: null,
-        error: null,
+        error: ["No users found"], // Fixed: removed error.message reference
       });
     }
     res.status(200).json({
+      success: true,
       message: "Users fetched successfully",
       data: users,
       error: null,
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message,
+      error: [error.message],
     });
   }
 };
@@ -57,7 +61,7 @@ const getProfile = async (req, res) => {
         success: false,
         message: "User not found",
         data: null,
-        error: "User not found in database"
+        error: ["User not found in database"] // Fixed: changed to array
       });
     }
 
@@ -85,7 +89,7 @@ const getProfile = async (req, res) => {
       success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -96,21 +100,24 @@ const deleteUser = async (req, res) => {
     const user = await Users.findByIdAndDelete(id);
     if (!user) {
       return res.status(404).json({
+        success: false,
         message: "User not found",
         data: null,
-        error: null,
+        error: ["User not found with the provided ID"], // Fixed: removed error.message reference
       });
     }
     res.status(200).json({
+      success: true,
       message: "User deleted successfully",
       data: user,
       error: null,
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message,
+      error: [error.message],
     });
   }
 };
@@ -127,21 +134,24 @@ const updateUsers = async (req, res) => {
     );
     if (!user) {
       return res.status(404).json({
+        success: false,
         message: "Users not found",
         data: null,
-        error: null,
+        error: ["User not found with the provided ID"], // Fixed: removed error.message reference
       });
     }
     res.status(200).json({
+      success: true,
       message: "Users updated successfully by ID",
       data: user,
       error: null,
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message,
+      error: [error.message],
     });
   }
 };
@@ -181,7 +191,7 @@ const signupUser = async (req, res) => {
         success: false,
         message: "Validation error",
         data: null,
-        error: "User already exists with this email",
+        error: ["User already exists with this email"], // Fixed: changed to array
       });
     }
 
@@ -193,7 +203,7 @@ const signupUser = async (req, res) => {
             success: false,
             message: "Internal server error",
             data: null,
-            error: err.message,
+            error: [err.message], // Fixed: changed to array
           });
         }
 
@@ -217,38 +227,38 @@ const signupUser = async (req, res) => {
 
         sendEmail(email, "Verify your email", String(code));
 
-        // Prepare user data for response
-        const userData = {
-          _id: user._id,
-          fullName: user.fullName,
-          userName: user.userName,
-          email: user.email,
-          role: user.role,
-          createdAt: user.createdAt,
-          updatedAt: user.updatedAt,
-          status: user.status,
-          contactNumber: user.contactNumber,
-          address: user.address,
-        };
-
         res.status(201).json({
+          success: true,
           message: "SignUp successful",
-          data: userData,
+          data: {
+            _id: user._id,
+            fullName: user.fullName,
+            userName: user.userName,
+            email: user.email,
+            role: user.role,
+            createdAt: user.createdAt,
+            updatedAt: user.updatedAt,
+            status: user.status,
+            contactNumber: user.contactNumber,
+            address: user.address,
+          },
           error: null,
         });
       } catch (error) {
         res.status(500).json({
+          success: false,
           message: "Internal server error",
           data: null, // Don't include user data in error case as it might not exist
-          error: error.message,
+          error: [error.message],
         });
       }
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message,
+      error: [error.message],
     });
   }
 };
@@ -277,7 +287,7 @@ const verifyEmail = async (req, res) => {
         success: false,
         message: "User not found",
         data: null,
-        error: "No user found with this email",
+        error: ["No user found with this email"], // Fixed: changed to array
       });
     }
     if (user.status === "active") {
@@ -285,7 +295,7 @@ const verifyEmail = async (req, res) => {
         success: false,
         message: "User already verified",
         data: null,
-        error: "This account is already active",
+        error: ["This account is already active"], // Fixed: changed to array
       });
     }
     if (user.code !== parseInt(code)) {
@@ -293,7 +303,7 @@ const verifyEmail = async (req, res) => {
         success: false,
         message: "Invalid verification code",
         data: null,
-        error: "The provided code does not match",
+        error: ["The provided code does not match"], // Fixed: changed to array
       });
     }
     if (user.codeExpires < new Date()) {
@@ -301,7 +311,7 @@ const verifyEmail = async (req, res) => {
         success: false,
         message: "Verification code expired",
         data: null,
-        error: "The verification code has expired. Please request a new one.",
+        error: ["The verification code has expired. Please request a new one."], // Fixed: changed to array
       });
     }
 
@@ -320,7 +330,7 @@ const verifyEmail = async (req, res) => {
       success: false,
       message: "Internal server error",
       data: null,
-      error: error.message,
+      error: [error.message],
     });
   }
 };
@@ -333,7 +343,7 @@ const resendCode = async (req, res) => {
         success: false,
         message: "Email is required",
         data: null,
-        error: "Missing email field",
+        error: ["Missing email field"], // Fixed: changed to array
       });
     }
     const user = await Users.findOne({ email: email });
@@ -342,7 +352,7 @@ const resendCode = async (req, res) => {
         success: false,
         message: "User not found",
         data: null,
-        error: "No user found with this email",
+        error: ["No user found with this email"], // Fixed: changed to array
       });
     }
     if (user.status === "active") {
@@ -350,7 +360,7 @@ const resendCode = async (req, res) => {
         success: false,
         message: "User already verified",
         data: null,
-        error: "This account is already active",
+        error: ["This account is already active"], // Fixed: changed to array
       });
     }
     // Generate new verification code
@@ -371,7 +381,7 @@ const resendCode = async (req, res) => {
       success: false,
       message: "Internal server error",
       data: null,
-      error: error.message,
+      error: [error.message],
     });
   }
 };
@@ -386,7 +396,7 @@ const signinUser = async (req, res) => {
         success: false,
         message: "Password is required",
         data: null,
-        error: "Missing password field",
+        error: ["Missing password field"], // Fixed: changed to array
       });
     }
 
@@ -395,7 +405,7 @@ const signinUser = async (req, res) => {
         success: false,
         message: "Email or Username is required",
         data: null,
-        error: "Missing email or username field",
+        error: ["Missing email or username field"], // Fixed: changed to array
       });
     }
 
@@ -408,7 +418,7 @@ const signinUser = async (req, res) => {
         success: false,
         message: "Authentication failed",
         data: null,
-        error: "Invalid credentials",
+        error: ["Invalid credentials"], // Fixed: changed to array
       });
     }
 
@@ -419,7 +429,7 @@ const signinUser = async (req, res) => {
         success: false,
         message: "Authentication failed",
         data: null,
-        error: "Invalid credentials",
+        error: ["Invalid credentials"], // Fixed: changed to array
       });
     }
 
@@ -428,7 +438,7 @@ const signinUser = async (req, res) => {
         success: false,
         message: "Account is inactive",
         data: null,
-        error: "Please verify your email to activate your account",
+        error: ["Please verify your email to activate your account"], // Fixed: changed to array
       });
     }
 
@@ -439,22 +449,22 @@ const signinUser = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN }
     );
 
-    // Prepare user data for response (excluding sensitive info)
-    const userData = {
-      _id: user._id,
-      fullName: user.fullName,
-      userName: user.userName,
-      email: user.email,
-      role: user.role,
-      status: user.status,
-      contactNumber: user.contactNumber,
-      address: user.address,
-    };
-
     return res.status(200).json({
       success: true,
       message: "Login successful",
-      data: { token, user: userData },
+      data: {
+        token: token,
+        user: {
+          _id: user._id,
+          fullName: user.fullName,
+          userName: user.userName,
+          email: user.email,
+          role: user.role,
+          status: user.status,
+          contactNumber: user.contactNumber,
+          address: user.address,
+        },
+      },
       error: null,
     });
   } catch (error) {
@@ -463,7 +473,7 @@ const signinUser = async (req, res) => {
       success: false,
       message: "Internal server error",
       data: null,
-      error: error.message,
+      error: [error.message],
     });
   }
 };
@@ -475,29 +485,40 @@ const changePassword = async (req, res) => {
     const { oldPassword, newPassword, confirmPassword } = req.body;
     let errors = [];
     // Validate required fields
-    if (!oldPassword) errors.push("Old password is required");
-    if (!newPassword) errors.push("Password is required");
-    if (!confirmPassword) errors.push("Confirm password is required");
-    if (oldPassword === newPassword)
+    if (!oldPassword) {
+      errors.push("Old password is required");
+    }
+    if (!newPassword) {
+      errors.push("Password is required");
+    }
+    if (!confirmPassword) {
+      errors.push("Password confirmation is required");
+    }
+    if (oldPassword === newPassword) {
       errors.push("New password must be different from old password");
-    if (newPassword !== confirmPassword) errors.push("Passwords do not match");
-    if (newPassword.length < 6)
+    }
+    if (newPassword !== confirmPassword) {
+      errors.push("Passwords do not match");
+    }
+    if (newPassword.length < 8) {
       errors.push("Password must be at least 6 characters long");
-
+    }
     if (errors.length > 0) {
       return res.status(400).json({
+        success: false,
         message: "Validation errors",
         data: null,
-        error: errors.join(", "),
+        error: errors, // Fixed: changed to array
       });
     }
 
     const user = await Users.findById(userId);
     if (!user) {
       return res.status(404).json({
+        success: false,
         message: "User not found",
         data: null,
-        error: null,
+        error: ["User not found with the provided ID"], // Fixed: removed error.message reference
       });
     }
 
@@ -507,7 +528,7 @@ const changePassword = async (req, res) => {
         success: false,
         message: "Change password failed",
         data: null,
-        error: "Invalid old password",
+        error: ["Invalid old password"],
       });
     }
 
@@ -515,46 +536,30 @@ const changePassword = async (req, res) => {
     bcrypt.hash(newPassword, 10, async (err, hash) => {
       if (err) {
         return res.status(500).json({
+          success: false,
           message: "Internal server error",
           data: null,
-          error: "Failed to hash password",
+          error: ["Failed to hash password"], // Fixed: changed to array
         });
       }
+      user.password = hash;
+      await user.save();
 
-      try {
-        user.password = hash;
-        await user.save();
-
-        res.status(200).json({
-          message: "Password changed successfully",
-          data: null,
-          error: null,
-        });
-      } catch (saveError) {
-        res.status(500).json({
-          message: "Internal server error",
-          data: null,
-          error: saveError.message,
-        });
-      }
+      res.status(200).json({
+        success: true,
+        message: "Password changed successfully",
+        data: null,
+        error: null,
+      });
     });
   } catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message,
+      error: [error.message],
     });
   }
 };
 
-export {
-  getUsers,
-  getProfile,
-  signinUser,
-  signupUser,
-  verifyEmail,
-  resendCode,
-  changePassword,
-  deleteUser,
-  updateUsers,
-};
+export { getUsers, getProfile, signinUser, signupUser, verifyEmail, resendCode, changePassword, deleteUser, updateUsers, };

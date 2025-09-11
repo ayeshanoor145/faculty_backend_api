@@ -195,7 +195,7 @@ All routes support standard CRUD operations (**GET**, **POST**, **PUT**, **DELET
 
 Use Postman or similar tools to test endpoints.
 
-📂 **Faculty App Postman Collection**: [View on Postman](https://web.postman.co/workspace/My-Workspace~28b150c7-2164-4fb6-8f32-cadc2037b7cb/request/42689136-0e4316cb-2c17-46a8-8a35-ada88a0afe9a?action=share&source=copy-link&creator=42689136)
+📂 **Faculty App Postman Collection**: [View on Postman](https://code-wariors.postman.co/workspace/My-Workspace~28b150c7-2164-4fb6-8f32-cadc2037b7cb/collection/42689136-f44d350a-17d9-4f39-ae94-d1ac5e67b6af?action=share&creator=42689136&active-environment=42689136-58b7ec35-3672-40cf-8317-6ee44e8c4195)
 
 ---
 

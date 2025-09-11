@@ -7,12 +7,14 @@ const getWorkshops = async (req, res) => {
     const workshops = await Workshops.find();
     if (!workshops || workshops.length === 0) {
       return res.status(404).json({
+        success: false,
         message: "No workshops found",
         data: null,
-        error: null
+        error: ["No workshops found"], // Fixed: removed error.message reference
       });
     }
     res.status(200).json({
+      success: true,
       message: "Data fetched successfully",
       data: workshops,
       error: null
@@ -20,9 +22,10 @@ const getWorkshops = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -33,11 +36,13 @@ const getWorkshop = async (req, res) => {
       .findById(req.params.id);
     if (!workshop)
       return res.status(404).json({
+        success: false,
         message: "Workshop not found",
         data: null,
-        error: null
+        error: ["Workshop not found with the provided ID"], // Fixed: removed error.message reference
       });
     res.status(200).json({
+      success: true,
       message: "Workshop by ID fetched successfully",
       data: workshop,
       error: null
@@ -45,9 +50,10 @@ const getWorkshop = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -68,7 +74,7 @@ const createWorkshop = async (req, res) => {
       success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -82,7 +88,7 @@ const updateWorkshop = async (req, res) => {
         success: false,
         message: "Data not found",
         data: null,
-        error: null
+        error: ["Workshop not found with the provided ID"], // Fixed: removed error.message reference
       });
     res.status(200).json({
       success: true,
@@ -93,9 +99,10 @@ const updateWorkshop = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -113,10 +120,11 @@ const deleteWorkshop = async (req, res) => {
         message: "Data not found or not owned by user",
         success: false,
         data: null,
-        error: null,
+        error: ["Workshop not found or not owned by user"], // Fixed: removed error.message reference
       });
     }
     res.status(200).json({
+      success: true,
       message: "Data deleted successfully",
       data: workshop,
       error: null,
@@ -124,9 +132,10 @@ const deleteWorkshop = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };

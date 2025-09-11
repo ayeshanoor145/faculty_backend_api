@@ -8,12 +8,14 @@ const getPersonalDetails = async (req, res) => {
 
     if (!personalDetails || personalDetails.length === 0) {
       return res.status(404).json({
+        success: false,
         message: "No personal details found",
         data: null,
-        error: null
+        error: ["No personal details available in the database"],
       });
     }
     res.status(200).json({
+      success: true,
       message: "Data fetched successfully",
       data: personalDetails,
       error: null
@@ -21,9 +23,10 @@ const getPersonalDetails = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -35,11 +38,13 @@ const getPersonalDetail = async (req, res) => {
       .findById(req.params.id);
     if (!detail)
       return res.status(404).json({
+        success: false,
         message: "Personal detail not found",
         data: null,
-        error: null
+        error: ["Personal detail not found with the provided ID"],
       });
     res.status(200).json({
+      success: true,
       message: "Personal detail by ID fetched successfully",
       data: detail,
       error: null
@@ -47,9 +52,10 @@ const getPersonalDetail = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -81,9 +87,10 @@ const createPersonalDetails = async (req, res) => {
 
     if (errors.length > 0) {
       return res.status(400).json({
+        success: false,
         message: "Validation error",
         data: null,
-        error: errors.join(", ")
+        error: errors
       });
     }
 
@@ -111,6 +118,7 @@ const createPersonalDetails = async (req, res) => {
     await detail.save();
 
     res.status(201).json({
+      success: true,
       message: "Personal details created successfully",
       data: detail,
       error: null
@@ -119,9 +127,10 @@ const createPersonalDetails = async (req, res) => {
     // More detailed error logging
     console.error("Error creating personal details:", error);
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -133,11 +142,13 @@ const updatePersonalDetails = async (req, res) => {
       .findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!detail)
       return res.status(404).json({
+        success: false,
         message: "Data detail not found",
         data: null,
-        error: null
+        error: ["Personal detail not found with the provided ID"],
       });
     res.status(200).json({
+      success: true,
       message: "Data detail updated successfully",
       data: detail,
       error: null
@@ -145,9 +156,10 @@ const updatePersonalDetails = async (req, res) => {
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };
@@ -163,23 +175,25 @@ const deletePersonalDetail = async (req, res) => {
     })
     if (!detail || detail.deletedCount === 0) {
       return res.status(404).json({
-        message: "Personal detail not found or not owned by user",
         success: false,
+        message: "Personal detail not found or not owned by user",
         data: null,
-        error: null
+        error: ["Personal detail not found or you don't have permission to delete it"],
       });
     }
     res.status(200).json({
-      message: "Data detail deleted successfully",
+      success: true,
+      message: "Data deleted successfully",
       data: detail,
       error: null
     });
   }
   catch (error) {
     res.status(500).json({
+      success: false,
       message: "Internal server error",
       data: null,
-      error: error.message
+      error: [error.message],
     });
   }
 };

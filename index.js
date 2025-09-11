@@ -30,7 +30,7 @@ app.use(cors(corsOptions)); // Use the corsOptions defined above
 
 dbConnect(); //call the function to connect to MongoDB
 
-app.use("/api/personalDetails", apiRateLimit, personalDetailRoutes);
+app.use("/api/personal-details", apiRateLimit, personalDetailRoutes);
 app.use("/api/educations", apiRateLimit, educationRoutes);
 app.use("/api/projects", apiRateLimit, projectRoutes);
 app.use("/api/books", apiRateLimit, bookRoutes);
@@ -39,7 +39,7 @@ app.use("/api/patents", apiRateLimit, patentRoutes);
 app.use("/api/publications", apiRateLimit, publicationRoutes);
 app.use("/api/trainings", apiRateLimit, trainingRoutes);
 app.use("/api/workshops", apiRateLimit, workshopRoutes);
-app.use("/api/employmentRecords", apiRateLimit, employmentRecordRouter);
+app.use("/api/employment-records", apiRateLimit, employmentRecordRouter);
 app.use("/api/auth", apiRateLimit, users);
 
 const port = config.port || 5000;
